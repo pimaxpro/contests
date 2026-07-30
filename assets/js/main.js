@@ -25,7 +25,7 @@ function toggleTree(element) {
   }
 }
 
-// 2. Chuyển đổi bài thi & tự động mở các cấp thư mục cha của bài thi active
+// 2. Xử lý tự động so sánh ngày data-update để lấy bài mới nhất & bắt sự kiện click
 document.addEventListener('DOMContentLoaded', () => {
   const examItems = document.querySelectorAll('.exam-item');
   const iframe = document.getElementById('drive-preview-iframe');
@@ -36,7 +36,20 @@ document.addEventListener('DOMContentLoaded', () => {
   const btnSolution = document.getElementById('btn-solution');
   const btnRanking = document.getElementById('btn-ranking');
 
-  // Hàm active bài thi và tự động mở nhánh cây tương ứng
+  // Hàm chuyển đổi chuỗi "DD/MM/YYYY" thành đối tượng Date trong JS để so sánh
+  function parseDateStr(dateStr) {
+    if (!dateStr) return new Date(0);
+    const parts = dateStr.trim().split('/');
+    if (parts.length === 3) {
+      const day = parseInt(parts[0], 10);
+      const month = parseInt(parts[1], 10) - 1; // Tháng trong JS tính từ 0 - 11
+      const year = parseInt(parts[2], 10);
+      return new Date(year, month, day);
+    }
+    return new Date(0);
+  }
+
+  // Hàm active bài thi & tự động mở nhánh cây danh mục chứa nó
   function activateExam(item) {
     examItems.forEach(i => i.classList.remove('active'));
     item.classList.add('active');
@@ -59,7 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (btnSolution) btnSolution.href = solution || '#';
     if (btnRanking) btnRanking.href = ranking || '#';
 
-    // Mở nhánh chặng
+    // Tự động mở nhánh Chặng chứa bài thi này
     const stageGroup = item.closest('.stage-group');
     if (stageGroup) {
       stageGroup.classList.add('open');
@@ -72,7 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    // Mở nhánh năm học
+    // Tự động mở nhánh Năm học chứa bài thi này
     const yearGroup = item.closest('.year-group');
     if (yearGroup) {
       yearGroup.classList.add('open');
@@ -86,14 +99,23 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // Tự động load dữ liệu cho bài thi có class active đầu tiên
-  const activeExam = document.querySelector('.exam-item.active') || examItems[0];
-  if (activeExam) {
-    activateExam(activeExam);
-  }
-
-  // Sự kiện khi bấm vào từng bài thi ở sidebar
   if (examItems.length > 0) {
+    // Tìm bài thi có ngày "data-update" mới nhất (lớn nhất)
+    let newestItem = examItems[0];
+    let maxDate = parseDateStr(newestItem.getAttribute('data-update'));
+
+    examItems.forEach(item => {
+      const itemDate = parseDateStr(item.getAttribute('data-update'));
+      if (itemDate > maxDate) {
+        maxDate = itemDate;
+        newestItem = item;
+      }
+    });
+
+    // Mặc định tự chọn & mở đúng nhánh cây cho bài mới nhất
+    activateExam(newestItem);
+
+    // Bắt sự kiện khi người dùng click xem bài khác ở cột trái
     examItems.forEach(item => {
       item.addEventListener('click', function() {
         activateExam(this);
