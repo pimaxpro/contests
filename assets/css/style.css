@@ -151,7 +151,6 @@ a {
   font-weight: 700;
 }
 
-/* TÊN CHẶNG: BỎ IN ĐẬM */
 .stage-title {
   font-size: 14px;
   margin-left: 10px;
@@ -184,7 +183,6 @@ a {
   color: var(--accent-color);
 }
 
-/* Khi active bài thi hoặc active thẻ chọn kì thi */
 .exam-item.active,
 .active-contest {
   background: var(--accent-color) !important;
@@ -197,7 +195,6 @@ a {
   color: #ffffff !important;
 }
 
-/* TẮT HIỆU ỨNG HOVER KHI ĐANG Ở TRANG KÌ THI HIỆN TẠI */
 .active-contest:hover {
   background: var(--accent-color) !important;
   color: #ffffff !important;
@@ -225,7 +222,6 @@ a {
   margin-bottom: 16px;
 }
 
-/* TIÊU ĐỀ NẰM TRÊN CÙNG HÀNG VỚI ICON */
 .preview-title-row {
   display: flex;
   align-items: center;
@@ -334,7 +330,6 @@ a {
   border: none;
 }
 
-/* LỚP PHỦ CHE GÓC TRÊN BÊN PHẢI ĐỂ VÔ HIỆU HÓA NÚT "POP-OUT" MẶC ĐỊNH CỦA IFRAME DRIVE */
 .iframe-overlay-cover {
   position: absolute;
   top: 0;
@@ -346,7 +341,7 @@ a {
   cursor: default;
 }
 
-/* BỘ 3 NÚT TƯƠNG TÁC (COPY LINK / FB SHARE / DRIVE LINK) */
+/* BỘ NÚT TƯƠNG TÁC DỌC (FACEBOOK, COPY, DRIVE, CONVERT PDF TO IMAGE) */
 .side-share-actions {
   position: absolute;
   top: 15px;
@@ -390,6 +385,197 @@ a {
   box-shadow: 0 2px 6px rgba(184, 38, 80, 0.4);
 }
 
+/* ==========================================
+   STYLE CHO MODAL CHUYỂN DỔI PDF THÀNH ẢNH
+========================================== */
+.pdf-modal-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+.pdf-modal-container.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.pdf-modal-content {
+  background: #ffffff;
+  width: 90%;
+  max-width: 900px;
+  max-height: 88vh;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+  display: flex;
+  flex-direction: column;
+}
+
+.pdf-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 2px solid #edf2f7;
+  padding-bottom: 12px;
+  margin-bottom: 16px;
+}
+
+.pdf-modal-header h2 {
+  font-size: 20px;
+  color: var(--accent-color);
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.pdf-modal-close {
+  background: transparent;
+  border: none;
+  font-size: 28px;
+  color: #a0aec0;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.pdf-modal-close:hover {
+  color: #e53e3e;
+}
+
+.pdf-modal-controls {
+  display: flex;
+  gap: 12px;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+
+.pdf-modal-controls .input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex-grow: 1;
+}
+
+.pdf-modal-controls label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #4a5568;
+}
+
+.pdf-modal-controls input {
+  padding: 8px 12px;
+  border: 1px solid #cbd5e0;
+  border-radius: 8px;
+  font-size: 14px;
+  outline: none;
+}
+
+.pdf-modal-controls input:focus {
+  border-color: var(--accent-color);
+}
+
+.btn-primary-action {
+  background: var(--accent-color);
+  color: #ffffff;
+  border: none;
+  padding: 9px 18px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: opacity 0.2s ease;
+}
+
+.btn-primary-action:hover {
+  opacity: 0.9;
+}
+
+.btn-success-action {
+  background: #38a169;
+  color: #ffffff;
+  border: none;
+  padding: 9px 18px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.render-status-text {
+  font-size: 13px;
+  color: #718096;
+  margin-bottom: 12px;
+  font-style: italic;
+}
+
+.pdf-images-grid {
+  flex-grow: 1;
+  overflow-y: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+  padding-right: 4px;
+}
+
+.pdf-page-card {
+  background: #f8f9fa;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.pdf-page-card canvas {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.pdf-page-card .page-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #4a5568;
+}
+
+.pdf-page-card .btn-download-single {
+  background: #ffffff;
+  border: 1px solid #cbd5e0;
+  color: #2d3748;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.pdf-page-card .btn-download-single:hover {
+  background: var(--accent-color);
+  color: #ffffff;
+  border-color: var(--accent-color);
+}
+
 /* THÔNG BÁO TOAST */
 .toast-notification {
   position: fixed;
@@ -409,7 +595,7 @@ a {
   pointer-events: none;
   transform: translateY(10px);
   transition: all 0.3s ease;
-  z-index: 9999;
+  z-index: 999999;
 }
 
 .toast-notification.show {
@@ -486,7 +672,6 @@ body.theme-marathon .active-contest i {
   color: #ffffff !important;
 }
 
-/* TẮT HOVER KHI ĐANG Ở MARATHON */
 body.theme-marathon .active-contest:hover {
   background: #4080D6 !important;
   color: #ffffff !important;
