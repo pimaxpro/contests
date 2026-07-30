@@ -3,65 +3,37 @@
 <head>
   <meta charset="UTF-8">
   <title>Chặng đua 2025-2026 - PIMAX TSA</title>
-
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="icon" href="logo1.ico">
-
-  <script>
-    window.MathJax = {
-      tex: {
-        inlineMath: [['$', '$'], ['\\(', '\\)']],
-        displayMath: [['$$', '$$'], ['\\[', '\\]']]
-      },
-      svg: { fontCache: 'global' }
-    };
-  </script>
-  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
 </head>
-
 <body>
-  <section class="hero">
-    <h1>
-      <a href="index.html" class="hero-title-link">PimaX TSABK Tournament</a>
-    </h1>
-    <p class="hero-sub">Mathematical Thinking • TSA Training • Problem Solving</p>
-    
-    <div class="social-wrapper">
-      <a href="https://www.tiktok.com/@pimaxghettoan" target="_blank" rel="noopener" class="social-card">
-        <i class="fa-brands fa-tiktok"></i> TikTok
-      </a>
-      <a href="https://www.facebook.com/PimaXPro" target="_blank" rel="noopener" class="social-card">
-        <i class="fa-brands fa-facebook-f"></i> Facebook
-      </a>
+  <div id="page-content">
+    <section class="hero">
+      <h1>
+        <a href="index.html" class="hero-title-link">PimaX TSABK Tournament</a>
+      </h1>
+      <p class="hero-sub">Mathematical Thinking • TSA Training • Problem Solving</p>
+      
+      <div class="social-wrapper">
+        <a href="https://www.tiktok.com/@pimaxghettoan" target="_blank" rel="noopener" class="social-card">
+          <i class="fa-brands fa-tiktok"></i><span class="divider">|</span><span class="label">TikTok</span>
+        </a>
+        <a href="https://www.facebook.com/PimaXPro" target="_blank" rel="noopener" class="social-card">
+          <i class="fa-brands fa-facebook-f"></i><span class="divider">|</span><span class="label">Facebook</span>
+        </a>
+      </div>
+
+      <div class="hero-actions" style="margin-top: 20px;">
+        <a href="index.html" class="btn primary"><i class="fa-solid fa-house"></i> Trang chủ</a>
+        <a href="blog.html" class="btn ghost"><i class="fa-solid fa-pen-nib"></i> Bình luận</a>
+      </div>
+    </section>
+
+    <div class="year-box" style="max-width: 900px; margin: 20px auto; padding: 30px; background: #fff; border-radius: 16px;">
+      <h2 style="color: #d83b6a;"><i class="fa-solid fa-calendar-check"></i> 2025–2026</h2>
+      <p>Toàn bộ danh sách đề thi và tài liệu chặng 2025–2026 hiện tại đã được tích hợp trực tiếp trên <strong>Trang chủ</strong> dạng 2 cột vô cùng tiện lợi.</p>
     </div>
-  </section>
-
-  <div class="menu-dropdown">
-    <input type="checkbox" id="menu-toggle" />
-    <label for="menu-toggle" class="menu-icon"><i class="fa-solid fa-bars"></i></label>
-    <nav class="menu">
-      <a href="index.html"><i class="fa-solid fa-house"></i> Trang chủ</a>
-      <a href="2025-2026.html" class="active"><i class="fa-solid fa-calendar-days"></i> 2025–2026</a>
-      <a href="blog.html"><i class="fa-solid fa-pen-nib"></i> Bình luận</a>
-      <a href="rules.html"><i class="fa-solid fa-file-contract"></i> Thể lệ</a>
-    </nav>
-  </div>
-
-  <script>
-    document.addEventListener('click', function(e) {
-      const menuDropdown = document.querySelector('.menu-dropdown');
-      const checkbox = document.getElementById('menu-toggle');
-      if (checkbox && checkbox.checked && !menuDropdown.contains(e.target)) {
-        checkbox.checked = false;
-      }
-    });
-  </script>
-
-  <div class="year-box" style="max-width: 1100px; margin: 0 auto; padding: 20px;">
-    <h2><i class="fa-solid fa-calendar-check"></i> Chặng đua 2025–2026</h2>
-    <p>Chi tiết các tài liệu, đề thi, bản viết tay, lời giải và bảng xếp hạng đã được cập nhật tại trang chủ ở giao diện 2 cột mới.</p>
   </div>
 
   <footer class="site-footer">
@@ -71,7 +43,5 @@
       <span class="footer-text">BẢN QUYỀN THUỘC VỀ PIMAX</span>
     </div>
   </footer>
-
-  <script src="assets/js/main.js"></script>
 </body>
 </html>
