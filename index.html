@@ -2,165 +2,266 @@
 <html lang="vi">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PIMAX TSABK TOURNAMENT</title>
 
-  <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="icon" href="logo1.ico">
+
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']]
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
 </head>
 <body>
 
-  <header class="hero">
-    <h1>PIMAX TSABK TOURNAMENT</h1>
-    <p class="hero-sub">Đường tới đại học Bách Khoa Hà Nội</p>
-    <div class="hero-actions">
-      <button class="btn btn-primary" onclick="openRulesModal()">
-        <i class="fa-solid fa-scroll"></i> Thể lệ cuộc thi
-      </button>
-      <a href="blog.html" class="btn btn-outline">
-        <i class="fa-solid fa-pen-nib"></i> Bình luận
-      </a>
+  <div id="page-content">
+
+    <section class="hero">
+      <h1>
+        <a href="index.html" class="hero-title-link">
+          PimaX TSABK Tournament
+        </a>
+      </h1>
+      <p class="hero-sub">
+        Mathematical Thinking • TSA Training • Problem Solving
+      </p>
+
+      <div class="social-wrapper">
+        <a href="https://www.tiktok.com/@pimaxghettoan" target="_blank" rel="noopener" class="social-card" aria-label="TikTok">
+          <i class="fa-brands fa-tiktok"></i>
+          <span class="divider">|</span>
+          <span class="label">TikTok</span>
+        </a>
+
+        <a href="https://www.facebook.com/PimaXPro" target="_blank" rel="noopener" class="social-card" aria-label="Facebook">
+          <i class="fa-brands fa-facebook-f"></i>
+          <span class="divider">|</span>
+          <span class="label">Facebook</span>
+        </a>
+      </div>
+
+      <div class="hero-actions" style="margin-top: 20px;">
+        <button class="btn primary" onclick="openRulesModal()">
+          <i class="fa-solid fa-file-contract"></i> Thể lệ cuộc thi
+        </button>
+        <a href="blog.html" class="btn ghost">
+          <i class="fa-solid fa-pen-nib"></i> Bình luận
+        </a>
+        <a href="2025-2026.html" class="btn ghost">
+          <i class="fa-solid fa-calendar-days"></i> 2025–2026
+        </a>
+      </div>
+    </section>
+
+    <div class="layout-2col">
+      
+      <aside class="sidebar-exams">
+        <div class="sidebar-header">
+          <h2><i class="fa-solid fa-folder-tree"></i> Danh sách Bài thi</h2>
+        </div>
+
+        <div class="tree-menu">
+          <div class="year-group open">
+            <div class="year-title" onclick="toggleTree(this)">
+              <i class="fa-solid fa-chevron-down toggle-icon"></i>
+              <i class="fa-solid fa-graduation-cap"></i>
+              <span>Năm học 2025 – 2026</span>
+            </div>
+
+            <div class="stage-list">
+              
+              <div class="stage-group open">
+                <div class="stage-title" onclick="toggleTree(this)">
+                  <i class="fa-solid fa-chevron-down toggle-icon"></i>
+                  <i class="fa-solid fa-snowman"></i>
+                  <span>Chặng 3 – SUMMER</span>
+                </div>
+                <ul class="exam-list">
+                  <li class="exam-item active" 
+                      data-drive-id="1fvqKAsriCIMBs5mqe6dr4vkQKCK-VGx3" 
+                      data-title="PMXST25−SUMT11 (Tuần 1)"
+                      data-solution="https://drive.google.com/file/d/148-jcKULOkQqboTg4mtP3tGC4mux6nhK/view?usp=sharing"
+                      data-ranking="https://docs.google.com/spreadsheets/d/1WEYGfDiVLkmoRity1H3SnUXuIMLthdYT/edit?usp=sharing"
+                      data-bvt="https://drive.google.com/file/d/1YrVtZKq6NQ8Fj6GEKDzgMGYiGZ25aTMk/view?usp=sharing">
+                    <i class="fa-regular fa-file-lines"></i> PMXST25−SUMT11
+                  </li>
+                </ul>
+              </div>
+
+              <div class="stage-group open">
+                <div class="stage-title" onclick="toggleTree(this)">
+                  <i class="fa-solid fa-chevron-down toggle-icon"></i>
+                  <i class="fa-solid fa-seedling"></i>
+                  <span>Chặng 2 – SPRING</span>
+                </div>
+                <ul class="exam-list">
+                  <li class="exam-item" 
+                      data-drive-id="1lc2suSq0RMgaB83_sJeHDqNDU7_zmuNm" 
+                      data-title="PMXST25−SPRT11 (Tuần 1)"
+                      data-solution="https://drive.google.com/file/d/1Nbj1pSdEcdenx2-MurY2uMYgukv8p6Sf/view?usp=sharing"
+                      data-ranking="https://docs.google.com/spreadsheets/d/1NDu9359JxkuWUJU0LEGAXA1NZXXExFRG/edit?usp=sharing"
+                      data-bvt="https://drive.google.com/file/d/1LnysVrLJmRDp6z5DSuFZds-yarTOzCAv/view?usp=sharing">
+                    <i class="fa-regular fa-file-lines"></i> PMXST25−SPRT11
+                  </li>
+                  <li class="exam-item" 
+                      data-drive-id="13_1JROb7aiMy5g9zuWQbutpL0-xEDWad" 
+                      data-title="PMXST25−SPRT21 (Tuần 2)"
+                      data-solution="https://drive.google.com/file/d/1vPCflcC7bZrE1B4_L2Tk2ylTn2uMPwcK/view?usp=sharing"
+                      data-ranking="https://docs.google.com/spreadsheets/d/1XbrEDrCmCPMHsvQ-546_ImMKDcSbF5UN/edit?usp=sharing"
+                      data-bvt="https://drive.google.com/file/d/12mVxxPDDVveaacrVVgmo4p95qmZNRcSn/view?usp=sharing">
+                    <i class="fa-regular fa-file-lines"></i> PMXST25−SPRT21
+                  </li>
+                  <li class="exam-item" 
+                      data-drive-id="1cN1jxGX9cjE1PwKA_fTpwfOGlQEQhSlg" 
+                      data-title="PMXST25−SPRT31 (Tuần 3)"
+                      data-solution="https://drive.google.com/file/d/1dO6V-oj_aDdhI13zoyE887ifpcWq-lMK/view?usp=sharing"
+                      data-ranking="https://docs.google.com/spreadsheets/d/1wed5CC7_FG2vYagDeuqPOZeCnoSY4q27/edit?usp=sharing"
+                      data-bvt="https://drive.google.com/file/d/1Y5qkfepsQTpCN3bzmxnvXPDURSOFRfg4/view?usp=sharing">
+                    <i class="fa-regular fa-file-lines"></i> PMXST25−SPRT31
+                  </li>
+                  <li class="exam-item" 
+                      data-drive-id="1t0uVGgnBMFlR_gzrWA5VzaJ1stPPyt4_" 
+                      data-title="PMXST25−SPRT41 (Tuần 4)"
+                      data-solution="https://drive.google.com/file/d/1MY3MIRp2FpZQJgsW4m4gv_BEwG-aui8S/view?usp=sharing"
+                      data-ranking="https://docs.google.com/spreadsheets/d/1jM00SUPgupms4XF04Sqrd-Ro4kbtBtrj/edit?usp=sharing"
+                      data-bvt="https://drive.google.com/file/d/1LNrO-lxf0DHfW-EXSFlTLPPvdpRRbHr4/view?usp=sharing">
+                    <i class="fa-regular fa-file-lines"></i> PMXST25−SPRT41
+                  </li>
+                  <li class="exam-item" 
+                      data-drive-id="1dmniSMGK98BUhTu8OREnMlkF2jTNYEQ2" 
+                      data-title="PMXST25−SPRT51 (Tuần 5 - Final)"
+                      data-solution="https://drive.google.com/file/d/1We9gjUXT-nKWVJUcWz0dx2nyps_HUbWW/view?usp=sharing"
+                      data-ranking="https://docs.google.com/spreadsheets/d/17odNDHhKWrCzmQQFWPp8UoBND43009Ik/edit?usp=sharing"
+                      data-bvt="https://drive.google.com/file/d/10T-KcC6PlL6MSDNmCCpk4FiGlBzWCC0B/view?usp=sharing">
+                    <i class="fa-regular fa-file-lines"></i> PMXST25−SPRT51
+                  </li>
+                </ul>
+              </div>
+
+              <div class="stage-group">
+                <div class="stage-title" onclick="toggleTree(this)">
+                  <i class="fa-solid fa-chevron-right toggle-icon"></i>
+                  <i class="fa-solid fa-snowman"></i>
+                  <span>Chặng 1 – WINTER</span>
+                </div>
+                <ul class="exam-list" style="display: none;">
+                  <li class="exam-item" 
+                      data-drive-id="1YYJmNPRncCEiXGx31lsOFcATeE_KYcY_" 
+                      data-title="PMXST25−WTT11 (Tuần 1)"
+                      data-solution="https://drive.google.com/file/d/1N0Iildna80-oA_f18lFmUOcZfVnUu-8k/view?usp=drive_link"
+                      data-ranking="https://docs.google.com/spreadsheets/d/1vtfoBgg8D5AyoK7CHxDtbjKM93db-22E/edit"
+                      data-bvt="https://drive.google.com/file/d/1hzCNKgNaPXclUZ_OWSsFxd_fhjlfcz9j/view?usp=drive_link">
+                    <i class="fa-regular fa-file-lines"></i> PMXST25−WTT11
+                  </li>
+                  <li class="exam-item" 
+                      data-drive-id="1WrEQrZNa-oTIhScnC0zbi5FD_giAlPdq" 
+                      data-title="PMXST25−WTT21 (Tuần 2)"
+                      data-solution="https://drive.google.com/file/d/13t_RDjvC7tCwnau3HLsqAIEZHBxObIjk/view?usp=drive_link"
+                      data-ranking="https://docs.google.com/spreadsheets/d/1wgik9x8kiwH3IeW7cJDGADbhNYe0wk_V/edit?usp=drive_link"
+                      data-bvt="https://drive.google.com/file/d/1d_k41_QtDxnPhLn8qPCM0FczoTHWqwXS/view?usp=drive_link">
+                    <i class="fa-regular fa-file-lines"></i> PMXST25−WTT21
+                  </li>
+                </ul>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </aside>
+
+      <main class="preview-area">
+        <div class="preview-header">
+          <h1 id="preview-title">PMXST25−SUMT11 (Tuần 1)</h1>
+          
+          <div class="week-buttons" style="margin-bottom: 16px;">
+            <a id="btn-bvt" class="week-btn" href="https://drive.google.com/file/d/1YrVtZKq6NQ8Fj6GEKDzgMGYiGZ25aTMk/view?usp=sharing" target="_blank" rel="noopener">
+              <i class="fa-solid fa-pen"></i> BVT
+            </a>
+            <a id="btn-solution" class="week-btn" href="https://drive.google.com/file/d/148-jcKULOkQqboTg4mtP3tGC4mux6nhK/view?usp=sharing" target="_blank" rel="noopener">
+              <i class="fa-solid fa-play"></i> Solution
+            </a>
+            <a id="btn-ranking" class="week-btn" href="https://docs.google.com/spreadsheets/d/1WEYGfDiVLkmoRity1H3SnUXuIMLthdYT/edit?usp=sharing" target="_blank" rel="noopener">
+              <i class="fa-solid fa-chart-column"></i> Ranking
+            </a>
+          </div>
+        </div>
+
+        <div class="drive-iframe-container">
+          <iframe id="drive-preview-iframe" 
+                  src="https://drive.google.com/file/d/1fvqKAsriCIMBs5mqe6dr4vkQKCK-VGx3/preview" 
+                  allow="autoplay" allowfullscreen></iframe>
+        </div>
+      </main>
+
     </div>
-  </header>
-
-  <div class="app-layout">
-    
-    <aside class="sidebar">
-      <div class="sidebar-header">
-        <i class="fa-solid fa-folder-tree"></i> Danh sách bài thi
-      </div>
-      
-      <div class="tree-menu">
-        <div class="tree-node year-node active">
-          <div class="tree-title" onclick="toggleTree(this)">
-            <i class="fa-solid fa-caret-down toggle-icon"></i>
-            <i class="fa-solid fa-calendar-days text-icon"></i>
-            <span>Năm học 2025–2026</span>
-          </div>
-
-          <div class="tree-children">
-            
-            <div class="tree-node stage-node active">
-              <div class="tree-title" onclick="toggleTree(this)">
-                <i class="fa-solid fa-caret-down toggle-icon"></i>
-                <i class="fa-solid fa-flag text-icon"></i>
-                <span>Chặng 1: Khởi động</span>
-              </div>
-              <div class="tree-children">
-                <a href="#" class="tree-item active" 
-                   data-drive="https://drive.google.com/file/d/1Xq1v0-YIqZ-0y9T19qO34JvN6Y8l3Z7n/preview"
-                   data-title="Tuần 1 - Đề thi chính thức"
-                   data-year="2025–2026"
-                   data-stage="Chặng 1: Khởi động"
-                   data-solution="https://drive.google.com/file/d/10CqT94S7XfXFlOc369rxFtxON8QtAegOMfH/view?usp=sharing"
-                   data-ranking="https://docs.google.com/spreadsheets/d/1xlKTbN8I0sc748O-FlVKj8Qb7nDHo9mt/edit?usp=drive_link"
-                   onclick="selectExam(this, event)">
-                  <i class="fa-regular fa-file-pdf"></i>
-                  <span>Tuần 1</span>
-                </a>
-
-                <a href="#" class="tree-item" 
-                   data-drive="https://drive.google.com/file/d/1-30wH-8G4S7p_sY-gC8z3S8S9S0S1S2S/preview"
-                   data-title="Tuần 2 - Đề thi chính thức"
-                   data-year="2025–2026"
-                   data-stage="Chặng 1: Khởi động"
-                   data-solution="#"
-                   data-ranking="#"
-                   onclick="selectExam(this, event)">
-                  <i class="fa-regular fa-file-pdf"></i>
-                  <span>Tuần 2</span>
-                </a>
-              </div>
-            </div>
-
-            <div class="tree-node stage-node">
-              <div class="tree-title" onclick="toggleTree(this)">
-                <i class="fa-solid fa-caret-right toggle-icon"></i>
-                <i class="fa-solid fa-flag text-icon"></i>
-                <span>Chặng 2: Vượt rào</span>
-              </div>
-              <div class="tree-children" style="display: none;">
-                <a href="#" class="tree-item" 
-                   data-drive="#"
-                   data-title="Tuần 3 - Đề thi chính thức"
-                   data-year="2025–2026"
-                   data-stage="Chặng 2: Vượt rào"
-                   data-solution="#"
-                   data-ranking="#"
-                   onclick="selectExam(this, event)">
-                  <i class="fa-regular fa-file-pdf"></i>
-                  <span>Tuần 3</span>
-                </a>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </div>
-    </aside>
-
-    <main class="preview-container">
-      
-      <div class="drive-header-card">
-        <h2 id="exam-title">Tuần 1 - Đề thi chính thức</h2>
-        
-        <div class="drive-info-row">
-          <span><i class="fa-solid fa-calendar"></i> <span id="exam-year">2025–2026</span></span>
-          <span><i class="fa-solid fa-trophy"></i> <span id="exam-stage">Chặng 1: Khởi động</span></span>
-        </div>
-
-        <div class="drive-actions">
-          <a id="btn-solution" class="week-btn btn-sol" href="https://drive.google.com/file/d/10CqT94S7XfXFlOc369rxFtxON8QtAegOMfH/view?usp=sharing" target="_blank" rel="noopener">
-            <i class="fa-solid fa-play"></i> Solution
-          </a>
-          <a id="btn-ranking" class="week-btn btn-rank" href="https://docs.google.com/spreadsheets/d/1xlKTbN8I0sc748O-FlVKj8Qb7nDHo9mt/edit?usp=drive_link" target="_blank" rel="noopener">
-            <i class="fa-solid fa-chart-column"></i> Ranking
-          </a>
-        </div>
-      </div>
-
-      <div class="drive-iframe">
-        <iframe id="drive-preview-frame" 
-                src="https://drive.google.com/file/d/1Xq1v0-YIqZ-0y9T19qO34JvN6Y8l3Z7n/preview" 
-                allow="autoplay"></iframe>
-      </div>
-    </main>
 
   </div>
 
   <div id="rules-modal" class="modal-overlay">
     <div class="modal-content">
       <div class="modal-header">
-        <h2><i class="fa-solid fa-scroll"></i> THỂ LỆ CUỘC THI</h2>
+        <div class="contest-title-box" style="margin:0; font-size:20px; padding:8px 20px;">
+          <i class="fa-solid fa-bullhorn"></i> THỂ LỆ CUỘC THI
+        </div>
         <button class="close-modal-btn" onclick="closeRulesModal()">&times;</button>
       </div>
       <div class="modal-body">
-        <div class="rules-box">
-          <p>Chào mừng các thí sinh đến với <strong>PimaX TSABK Tournament</strong>!</p>
-          <ol class="rules-list">
+        <div class="contest-box" style="margin:0; width:100%; box-sizing:border-box;">
+          <ol>
             <li>
-              <strong>Đăng ký tham gia:</strong> 
-              Thí sinh bắt buộc điền form đăng ký thông tin cá nhân trước khi thực hiện các bài thi tuần.
+              <strong>Cấu trúc cuộc thi:</strong><br>
+              Cuộc thi bao gồm <strong>3 chặng</strong> tương ứng với 3 đợt thi chính:
+              <ul>
+                <li>Chặng 1 – <strong>Winter 2025</strong></li>
+                <li>Chặng 2 – <strong>Spring 2026</strong></li>
+                <li>Chặng 3 – <strong>Summer 2026</strong></li>
+              </ul>
             </li>
             <li>
-              <strong>Hình thức thi:</strong> 
-              Mỗi tuần đề thi sẽ được mở cố định tại trang chủ. Thí sinh làm bài trực tiếp và nộp theo thời gian quy định.
+              <strong>Lịch thi hàng tuần:</strong><br>
+              Mỗi tuần thí sinh làm <strong>2 bài test</strong>:
+              <ul>
+                <li><strong>Bài thi 1:</strong> 40 câu / 60 phút (40 điểm), diễn ra vào <strong>thứ 2 hàng tuần</strong>.</li>
+                <li><strong>Bài thi 2:</strong> 10 câu / 30 phút (10 điểm), diễn ra vào <strong>thứ 6 hàng tuần</strong>.</li>
+              </ul>
+              <i class="fa-solid fa-hand-point-right"></i> Lưu ý: Thí sinh cần đăng ký tài khoản trước tại
+              <a href="https://pimaxtsa.com" target="_blank" rel="noopener">pimaxtsa.com</a>.
             </li>
             <li>
-              <strong>Cơ cấu giải thưởng & Xếp hạng:</strong>
-              Thứ hạng (Ranking) sẽ được cập nhật liên tục sau mỗi tuần thi dựa trên tổng điểm và thời gian nộp bài.
+              <strong>Cách tính điểm:</strong>
+              <div class="score-formula">
+                Điểm tuần = Điểm bài 1 + 1.5 × Điểm bài 2
+              </div>
+            </li>
+            <li>
+              <strong>Phần thưởng:</strong>
+              <div class="reward-block">
+                <p><strong>Top 3 Chặng:</strong></p>
+                <ul>
+                  <li><i class="fa-solid fa-trophy"></i> <strong>Nhà vô địch:</strong> 1.000.000 VNĐ + Khóa học PimaX</li>
+                  <li><i class="fa-solid fa-medal"></i> <strong>Hai á quân:</strong> 500.000 VNĐ + Khóa học PimaX</li>
+                </ul>
+              </div>
             </li>
           </ol>
-          <div class="register-box" style="margin-top: 20px;">
-            <h2><i class="fa-solid fa-pen-to-square"></i> ĐĂNG KÝ THAM GIA</h2>
-            <p>Hạn đăng ký: Hết ngày 28/12/2025</p>
-            <a href="https://docs.google.com/forms/d/1BGeWoQaCTOCkviJb8fbQ1kxnebybMEDUlZjp3HUO9ks/edit" 
-               target="_blank" rel="noopener" class="btn btn-primary">
-              <i class="fa-solid fa-hand-point-right"></i> Đi tới Form Đăng ký
-            </a>
-          </div>
+        </div>
+
+        <div class="register-box" style="margin-top: 20px;">
+          <h2><i class="fa-solid fa-pen-to-square"></i> ĐĂNG KÝ THAM GIA CUỘC THI</h2>
+          <p>Thời gian đăng ký: Hết ngày 28/12/2025</p>
+          <a href="https://docs.google.com/forms/d/1BGeWoQaCTOCkviJb8fbQ1kxnebybMEDUlZjp3HUO9ks/edit" target="_blank" rel="noopener">
+            <i class="fa-solid fa-hand-point-right"></i> ĐI TỚI FORM ĐĂNG KÝ
+          </a>
         </div>
       </div>
     </div>
@@ -169,7 +270,8 @@
   <footer class="site-footer">
     <hr class="footer-divider">
     <div class="footer-content">
-      <p>© 2025 PimaX TSABK Tournament. All rights reserved.</p>
+      <img src="assets/logo1.svg" alt="PimaX Logo" class="footer-logo">
+      <span class="footer-text">BẢN QUYỀN THUỘC VỀ PIMAX</span>
     </div>
   </footer>
 
