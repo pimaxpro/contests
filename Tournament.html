@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="icon" href="logo1.ico">
 
-  <!-- Thư viện xử lý render PDF thành ảnh & nén ZIP -->
+  <!-- Thư viện PDF.js và JSZip -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
 
@@ -361,7 +361,7 @@
         <div class="drive-iframe-container">
           <div class="iframe-overlay-cover"></div>
 
-          <!-- BỘ 4 NÚT TƯƠNG TÁC (FACEBOOK / COPY / DRIVE / CONVERT IMAGE) -->
+          <!-- BỘ 4 NÚT TƯƠNG TÁC NỔI DỌC -->
           <div class="side-share-actions">
             <button id="btn-share-fb" class="side-share-btn" title="Chia sẻ bài thi này lên Facebook">
               <i class="fa-brands fa-facebook-f"></i>
@@ -372,8 +372,7 @@
             <a id="btn-drive-link" class="side-share-btn" href="#" target="_blank" rel="noopener" title="Mở trực tiếp trên Google Drive">
               <i class="fa-brands fa-google-drive"></i>
             </a>
-            <!-- NÚT MỚI: CHUYỂN PDF THÀNH ẢNH -->
-            <button id="btn-pdf-to-img" class="side-share-btn" title="Chuyển PDF này thành Ảnh">
+            <button id="btn-pdf-to-img" class="side-share-btn" title="Chuyển PDF Bài Thi Thành Ảnh">
               <i class="fa-solid fa-file-image"></i>
             </button>
           </div>
@@ -386,32 +385,60 @@
 
   </div>
 
-  <!-- MODAL XEM TRƯỚC VÀ XUẤT ẢNH PDF -->
+  <!-- MODAL XUẤT ẢNH PDF CAO CẤP -->
   <div id="pdf-img-modal" class="pdf-modal-container">
     <div class="pdf-modal-content">
       <div class="pdf-modal-header">
-        <h2><i class="fa-solid fa-images"></i> Chuyển PDF Bài Thi Thành Ảnh</h2>
-        <button id="btn-close-modal" class="pdf-modal-close">&times;</button>
+        <h2><i class="fa-solid fa-file-image"></i> Công Cụ Chuyển Đổi PDF Thành Ảnh</h2>
+        <button id="btn-close-modal" class="pdf-modal-close" title="Đóng">&times;</button>
       </div>
 
-      <div class="pdf-modal-controls">
-        <div class="input-group">
-          <label for="page-range-input">Trang xuất ảnh (ví dụ: all, 1, 1-3):</label>
-          <input type="text" id="page-range-input" value="all" placeholder="vd: all hoặc 1, 2, 4-6">
+      <div class="pdf-modal-body">
+        <div class="pdf-modal-controls-grid">
+          <div class="control-item">
+            <label for="page-range-input"><i class="fa-solid fa-list-ol"></i> Chọn trang xuất ảnh:</label>
+            <input type="text" id="page-range-input" value="all" placeholder="vd: all hoặc 1, 2, 3-5">
+          </div>
+
+          <div class="control-item">
+            <label for="img-format-select"><i class="fa-solid fa-file-export"></i> Định dạng ảnh:</label>
+            <select id="img-format-select" class="custom-select">
+              <option value="png">PNG (Chất lượng cao, nét)</option>
+              <option value="jpeg">JPG / JPEG (Dung lượng nhẹ)</option>
+            </select>
+          </div>
+
+          <div class="control-item">
+            <label for="img-dpi-select"><i class="fa-solid fa-sliders"></i> Độ nét / DPI:</label>
+            <select id="img-dpi-select" class="custom-select">
+              <option value="1.5">Tiêu chuẩn (150 DPI)</option>
+              <option value="2.0" selected>Sắc nét (300 DPI - Nét căng)</option>
+              <option value="3.0">Siêu nét (600 DPI - Ultra HD)</option>
+            </select>
+          </div>
         </div>
-        <button id="btn-render-pages" class="btn-primary-action">
-          <i class="fa-solid fa-rotate"></i> Xem trước & Tạo ảnh
-        </button>
-        <button id="btn-download-all-zip" class="btn-success-action" style="display: none;">
-          <i class="fa-solid fa-file-zipper"></i> Tải Toàn Bộ Ảnh (.ZIP)
-        </button>
-      </div>
 
-      <div id="pdf-render-status" class="render-status-text">
-        Bấm "Xem trước & Tạo ảnh" để bắt đầu chuyển đổi tệp...
-      </div>
+        <div class="action-buttons-row">
+          <button id="btn-render-pages" class="btn-action btn-convert">
+            <i class="fa-solid fa-bolt"></i> Chuyển Đổi & Xem Trước
+          </button>
+          <button id="btn-download-all-zip" class="btn-action btn-download-zip" style="display: none;">
+            <i class="fa-solid fa-file-zipper"></i> Tải Toàn Bộ Ảnh (.ZIP)
+          </button>
+        </div>
 
-      <div id="pdf-images-preview-grid" class="pdf-images-grid"></div>
+        <!-- Thanh tiến trình Render -->
+        <div id="progress-bar-box" class="progress-bar-box" style="display: none;">
+          <div id="progress-bar-fill" class="progress-bar-fill"></div>
+        </div>
+
+        <div id="pdf-render-status" class="render-status-text">
+          Sẵn sàng chuyển đổi. Bấm "Chuyển Đổi & Xem Trước" để bắt đầu.
+        </div>
+
+        <!-- Khung xem trước các trang ảnh -->
+        <div id="pdf-images-preview-grid" class="pdf-images-grid"></div>
+      </div>
     </div>
   </div>
 
