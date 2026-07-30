@@ -2,16 +2,13 @@
 <html lang="vi">
 <head>
   <meta charset="UTF-8">
-  <title>Chặng đua 2025-2026</title>
+  <title>Chặng đua 2025-2026 - PIMAX TSA</title>
 
-  <!-- Font Awesome -->
-  <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-  <!-- CSS -->
   <link rel="stylesheet" href="assets/css/style.css">
-<link rel="icon" href="logo1.ico">
-  <!-- MathJax CONFIG -->
+  <link rel="icon" href="logo1.ico">
+
   <script>
     window.MathJax = {
       tex: {
@@ -21,588 +18,60 @@
       svg: { fontCache: 'global' }
     };
   </script>
-
-  <!-- MathJax -->
-  <script async
-    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
-  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
 </head>
 
 <body>
-  <style>
-    :root {
-  --accent-color: #D83B6A;
-    }
-    .social-wrapper {
-      display: flex;
-      justify-content: center;   /* căn giữa */
-      gap: 12px;
-    }
-    
-    .social-card {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    
-      padding: 6px 12px;
-      border: 1px solid #666;
-      border-radius: 6px;
-    
-      color: #555;              /* đen xám */
-      background: transparent;
-    
-      font-size: 14px;
-      text-decoration: none;
-      font-weight: 500;
-    
-      transition: 
-        background-color 0.2s ease,
-        color 0.2s ease,
-        border-color 0.2s ease;
-    }
-    
-    .social-card .divider {
-      opacity: 0.6;
-    }
-    
-    /* hover: full hồng – chữ trắng */
-    .social-card:hover {
-      background-color: var(--accent-color);
-      color: #fff;
-      border-color: var(--accent-color);
-    }
-    
-    /* đảm bảo icon + dấu | + chữ đều trắng */
-    .social-card:hover .divider {
-      opacity: 1;
-    }
-  </style>
-<div id="page-content">
   <section class="hero">
     <h1>
-      <a href="https://pimaxpro.github.io/pimaxtsabk/" class="hero-title-link">
-        PimaX TSABK Tournament
-      </a>
-      <p class="hero-sub">
-      Mathematical Thinking • TSA Training • Problem Solving
-      </p>
+      <a href="index.html" class="hero-title-link">PimaX TSABK Tournament</a>
     </h1>
-      <div class="social-wrapper">
-      <a href="https://www.tiktok.com/@pimaxghettoan"
-         target="_blank"
-         rel="noopener"
-         class="social-card"
-         aria-label="TikTok">
-        <i class="fa-brands fa-tiktok"></i>
-        <span class="divider">|</span>
-        <span class="label">TikTok</span>
-      </a>
+    <p class="hero-sub">Mathematical Thinking • TSA Training • Problem Solving</p>
     
-      <a href="https://www.facebook.com/PimaXPro"
-         target="_blank"
-         rel="noopener"
-         class="social-card"
-         aria-label="Facebook">
-        <i class="fa-brands fa-facebook-f"></i>
-        <span class="divider">|</span>
-        <span class="label">Facebook</span>
+    <div class="social-wrapper">
+      <a href="https://www.tiktok.com/@pimaxghettoan" target="_blank" rel="noopener" class="social-card">
+        <i class="fa-brands fa-tiktok"></i> TikTok
+      </a>
+      <a href="https://www.facebook.com/PimaXPro" target="_blank" rel="noopener" class="social-card">
+        <i class="fa-brands fa-facebook-f"></i> Facebook
       </a>
     </div>
-    <br>
   </section>
 
-  <!-- Hamburger Menu Dropdown -->
-<div class="menu-dropdown">
-  <input type="checkbox" id="menu-toggle" />
-  <label for="menu-toggle" class="menu-icon">
-    <i class="fa-solid fa-bars"></i>
-  </label>
-  <nav class="menu">
-    <a href="https://pimaxpro.github.io/pimaxtsabk/">
-      <i class="fa-solid fa-house"></i>
-      Trang chủ
-    </a>
-    <a href="2025-2026.html">
-      <i class="fa-solid fa-calendar-days"></i>
-      2025–2026
-    </a>
-    <a href="blog.html">
-      <i class="fa-solid fa-pen-nib"></i>
-      Bình luận
-    </a>
-    <a href="rules.html">
-    <i class="fa-solid fa-file-contract"></i>
-    Thể lệ
-  </a>
-  </nav>
-</div>
+  <div class="menu-dropdown">
+    <input type="checkbox" id="menu-toggle" />
+    <label for="menu-toggle" class="menu-icon"><i class="fa-solid fa-bars"></i></label>
+    <nav class="menu">
+      <a href="index.html"><i class="fa-solid fa-house"></i> Trang chủ</a>
+      <a href="2025-2026.html" class="active"><i class="fa-solid fa-calendar-days"></i> 2025–2026</a>
+      <a href="blog.html"><i class="fa-solid fa-pen-nib"></i> Bình luận</a>
+      <a href="rules.html"><i class="fa-solid fa-file-contract"></i> Thể lệ</a>
+    </nav>
+  </div>
 
   <script>
-  // Khi bấm ra ngoài menu, đóng menu
-  document.addEventListener('click', function(e) {
-    const menuDropdown = document.querySelector('.menu-dropdown');
-    const checkbox = document.getElementById('menu-toggle');
-    
-    if (checkbox.checked && !menuDropdown.contains(e.target)) {
-      checkbox.checked = false;
-    }
-  });
-</script>
+    document.addEventListener('click', function(e) {
+      const menuDropdown = document.querySelector('.menu-dropdown');
+      const checkbox = document.getElementById('menu-toggle');
+      if (checkbox && checkbox.checked && !menuDropdown.contains(e.target)) {
+        checkbox.checked = false;
+      }
+    });
+  </script>
 
-  <!-- YEAR BOX -->
-<div class="year-box">
-  <div class="year-title">
-    <i class="fa-solid fa-calendar-check"></i> 2025$–$2026
+  <div class="year-box" style="max-width: 1100px; margin: 0 auto; padding: 20px;">
+    <h2><i class="fa-solid fa-calendar-check"></i> Chặng đua 2025–2026</h2>
+    <p>Chi tiết các tài liệu, đề thi, bản viết tay, lời giải và bảng xếp hạng đã được cập nhật tại trang chủ ở giao diện 2 cột mới.</p>
   </div>
 
-  <div class="stage">
-    <h1>
-      <i class="fa-solid fa-snowman"></i> Chặng 3 $–$ SUMMER
-    </h1>
-    <p>Diễn ra từ ngày 22/12/2025</p>
-  </div>
-
-  <!-- TUẦN 1 -->
-  <div class="week-clean">
-    <div class="week-badge">
-      <i class="fa-regular fa-calendar"></i> TUẦN 1
-    </div>
-
-    <div class="item">
-      <div class="week-buttons">
-        <a class="week-btn" href="https://drive.google.com/file/d/1fvqKAsriCIMBs5mqe6dr4vkQKCK-VGx3/view?usp=drive_link" target="_blank" rel="noopener">
-          <i class="fa-regular fa-file-lines"></i> PMXST25−SUMT11
-        </a>
-        <a class="week-btn" href="https://drive.google.com/file/d/1YrVtZKq6NQ8Fj6GEKDzgMGYiGZ25aTMk/view?usp=sharing" target="_blank" rel="noopener">
-          <i class="fa-solid fa-pen"></i> BVT
-        </a>
-        <a class="week-btn" href="https://drive.google.com/file/d/148-jcKULOkQqboTg4mtP3tGC4mux6nhK/view?usp=sharing" target="_blank" rel="noopener">
-          <i class="fa-solid fa-play"></i> Solution
-        </a>
-        <a class="week-btn" href="https://docs.google.com/spreadsheets/d/1WEYGfDiVLkmoRity1H3SnUXuIMLthdYT/edit?usp=sharing&ouid=113352121122805653305&rtpof=true&sd=true" target="_blank" rel="noopener">
-          <i class="fa-solid fa-chart-column"></i> Ranking
-        </a>
-      </div>
-    </div>
-  </div>
-  <div class="stage">
-    <h1>
-      <i class="fas fa-seedling"></i> Chặng 2 $–$ SPRING
-    </h1>
-    <p>Diễn ra từ ngày 9/02/2026</p>
-  </div>
-
-  <!-- TUẦN 1 -->
-  <div class="week-clean">
-    <div class="week-badge">
-      <i class="fa-regular fa-calendar"></i> TUẦN 1
-    </div>
-
-    <div class="item">
-      <div class="week-buttons">
-        <a class="week-btn" href="https://drive.google.com/file/d/1lc2suSq0RMgaB83_sJeHDqNDU7_zmuNm/view?usp=sharing" target="_blank" rel="noopener">
-          <i class="fa-regular fa-file-lines"></i> PMXST25−SPRT11
-        </a>
-        <a class="week-btn" href="https://drive.google.com/file/d/1LnysVrLJmRDp6z5DSuFZds-yarTOzCAv/view?usp=sharing" target="_blank" rel="noopener">
-          <i class="fa-solid fa-pen"></i> BVT
-        </a>
-        <a class="week-btn" href="https://drive.google.com/file/d/1Nbj1pSdEcdenx2-MurY2uMYgukv8p6Sf/view?usp=sharing" target="_blank" rel="noopener">
-          <i class="fa-solid fa-play"></i> Solution
-        </a>
-        <a class="week-btn" href="https://docs.google.com/spreadsheets/d/1NDu9359JxkuWUJU0LEGAXA1NZXXExFRG/edit?usp=sharing&ouid=113352121122805653305&rtpof=true&sd=true" target="_blank" rel="noopener">
-          <i class="fa-solid fa-chart-column"></i> Ranking
-        </a>
-      </div>
-    </div>
-  </div>
-
-     <!-- TUẦN 2 -->
-  <div class="week-clean">
-    <div class="week-badge">
-      <i class="fa-regular fa-calendar"></i> TUẦN 2
-    </div>
-
-    <div class="item">
-      <div class="week-buttons">
-        <a class="week-btn" href="https://drive.google.com/file/d/13_1JROb7aiMy5g9zuWQbutpL0-xEDWad/view?usp=sharing" target="_blank" rel="noopener">
-          <i class="fa-regular fa-file-lines"></i> PMXST25−SPRT21
-        </a>
-        <a class="week-btn" href="https://drive.google.com/file/d/12mVxxPDDVveaacrVVgmo4p95qmZNRcSn/view?usp=sharing" target="_blank" rel="noopener">
-          <i class="fa-solid fa-pen"></i> BVT
-        </a>
-        <a class="week-btn" href="https://drive.google.com/file/d/1vPCflcC7bZrE1B4_L2Tk2ylTn2uMPwcK/view?usp=sharing" target="_blank" rel="noopener">
-          <i class="fa-solid fa-play"></i> Solution
-        </a>
-        <a class="week-btn" href="https://docs.google.com/spreadsheets/d/1XbrEDrCmCPMHsvQ-546_ImMKDcSbF5UN/edit?usp=sharing&ouid=113352121122805653305&rtpof=true&sd=true" target="_blank" rel="noopener">
-          <i class="fa-solid fa-chart-column"></i> Ranking
-        </a>
-      </div>
-    </div>
-  </div>
-
-  <div class="week-clean">
-    <div class="week-badge">
-      <i class="fa-regular fa-calendar"></i> TUẦN 3
-    </div>
-
-    <div class="item">
-      <div class="week-buttons">
-        <a class="week-btn" href="https://drive.google.com/file/d/1cN1jxGX9cjE1PwKA_fTpwfOGlQEQhSlg/view?usp=sharing" target="_blank" rel="noopener">
-          <i class="fa-regular fa-file-lines"></i> PMXST25−SPRT31
-        </a>
-        <a class="week-btn" href="https://drive.google.com/file/d/1Y5qkfepsQTpCN3bzmxnvXPDURSOFRfg4/view?usp=sharing" target="_blank" rel="noopener">
-          <i class="fa-solid fa-pen"></i> BVT
-        </a>
-        <a class="week-btn" href="https://drive.google.com/file/d/1dO6V-oj_aDdhI13zoyE887ifpcWq-lMK/view?usp=sharing" target="_blank" rel="noopener">
-          <i class="fa-solid fa-play"></i> Solution
-        </a>
-        <a class="week-btn" href="https://docs.google.com/spreadsheets/d/1wed5CC7_FG2vYagDeuqPOZeCnoSY4q27/edit?usp=sharing&ouid=113352121122805653305&rtpof=true&sd=true" target="_blank" rel="noopener">
-          <i class="fa-solid fa-chart-column"></i> Ranking
-        </a>
-      </div>
-    </div>
-  </div>
-
-  <div class="week-clean">
-    <div class="week-badge">
-      <i class="fa-regular fa-calendar"></i> TUẦN 4
-    </div>
-
-    <div class="item">
-      <div class="week-buttons">
-        <a class="week-btn" href="https://drive.google.com/file/d/1t0uVGgnBMFlR_gzrWA5VzaJ1stPPyt4_/view?usp=sharing" target="_blank" rel="noopener">
-          <i class="fa-regular fa-file-lines"></i> PMXST25−SPRT41
-        </a>
-        <a class="week-btn" href="https://drive.google.com/file/d/1LNrO-lxf0DHfW-EXSFlTLPPvdpRRbHr4/view?usp=sharing" target="_blank" rel="noopener">
-          <i class="fa-solid fa-pen"></i> BVT
-        </a>
-        <a class="week-btn" href="https://drive.google.com/file/d/1MY3MIRp2FpZQJgsW4m4gv_BEwG-aui8S/view?usp=sharing" target="_blank" rel="noopener">
-          <i class="fa-solid fa-play"></i> Solution
-        </a>
-        <a class="week-btn" href="https://docs.google.com/spreadsheets/d/1jM00SUPgupms4XF04Sqrd-Ro4kbtBtrj/edit?usp=sharing&ouid=113352121122805653305&rtpof=true&sd=true" target="_blank" rel="noopener">
-          <i class="fa-solid fa-chart-column"></i> Ranking
-        </a>
-      </div>
-    </div>
-  </div>
-
-    <div class="week-clean">
-    <div class="week-badge">
-      <i class="fa-regular fa-calendar"></i> TUẦN 5 - Final Round
-    </div>
-
-    <div class="item">
-      <div class="week-buttons">
-        <a class="week-btn" href="https://drive.google.com/file/d/1dmniSMGK98BUhTu8OREnMlkF2jTNYEQ2/view?usp=sharing" target="_blank" rel="noopener">
-          <i class="fa-regular fa-file-lines"></i> PMXST25−SPRT51
-        </a>
-        <a class="week-btn" href="https://drive.google.com/file/d/10T-KcC6PlL6MSDNmCCpk4FiGlBzWCC0B/view?usp=sharing" target="_blank" rel="noopener">
-          <i class="fa-solid fa-pen"></i> BVT
-        </a>
-        <a class="week-btn" href="https://drive.google.com/file/d/1We9gjUXT-nKWVJUcWz0dx2nyps_HUbWW/view?usp=sharing" target="_blank" rel="noopener">
-          <i class="fa-solid fa-play"></i> Solution
-        </a>
-        <a class="week-btn" href="https://docs.google.com/spreadsheets/d/17odNDHhKWrCzmQQFWPp8UoBND43009Ik/edit?usp=sharing&ouid=113352121122805653305&rtpof=true&sd=true" target="_blank" rel="noopener">
-          <i class="fa-solid fa-chart-column"></i> Ranking
-        </a>
-      </div>
-    </div>
-  </div>
-
-  
-
-  <div class="stage">
-    <h1>
-      <i class="fa-solid fa-snowman"></i> Chặng 1 $–$ WINTER
-    </h1>
-    <p>Diễn ra từ ngày 22/12/2025</p>
-  </div>
-
-  <!-- TUẦN 1 -->
-  <div class="week-clean">
-    <div class="week-badge">
-      <i class="fa-regular fa-calendar"></i> TUẦN 1
-    </div>
-
-    <div class="item">
-      <div class="week-buttons">
-        <a class="week-btn" href="https://drive.google.com/file/d/1H2CbP2u8Hlc3arnnkYC01jx4E8Mk-o1K/view?usp=drive_link" target="_blank" rel="noopener">
-          <i class="fa-regular fa-file-lines"></i> PMXSP-15
-        </a>
-        <a class="week-btn" href="https://drive.google.com/file/d/1zEZQXB8WeTGvMpizUxK__h1Wg4whcP17/view?usp=drive_link" target="_blank" rel="noopener">
-          <i class="fa-solid fa-pen"></i> BVT
-        </a>
-        <a class="week-btn" href="https://drive.google.com/file/d/1u2dE0N0Ay4g0ylwstJg4l6T_j_s3eHJ5/view?usp=drive_link" target="_blank" rel="noopener">
-          <i class="fa-solid fa-play"></i> Solution
-        </a>
-        <a class="week-btn" href="https://docs.google.com/spreadsheets/d/1vtfoBgg8D5AyoK7CHxDtbjKM93db-22E/edit?usp=drive_link" target="_blank" rel="noopener">
-          <i class="fa-solid fa-chart-column"></i> Ranking
-        </a>
-      </div>
-    </div>
-
-    <div class="item">
-      <div class="week-buttons">
-        <a class="week-btn" href="https://drive.google.com/file/d/1YYJmNPRncCEiXGx31lsOFcATeE_KYcY_/view?usp=drive_link" target="_blank" rel="noopener">
-          <i class="fa-regular fa-file-lines"></i> PMXST25−WTT11
-        </a>
-        <a class="week-btn" href="https://drive.google.com/file/d/1hzCNKgNaPXclUZ_OWSsFxd_fhjlfcz9j/view?usp=drive_link" target="_blank" rel="noopener">
-          <i class="fa-solid fa-pen"></i> BVT
-        </a>
-        <a class="week-btn" href="https://drive.google.com/file/d/1N0Iildna80-oA_f18lFmUOcZfVnUu-8k/view?usp=drive_link" target="_blank" rel="noopener">
-          <i class="fa-solid fa-play"></i> Solution
-        </a>
-        <a class="week-btn" href="https://docs.google.com/spreadsheets/d/1vtfoBgg8D5AyoK7CHxDtbjKM93db-22E/edit" target="_blank" rel="noopener">
-          <i class="fa-solid fa-chart-column"></i> Ranking
-        </a>
-      </div>
-    </div>
-  </div>
-
-  <!-- TUẦN 2 -->
-  <div class="week-clean">
-    <div class="week-badge">
-      <i class="fa-regular fa-calendar"></i> TUẦN 2
-    </div>
-
-    <div class="item">
-      <div class="week-buttons">
-        <a class="week-btn" href="https://drive.google.com/file/d/1WrEQrZNa-oTIhScnC0zbi5FD_giAlPdq/view?usp=drive_link" target="_blank" rel="noopener">
-          <i class="fa-regular fa-file-lines"></i> PMXST25−WTT21
-        </a>
-        <a class="week-btn" href="https://drive.google.com/file/d/1d_k41_QtDxnPhLn8qPCM0FczoTHWqwXS/view?usp=drive_link" target="_blank" rel="noopener">
-          <i class="fa-solid fa-pen"></i> BVT
-        </a>
-        <a class="week-btn" href="https://drive.google.com/file/d/13t_RDjvC7tCwnau3HLsqAIEZHBxObIjk/view?usp=drive_link" target="_blank" rel="noopener">
-          <i class="fa-solid fa-play"></i> Solution
-        </a>
-        <a class="week-btn" href="https://docs.google.com/spreadsheets/d/1wgik9x8kiwH3IeW7cJDGADbhNYe0wk_V/edit?usp=drive_link" target="_blank" rel="noopener">
-          <i class="fa-solid fa-chart-column"></i> Ranking
-        </a>
-      </div>
-    </div>
-
-    <div class="item">
-      <div class="week-buttons">
-        <a class="week-btn" href="https://drive.google.com/file/d/174-eSV3pGSiNpdaoNpV74ssrV0afgoBm/view?usp=drive_link" target="_blank" rel="noopener">
-          <i class="fa-regular fa-file-lines"></i> PMXST25−WTT22
-        </a>
-        <a class="week-btn" href="https://drive.google.com/file/d/1Fq1-Xy9iaKnI2JFasBJSq_hW78dp7t8Q/view?usp=drive_link" target="_blank" rel="noopener">
-          <i class="fa-solid fa-pen"></i> BVT
-        </a>
-        <a class="week-btn" href="https://drive.google.com/file/d/1Fq1-Xy9iaKnI2JFasBJSq_hW78dp7t8Q/view?usp=drive_link" target="_blank" rel="noopener">
-          <i class="fa-solid fa-play"></i> Solution
-        </a>
-        <a class="week-btn" href="https://docs.google.com/spreadsheets/d/1Vh5WyKKylWThhZP_e6OBz399s6_1xHAM/edit?usp=drive_link" target="_blank" rel="noopener">
-          <i class="fa-solid fa-chart-column"></i> Ranking
-        </a>
-      </div>
-    </div>
-  </div>
-
-  <!-- TUẦN 3 -->
-  <div class="week-clean">
-    <div class="week-badge">
-      <i class="fa-regular fa-calendar"></i> TUẦN 3
-    </div>
-
-    <div class="item">
-      <div class="week-buttons">
-        <a class="week-btn" href="https://drive.google.com/file/d/1N_gyLtSSMv8ko8vu4qZBSEVPJzv1D9Tm/view?usp=drive_link" target="_blank" rel="noopener">
-          <i class="fa-regular fa-file-lines"></i> PMXST25−WTT31
-        </a>
-        <a class="week-btn" href="https://drive.google.com/file/d/17DvCuYfVG_-oy4jkM3f_hqqlFh0_M4Pl/view?usp=drive_link" target="_blank" rel="noopener">
-          <i class="fa-solid fa-pen"></i> BVT
-        </a>
-        <a class="week-btn" href="https://drive.google.com/file/d/1kov9rqJT7X8AmrOVYUlOgjt6ntEluRLs/view?usp=drive_link" target="_blank" rel="noopener">
-          <i class="fa-solid fa-play"></i> Solution
-        </a>
-        <a class="week-btn" href="https://docs.google.com/spreadsheets/d/1ilFslDAdOyAwEPjug-XZoLIuIfnWdAZK/edit?usp=drive_link" target="_blank" rel="noopener">
-          <i class="fa-solid fa-chart-column"></i> Ranking
-        </a>
-      </div>
-    </div>
-
-    <div class="item">
-      <div class="week-buttons">
-        <a class="week-btn" href="https://drive.google.com/file/d/1egSVMezeZsp9BNkY090sFPscOzYlkt6M/view?usp=drive_link" target="_blank" rel="noopener">
-          <i class="fa-regular fa-file-lines"></i> PMXST25−WTT32
-        </a>
-        <a class="week-btn" href="https://drive.google.com/file/d/1GQvVJHdJD_ltjKW8PpDt0HHGvK22b-BS/view?usp=drive_link" target="_blank" rel="noopener">
-          <i class="fa-solid fa-pen"></i> BVT
-        </a>
-        <a class="week-btn" href="https://drive.google.com/file/d/1mK4b6mV3XIQ2v7hLtwgEKWwpg0JKMY8b/view?usp=drive_link" target="_blank" rel="noopener">
-          <i class="fa-solid fa-play"></i> Solution
-        </a>
-        <a class="week-btn" href="https://docs.google.com/spreadsheets/d/1YMrCG2CEMm8D3J2wcdn2iWsN_CZZKSdQ/edit?usp=sharing" target="_blank" rel="noopener">
-          <i class="fa-solid fa-chart-column"></i> Ranking
-        </a>
-      </div>
-    </div>
-  </div>
-
-  <!-- TUẦN 4 -->
-  <div class="week-clean">
-    <div class="week-badge">
-      <i class="fa-regular fa-calendar"></i> TUẦN 4
-    </div>
-
-    <div class="item">
-      <div class="week-buttons">
-        <a class="week-btn" href="https://drive.google.com/file/d/1AZgA0kgCafuFDJGmNYLTepcElrQkp17z/view?usp=sharing" target="_blank" rel="noopener">
-          <i class="fa-regular fa-file-lines"></i> PMXST25−WTT41
-        </a>
-        <a class="week-btn" href="https://drive.google.com/file/d/1ixQM1locoUBrXRTSuJC1LQyLVhg7ncea/view?usp=drive_link" target="_blank" rel="noopener">
-          <i class="fa-solid fa-pen"></i> BVT
-        </a>
-        <a class="week-btn" href="https://drive.google.com/file/d/1tCMXB2apgKYL84OgzRgfeDcvnbIkQ-Or/view?usp=drive_link" target="_blank" rel="noopener">
-          <i class="fa-solid fa-play"></i> Solution
-        </a>
-        <a class="week-btn" href="https://docs.google.com/spreadsheets/d/15U1Qo1WCid6NYxknYxJ2LaixBFpyl_Lo/edit?usp=drive_link" target="_blank" rel="noopener">
-          <i class="fa-solid fa-chart-column"></i> Ranking
-        </a>
-      </div>
-    </div>
-
-    <div class="item">
-      <div class="week-buttons">
-        <a class="week-btn" href="https://drive.google.com/file/d/1XkQZmOZsKLKnBwmWCYJN2TjIFnNuupFw/view?usp=drive_link" target="_blank" rel="noopener">
-          <i class="fa-regular fa-file-lines"></i> PMXST25−WTT42
-        </a>
-        <a class="week-btn" href="https://drive.google.com/file/d/1zu61sNiFRJibkkOs-6qrVlaheGRAp3kC/view?usp=drive_link" target="_blank" rel="noopener">
-          <i class="fa-solid fa-pen"></i> BVT
-        </a>
-        <a class="week-btn" href="https://drive.google.com/file/d/1vgFdTX5Ael330MNBGXPtd10U5ugIE_yL/view?usp=drive_link" target="_blank" rel="noopener">
-          <i class="fa-solid fa-play"></i> Solution
-        </a>
-        <a class="week-btn" href="https://docs.google.com/spreadsheets/d/1dYocTmE4wN2u1hP1ovWlrNHhuDcSSXB6/edit?usp=sharing&ouid=113352121122805653305&rtpof=true&sd=true" target="_blank" rel="noopener">
-          <i class="fa-solid fa-chart-column"></i> Ranking
-        </a>
-      </div>
-    </div>
-  </div>
-
-   <div class="week-clean">
-    <div class="week-badge">
-      <i class="fa-regular fa-calendar"></i> TUẦN 5
-    </div>
-
-    <div class="item">
-      <div class="week-buttons">
-        <a class="week-btn" href="https://drive.google.com/file/d/1aBT0H3bCDhabRtCNZ8xoe1PQfeLiiBeH/view?usp=drive_link" target="_blank" rel="noopener">
-          <i class="fa-regular fa-file-lines"></i> PMXST25−WTT51
-        </a>
-        <a class="week-btn" href="https://drive.google.com/file/d/18YTuGPB9ztYzw853q3BZsBqjQtPSmRHT/view?usp=drive_link" target="_blank" rel="noopener">
-          <i class="fa-solid fa-pen"></i> BVT
-        </a>
-        <a class="week-btn" href="https://drive.google.com/file/d/1E82B37fXFlOc369rxFtxON8QtAegOMfH/view?usp=sharing" target="_blank" rel="noopener">
-          <i class="fa-solid fa-play"></i> Solution
-        </a>
-        <a class="week-btn" href="https://docs.google.com/spreadsheets/d/1xlKTbN8I0sc748O-FlVKj8Qb7nDHo9mt/edit?usp=drive_link&ouid=113352121122805653305&rtpof=true&sd=true" target="_blank" rel="noopener">
-          <i class="fa-solid fa-chart-column"></i> Ranking
-        </a>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-<!-- SCRIPT CUỐI TRANG -->
-<script src="assets/js/layout.js"></script>
-<script src="assets/js/main.js"></script>
-
-</body>
-    <style>
-    .site-footer {
-  margin-top: 60px;
-  padding-bottom: 24px;
-}
-
-/* dòng kẻ mờ */
-.footer-divider {
-  border: none;
-  height: 2px;
-  background: rgba(0, 0, 0, 0.15);
-  margin-bottom: 18px;
-}
-
-/* nội dung footer */
-.footer-content {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-
-  color: #555;
-  font-size: 16px;
-}
-
-/* logo svg */
-.footer-logo {
-  height: 26px;     /* gọn, học thuật */
-  width: auto;
-}
-
-.footer-text {
-  white-space: nowrap;
-}
-
-  </style>
   <footer class="site-footer">
-  <hr class="footer-divider">
+    <hr class="footer-divider">
+    <div class="footer-content">
+      <img src="assets/logo1.svg" alt="PimaX Logo" class="footer-logo">
+      <span class="footer-text">BẢN QUYỀN THUỘC VỀ PIMAX</span>
+    </div>
+  </footer>
 
-  <div class="footer-content">
-    <img src="assets/logo1.svg" alt="PimaX Logo" class="footer-logo">
-    <span class="footer-text">BẢN QUYỀN THUỘC VỀ PIMAX</span>
-  </div>
-</footer>
-
+  <script src="assets/js/main.js"></script>
+</body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
