@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   let currentExamHash = '';
 
-  // Hàm chuẩn hóa tiêu đề thành Hash ID (ví dụ: PMXST25−SPRT21 -> PMXST25-SPRT21)
+  // Hàm chuẩn hóa tiêu đề thành Hash ID (vd: PMXST25−SPRT21 -> PMXST25-SPRT21)
   function getExamHash(titleStr) {
     if (!titleStr) return '';
     const cleanTitle = titleStr.split('(')[0].trim().replace(/−/g, '-');
@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (btnSolution) btnSolution.href = solution || '#';
     if (btnRanking) btnRanking.href = ranking || '#';
 
-    // Cập nhật Hash URL trên thanh địa chỉ duyệt web mà không load lại trang
+    // Cập nhật Hash URL trên thanh địa chỉ
     currentExamHash = getExamHash(title);
     if (currentExamHash) {
       history.replaceState(null, '', `#${currentExamHash}`);
@@ -120,7 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const urlHash = window.location.hash.replace('#', '').trim();
     let targetExam = null;
 
-    // 1. Kiểm tra xem URL có đính kèm Hash bài thi hay không
+    // 1. Kiểm tra URL có Hash bài thi hay không
     if (urlHash) {
       examItems.forEach(item => {
         const itemHash = getExamHash(item.getAttribute('data-title'));
@@ -130,7 +130,7 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
 
-    // 2. Nếu không có hash trên URL, tự động tìm bài có ngày cập nhật mới nhất
+    // 2. Nếu không có hash, tự động tìm bài mới nhất
     if (!targetExam) {
       targetExam = examItems[0];
       let maxDate = parseDateStr(targetExam.getAttribute('data-update'));
@@ -146,7 +146,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     activateExam(targetExam);
 
-    // Lắng nghe sự kiện bấm vào từng bài thi ở Sidebar
+    // Lắng nghe sự kiện chọn bài thi ở Sidebar
     examItems.forEach(item => {
       item.addEventListener('click', function() {
         activateExam(this);
@@ -154,7 +154,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // NÚT CHI SẺ FACEBOOK
+  // NÚT CHIA SẺ FACEBOOK
   if (btnShareFb) {
     btnShareFb.addEventListener('click', () => {
       const shareUrl = encodeURIComponent(window.location.href);
@@ -163,7 +163,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // NÚT LẤY LIÊN KẾT (COPY TO CLIPBOARD)
+  // NÚT LẤY LIÊN KẾT (COPY CLIPBOARD)
   if (btnCopyLink) {
     btnCopyLink.addEventListener('click', () => {
       const fullLink = window.location.href;
@@ -175,7 +175,7 @@ document.addEventListener('DOMContentLoaded', () => {
           }, 2500);
         }
       }).catch(err => {
-        console.error('Không thể chép liên kết:', err);
+        console.error('Lỗi khi chép liên kết:', err);
       });
     });
   }
