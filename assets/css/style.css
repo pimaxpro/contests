@@ -24,7 +24,429 @@ a {
 /* ===============================
    HERO HEADER GỐC BANNER
 ================================ */
+.hero {/* ===============================
+   BASE & VARIABLES
+================================ */
+:root {
+  --accent-color: #D83B6A;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+  background: #f5f7fb;
+  color: #222;
+}
+
+h1, h2, h3 {
+  margin: 0 0 12px;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ===============================
+   HERO HEADER BANNER
+================================ */
 .hero {
+  max-width: 900px;
+  margin: 30px auto 40px;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 56px;
+  font-weight: 900;
+  margin-bottom: 10px;
+}
+
+.hero-title-link {
+  color: #d83b6a;
+  text-decoration: none;
+}
+
+.hero-title-link:hover {
+  color: #c02f5c;
+}
+
+.hero-sub {
+  font-size: 20px;
+  color: #555;
+  margin-bottom: 24px;
+}
+
+.social-wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+.social-card {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border: 1px solid #666;
+  border-radius: 6px;
+  color: #555;
+  background: transparent;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.social-card .divider {
+  opacity: 0.6;
+}
+
+.social-card:hover {
+  background-color: var(--accent-color);
+  color: #fff;
+  border-color: var(--accent-color);
+}
+
+/* ==========================================
+   BỐ CỤC 2 CỘT CHO TRANG CHỦ
+========================================== */
+.layout-2col {
+  display: flex;
+  gap: 24px;
+  max-width: 1400px;
+  margin: 30px auto;
+  padding: 0 20px;
+  min-height: calc(100vh - 120px);
+}
+
+/* CỘT TRÁI: SIDEBAR CỐ ĐỊNH */
+.sidebar-exams {
+  width: 320px;
+  flex-shrink: 0;
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+  position: sticky;
+  top: 20px;
+  height: fit-content;
+  max-height: calc(100vh - 40px);
+  overflow-y: auto;
+}
+
+.sidebar-header h2 {
+  font-size: 18px;
+  color: #d83b6a;
+  border-bottom: 2px solid #f0f0f0;
+  padding-bottom: 12px;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.tree-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.year-title, .stage-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 700;
+  transition: background 0.2s;
+  user-select: none;
+}
+
+.year-title {
+  background: #fdf2f5;
+  color: #b82650;
+  font-size: 15px;
+}
+
+.stage-title {
+  background: #f8f9fa;
+  color: #444;
+  font-size: 14px;
+  margin-left: 10px;
+  margin-top: 4px;
+}
+
+.year-title:hover, .stage-title:hover {
+  background: #fae2e9;
+}
+
+.toggle-icon {
+  font-size: 12px;
+  width: 14px;
+  color: #888;
+}
+
+.exam-list {
+  list-style: none;
+  padding-left: 20px;
+  margin: 6px 0;
+}
+
+.exam-item {
+  padding: 9px 12px;
+  font-size: 14px;
+  color: #555;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.exam-item:hover {
+  background: #f3f4f6;
+  color: #d83b6a;
+}
+
+.exam-item.active {
+  background: #d83b6a;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.exam-item.active i {
+  color: #ffffff;
+}
+
+/* CỘT PHẢI: XEM TRƯỚC FILE DRIVE */
+.preview-area {
+  flex-grow: 1;
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+}
+
+.preview-header h1 {
+  font-size: 22px;
+  color: #222;
+  margin-bottom: 12px;
+}
+
+.preview-meta-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.update-time-info {
+  font-size: 13px;
+  color: #718096;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.update-time-info i {
+  color: #a0aec0;
+}
+
+.update-time-info strong {
+  font-weight: 500;
+  color: #718096;
+}
+
+.week-buttons {
+  margin-left: auto;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.week-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: 95px;
+  height: 32px;
+  box-sizing: border-box;
+  border-radius: 6px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  color: #4a5568;
+  font-weight: 500;
+  font-size: 12px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+  transition: all 0.2s ease;
+}
+
+.week-btn i {
+  font-size: 11px;
+  color: #718096;
+}
+
+.week-btn:hover {
+  background: #ffffff;
+  border-color: #cbd5e0;
+  color: #1a202c;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.06);
+}
+
+/* KÍCH THƯỚC KHUNG IFRAME & CÁC NÚT CHIA SẺ DỌC */
+.drive-iframe-container {
+  position: relative;
+  flex-grow: 1;
+  width: 100%;
+  min-height: 75vh;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #e5e7eb;
+}
+
+.drive-iframe-container iframe {
+  width: 100%;
+  height: 100%;
+  min-height: 75vh;
+  border: none;
+}
+
+/* LỚP PHỦ CHE NÚT POP-OUT MẶC ĐỊNH CỦA DRIVE */
+.iframe-overlay-cover {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 60px;
+  height: 60px;
+  z-index: 5;
+  background: transparent;
+  cursor: default;
+}
+
+/* THANH NÚT CHIA SẺ DỌC DỰA BÊN PHẢI PREVIEW */
+.side-share-actions {
+  position: absolute;
+  top: 70px;
+  right: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  z-index: 10;
+}
+
+.side-share-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid #e2e8f0;
+  background: #ffffff;
+  color: #4a5568;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+  transition: all 0.2s ease;
+}
+
+.side-share-btn.fb-btn {
+  color: #1877f2;
+}
+
+.side-share-btn.fb-btn:hover {
+  background: #1877f2;
+  color: #ffffff;
+  border-color: #1877f2;
+}
+
+.side-share-btn.link-btn {
+  color: #d83b6a;
+}
+
+.side-share-btn.link-btn:hover {
+  background: #d83b6a;
+  color: #ffffff;
+  border-color: #d83b6a;
+}
+
+/* THÔNG BÁO TOAST KHI COPY LINK */
+.toast-notification {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: #2d3748;
+  color: #ffffff;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+  z-index: 9999;
+}
+
+.toast-notification.show {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.toast-notification i {
+  color: #48bb78;
+}
+
+/* FOOTER */
+.site-footer {
+  margin-top: 60px;
+  padding-bottom: 24px;
+}
+
+.footer-divider {
+  border: none;
+  height: 2px;
+  background: rgba(0, 0, 0, 0.15);
+  margin-bottom: 18px;
+}
+
+.footer-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  color: #555;
+  font-size: 16px;
+}
+
+.footer-logo {
+  height: 26px;
+  width: auto;
+}
+
+@media (max-width: 992px) {
+  .layout-2col {
+    flex-direction: column;
+  }
+  .sidebar-exams {
+    width: 100%;
+    position: static;
+    max-height: none;
+  }
+}
   max-width: 900px;
   margin: 30px auto 40px;
   text-align: center;
