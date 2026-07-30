@@ -66,3 +66,21 @@ function toggleSolution(btn) {
     }
   }
 }
+// Xử lý đóng/mở Modal Thể lệ cuộc thi
+function openRulesModal() {
+  const modal = document.getElementById('rules-modal');
+  if (modal) modal.classList.add('open');
+}
+
+function closeRulesModal() {
+  const modal = document.getElementById('rules-modal');
+  if (modal) modal.classList.remove('open');
+}
+
+// Bấm ra ngoài vùng trắng của modal để đóng
+window.addEventListener('click', function(e) {
+  const modal = document.getElementById('rules-modal');
+  if (e.target === modal) {
+    closeRulesModal();
+  }
+});
