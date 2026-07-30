@@ -7,8 +7,19 @@
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="assets/css/style.css">
   <link rel="icon" href="logo1.ico">
+
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']]
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
 </head>
 <body>
 
@@ -21,9 +32,19 @@
       <a href="index.html" class="active"><i class="fa-solid fa-house"></i> Trang chủ</a>
       <a href="2025-2026.html"><i class="fa-solid fa-calendar-days"></i> 2025–2026</a>
       <a href="blog.html"><i class="fa-solid fa-pen-nib"></i> Bình luận</a>
-      <a href="rules.html"><i class="fa-solid fa-book"></i> Thể lệ</a>
+      <a href="rules.html"><i class="fa-solid fa-file-contract"></i> Thể lệ</a>
     </nav>
   </div>
+
+  <script>
+    document.addEventListener('click', function(e) {
+      const menuDropdown = document.querySelector('.menu-dropdown');
+      const checkbox = document.getElementById('menu-toggle');
+      if (checkbox && checkbox.checked && !menuDropdown.contains(e.target)) {
+        checkbox.checked = false;
+      }
+    });
+  </script>
 
   <div class="layout-2col">
     
@@ -33,6 +54,7 @@
       </div>
 
       <div class="tree-menu">
+        
         <div class="year-group open">
           <div class="year-title" onclick="toggleTree(this)">
             <i class="fa-solid fa-chevron-down toggle-icon"></i>
@@ -41,95 +63,153 @@
           </div>
 
           <div class="stage-list">
+            
             <div class="stage-group open">
               <div class="stage-title" onclick="toggleTree(this)">
                 <i class="fa-solid fa-chevron-down toggle-icon"></i>
-                <i class="fa-solid fa-flag-checkered"></i>
-                <span>Chặng 1: Khởi động</span>
+                <i class="fa-solid fa-sun"></i>
+                <span>Chặng 3 – SUMMER</span>
               </div>
               <ul class="exam-list">
                 <li class="exam-item active" 
-                    data-drive-id="1xlKTbN8I0sc748O-FlVKj8Qb7nDHo9mt" 
-                    data-title="Bài thi Tuần 1 - Đánh giá tư duy Toán học"
-                    data-date="10/10/2025" 
+                    data-drive-id="1fvqKAsriCIMBs5mqe6dr4vkQKCK-VGx3" 
+                    data-title="Đề thi PMXST25−SUMT11 (Tuần 1)"
+                    data-date="22/12/2025" 
                     data-time="60 phút">
-                  <i class="fa-regular fa-file-lines"></i> Bài thi Tuần 1
-                </li>
-                <li class="exam-item" 
-                    data-drive-id="1BGeWoQaCTOCkviJb8fbQ1kxnebybMEDUlZjp3HUO9ks" 
-                    data-title="Bài thi Tuần 2 - Tư duy Đọc hiểu"
-                    data-date="17/10/2025" 
-                    data-time="60 phút">
-                  <i class="fa-regular fa-file-lines"></i> Bài thi Tuần 2
+                  <i class="fa-regular fa-file-lines"></i> PMXST25−SUMT11
                 </li>
               </ul>
             </div>
 
-            <div class="stage-group">
+            <div class="stage-group open">
               <div class="stage-title" onclick="toggleTree(this)">
-                <i class="fa-solid fa-chevron-right toggle-icon"></i>
-                <i class="fa-solid fa-flag-checkered"></i>
-                <span>Chặng 2: Vượt rào</span>
+                <i class="fa-solid fa-chevron-down toggle-icon"></i>
+                <i class="fa-solid fa-seedling"></i>
+                <span>Chặng 2 – SPRING</span>
               </div>
-              <ul class="exam-list" style="display: none;">
+              <ul class="exam-list">
                 <li class="exam-item" 
-                    data-drive-id="1xlKTbN8I0sc748O-FlVKj8Qb7nDHo9mt" 
-                    data-title="Đề thi Đột phá Chặng 2"
-                    data-date="15/11/2025" 
+                    data-drive-id="1lc2suSq0RMgaB83_sJeHDqNDU7_zmuNm" 
+                    data-title="Đề thi PMXST25−SPRT11 (Tuần 1)"
+                    data-date="09/02/2026" 
+                    data-time="60 phút">
+                  <i class="fa-regular fa-file-lines"></i> PMXST25−SPRT11
+                </li>
+                <li class="exam-item" 
+                    data-drive-id="13_1JROb7aiMy5g9zuWQbutpL0-xEDWad" 
+                    data-title="Đề thi PMXST25−SPRT21 (Tuần 2)"
+                    data-date="16/02/2026" 
+                    data-time="60 phút">
+                  <i class="fa-regular fa-file-lines"></i> PMXST25−SPRT21
+                </li>
+                <li class="exam-item" 
+                    data-drive-id="1cN1jxGX9cjE1PwKA_fTpwfOGlQEQhSlg" 
+                    data-title="Đề thi PMXST25−SPRT31 (Tuần 3)"
+                    data-date="23/02/2026" 
+                    data-time="60 phút">
+                  <i class="fa-regular fa-file-lines"></i> PMXST25−SPRT31
+                </li>
+                <li class="exam-item" 
+                    data-drive-id="1t0uVGgnBMFlR_gzrWA5VzaJ1stPPyt4_" 
+                    data-title="Đề thi PMXST25−SPRT41 (Tuần 4)"
+                    data-date="02/03/2026" 
+                    data-time="60 phút">
+                  <i class="fa-regular fa-file-lines"></i> PMXST25−SPRT41
+                </li>
+                <li class="exam-item" 
+                    data-drive-id="1dmniSMGK98BUhTu8OREnMlkF2jTNYEQ2" 
+                    data-title="Đề thi PMXST25−SPRT51 (Tuần 5 - Final Round)"
+                    data-date="09/03/2026" 
                     data-time="90 phút">
-                  <i class="fa-regular fa-file-lines"></i> Đề thi Chặng 2
+                  <i class="fa-regular fa-file-lines"></i> PMXST25−SPRT51
                 </li>
               </ul>
             </div>
-          </div>
-        </div>
 
-        <div class="year-group">
-          <div class="year-title" onclick="toggleTree(this)">
-            <i class="fa-solid fa-chevron-right toggle-icon"></i>
-            <i class="fa-solid fa-graduation-cap"></i>
-            <span>Năm học 2024 – 2025</span>
-          </div>
-          <div class="stage-list" style="display: none;">
             <div class="stage-group">
               <div class="stage-title" onclick="toggleTree(this)">
                 <i class="fa-solid fa-chevron-right toggle-icon"></i>
-                <i class="fa-solid fa-flag-checkered"></i>
-                <span>Chung kết</span>
+                <i class="fa-solid fa-snowflake"></i>
+                <span>Chặng 1 – WINTER</span>
               </div>
               <ul class="exam-list" style="display: none;">
                 <li class="exam-item" 
-                    data-drive-id="1xlKTbN8I0sc748O-FlVKj8Qb7nDHo9mt" 
-                    data-title="Đề thi Chung kết 2024"
-                    data-date="20/05/2025" 
-                    data-time="120 phút">
-                  <i class="fa-regular fa-file-lines"></i> Đề thi Chung kết
+                    data-drive-id="1H2CbP2u8Hlc3arnnkYC01jx4E8Mk-o1K" 
+                    data-title="Đề thi PMXSP-15 (Tuần 1)"
+                    data-date="22/12/2025" 
+                    data-time="60 phút">
+                  <i class="fa-regular fa-file-lines"></i> PMXSP-15
+                </li>
+                <li class="exam-item" 
+                    data-drive-id="1YYJmNPRncCEiXGx31lsOFcATeE_KYcY_" 
+                    data-title="Đề thi PMXST25−WTT11 (Tuần 1)"
+                    data-date="22/12/2025" 
+                    data-time="60 phút">
+                  <i class="fa-regular fa-file-lines"></i> PMXST25−WTT11
+                </li>
+                <li class="exam-item" 
+                    data-drive-id="1WrEQrZNa-oTIhScnC0zbi5FD_giAlPdq" 
+                    data-title="Đề thi PMXST25−WTT21 (Tuần 2)"
+                    data-date="29/12/2025" 
+                    data-time="60 phút">
+                  <i class="fa-regular fa-file-lines"></i> PMXST25−WTT21
+                </li>
+                <li class="exam-item" 
+                    data-drive-id="1N_gyLtSSMv8ko8vu4qZBSEVPJzv1D9Tm" 
+                    data-title="Đề thi PMXST25−WTT31 (Tuần 3)"
+                    data-date="05/01/2026" 
+                    data-time="60 phút">
+                  <i class="fa-regular fa-file-lines"></i> PMXST25−WTT31
+                </li>
+                <li class="exam-item" 
+                    data-drive-id="1AZgA0kgCafuFDJGmNYLTepcElrQkp17z" 
+                    data-title="Đề thi PMXST25−WTT41 (Tuần 4)"
+                    data-date="12/01/2026" 
+                    data-time="60 phút">
+                  <i class="fa-regular fa-file-lines"></i> PMXST25−WTT41
+                </li>
+                <li class="exam-item" 
+                    data-drive-id="1aBT0H3bCDhabRtCNZ8xoe1PQfeLiiBeH" 
+                    data-title="Đề thi PMXST25−WTT51 (Tuần 5)"
+                    data-date="19/01/2026" 
+                    data-time="60 phút">
+                  <i class="fa-regular fa-file-lines"></i> PMXST25−WTT51
                 </li>
               </ul>
             </div>
+
           </div>
         </div>
+
       </div>
     </aside>
 
     <main class="preview-area">
       <div class="preview-header">
-        <h1 id="preview-title">Bài thi Tuần 1 - Đánh giá tư duy Toán học</h1>
+        <h1 id="preview-title">Đề thi PMXST25−SUMT11 (Tuần 1)</h1>
         <div class="drive-info-row">
-          <span><i class="fa-solid fa-calendar"></i> Ngày phát hành: <strong id="preview-date">10/10/2025</strong></span>
+          <span><i class="fa-solid fa-calendar"></i> Phát hành: <strong id="preview-date">22/12/2025</strong></span>
           <span><i class="fa-solid fa-clock"></i> Thời gian: <strong id="preview-time">60 phút</strong></span>
         </div>
       </div>
 
       <div class="drive-iframe-container">
         <iframe id="drive-preview-iframe" 
-                src="https://drive.google.com/file/d/1xlKTbN8I0sc748O-FlVKj8Qb7nDHo9mt/preview" 
-                allow="autoplay"></iframe>
+                src="https://drive.google.com/file/d/1fvqKAsriCIMBs5mqe6dr4vkQKCK-VGx3/preview" 
+                allow="autoplay" allowfullscreen></iframe>
       </div>
     </main>
 
   </div>
 
-  <script src="main.js"></script>
+  <footer class="site-footer">
+    <hr class="footer-divider">
+    <div class="footer-content">
+      <img src="assets/logo1.svg" alt="PimaX Logo" class="footer-logo">
+      <span class="footer-text">BẢN QUYỀN THUỘC VỀ PIMAX</span>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
 </body>
 </html>
