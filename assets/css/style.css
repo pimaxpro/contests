@@ -1,4 +1,3 @@
-
 /* ===============================
    BASE
 ================================ */
@@ -9,7 +8,11 @@ body {
   color: #222;
 }
 
-h1, h2 {
+:root {
+  --accent-color: #D83B6A;
+}
+
+h1, h2, h3 {
   margin: 0 0 12px;
 }
 
@@ -17,103 +20,65 @@ h1, h2 {
   padding: 30px 20px;
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
 /* ===============================
-   HERO
+   HERO & SOCIAL
 ================================ */
 .hero {
   max-width: 900px;
-  margin: 30px auto 60px;
+  margin: 30px auto 40px;
   text-align: center;
 }
 
 .hero h1 {
-  font-size: 64px;
+  font-size: 48px;
   font-weight: 900;
   color: #d83b6a;
   margin-bottom: 10px;
 }
 
-.hero-sub {
-  font-size: 20px;
-  color: #555;
-  margin-bottom: 40px;
+.hero-title-link {
+  color: #d83b6a;
+  text-decoration: none;
 }
 
-.hero-actions {
+.hero-sub {
+  font-size: 18px;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.social-wrapper {
   display: flex;
   justify-content: center;
-  gap: 20px;
-  flex-wrap: wrap;
+  gap: 12px;
 }
 
-.btn {
+.social-card {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  padding: 12px 24px;
-  border-radius: 12px;
-  font-size: 16px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: 0.2s;
-}
-
-.btn.primary {
-  background: #d83b6a;
-  color: white;
-}
-
-.btn.primary:hover {
-  background: #c02f5c;
-}
-
-.btn.ghost {
-  background: white;
-  color: #d83b6a;
-  border: 2px solid #d83b6a;
-}
-
-.btn.ghost:hover {
-  background: #fff0f6;
-}
-
-/* ===============================
-   INTRO
-================================ */
-.intro {
-  max-width: 1100px;
-  margin: 60px auto;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 28px;
-}
-
-.intro-card {
-  background: white;
-  padding: 24px;
-  border-radius: 16px;
-  text-align: center;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
-}
-
-.intro-card i {
-  font-size: 32px;
-  color: #d83b6a;
-  margin-bottom: 12px;
-}
-
-.intro-card h3 {
-  font-size: 20px;
-  margin-bottom: 8px;
-}
-
-.intro-card p {
-  font-size: 15px;
+  gap: 6px;
+  padding: 6px 12px;
+  border: 1px solid #666;
+  border-radius: 6px;
   color: #555;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.social-card:hover {
+  background-color: var(--accent-color);
+  color: #fff;
+  border-color: var(--accent-color);
 }
 
 /* ===============================
-   MENU DROPDOWN (BÉ GỌN, PHÍA PHẢI)
+   MENU DROPDOWN
 ================================ */
 .menu-dropdown {
   position: fixed;
@@ -177,418 +142,215 @@ h1, h2 {
   color: #d83b6a;
 }
 
-.menu-dropdown .menu a:hover {
+.menu-dropdown .menu a:hover,
+.menu-dropdown .menu a.active {
   background: #d83b6a;
   color: white;
 }
 
-.menu-dropdown .menu a:hover i {
+.menu-dropdown .menu a:hover i,
+.menu-dropdown .menu a.active i {
   color: white;
 }
 
-/* ===============================
-   BLOG POST
-================================ */
-.post {
-  max-width: 800px;
+/* ==========================================
+   BỐ CỤC 2 CỘT CHO TRANG CHỦ
+========================================== */
+.layout-2col {
+  display: flex;
+  gap: 24px;
+  max-width: 1400px;
   margin: 30px auto;
-  background: #fff;
-  padding: 24px 28px;
-  border-radius: 14px;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.06);
-  position: relative;
+  padding: 0 20px;
+  min-height: calc(100vh - 120px);
 }
-.post-meta {
+
+/* CỘT TRÁI: SIDEBAR CỐ ĐỊNH */
+.sidebar-exams {
+  width: 320px;
+  flex-shrink: 0;
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+  position: sticky;
+  top: 20px;
+  height: fit-content;
+  max-height: calc(100vh - 40px);
+  overflow-y: auto;
+}
+
+.sidebar-header h2 {
+  font-size: 18px;
+  color: #d83b6a;
+  border-bottom: 2px solid #f0f0f0;
+  padding-bottom: 12px;
+  margin-bottom: 16px;
   display: flex;
-  justify-content: flex-end;
-  flex-wrap: wrap;
-  gap: 16px;
-  font-size: 14px;
-  color: rgba(102, 102, 102, 0.7);
-  margin-bottom: 10px;
-}
-
-.post-meta span {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.post-meta i {
-  color: rgba(216, 59, 106, 0.5);
-}
-
-.post-meta::after {
-  content: "";
-  display: block;
-  width: 100%;
-  height: 1px;
-  background: rgba(102, 102, 102, 0.2);
-  margin-top: 8px;
-}
-
-
-/* ===============================
-   MATH
-================================ */
-mjx-container {
-  overflow-x: auto;
-}
-
-.math {
-  text-align: center;
-  margin: 20px 0;
-}
-
-/* ===============================
-   SOLUTION
-================================ */
-.solution {
-  margin-top: 16px;
-  border-left: 4px solid #e14b7f;
-  padding-left: 12px;
-}
-
-.solution button {
-  background: #e14b7f;
-  color: white;
-  border: none;
-  padding: 6px 14px;
-  border-radius: 6px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: 0.2s;
-}
-
-.solution button:hover {
-  opacity: 0.9;
-}
-
-.solution-content {
-  display: none;
-  margin-top: 10px;
-}
-
-.solution-content.open {
-  display: block;
-}
-a {
-  text-decoration: none;
-  color: inherit; /* Giữ màu chữ mặc định */
-}
-
-a:hover {
-  text-decoration: none; /* Không gạch chân khi hover */
-}
-
-/* ===== BUTTON TRONG TUẦN ===== */
-
-
-
-.week-buttons {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin-top: 6px;
-}
-
-.week-btn {
-  display: inline-flex;
   align-items: center;
   gap: 8px;
-
-  padding: 10px 18px;
-  border-radius: 10px;
-
-  background: #ffffff;
-  border: 2px solid #cfcfcf;
-
-  color: #333333;            /* ← xám đen */
-  font-weight: 700;
-  font-size: 18px;
-  text-decoration: none;
-
-  transition: all 0.25s ease;
 }
 
-.week-btn i {
-  font-size: 16px;
-  color: #444444;            /* ← icon hơi nhạt hơn chữ */
+.tree-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
-/* Hover */
-.week-btn:hover {
-  background: #d83b6a;
-  border-color: #d83b6a;
-  color: #ffffff;            /* chữ trắng */
-
-  box-shadow: 0 8px 20px rgba(216, 59, 106, 0.45);
-  transform: translateY(-2px);
-}
-
-.week-btn:hover i {
-  color: #ffffff;            /* icon cũng trắng khi hover */
-}
-
-.week-btn,
-.week-btn:hover {
-  text-decoration: none !important;
-}
-
-.math-box {
-  border: 2px solid #444;
-  border-radius: 12px;
-  padding: 16px 18px;
-  background: #fafafa;
-  margin: 20px 0;
-  font-size: 16px;
-}
-   .social-drive {
-   background: #000000;
-   }
-   .register-box {
-   max-width: 900px;
-   margin: 50px auto;
-   padding: 34px 32px;
-   background: linear-gradient(135deg, #ffe6ef, #fff0f6);
-   border-radius: 20px;
-   text-align: center;
-   box-shadow: 0 12px 28px rgba(0,0,0,0.12);
-   }
-   .register-box h2 {
-   margin-top: 0;
-   color: #d83b6a;
-   font-size: 30px;
-   font-weight: 900;
-   }
-   .register-box p {
-   font-size: 18px;
-   margin: 16px 0 28px;
-   color: #333;
-   }
-   .register-box a {
-   display: inline-block;
-   padding: 14px 34px;
-   background: #d83b6a;
-   color: white;
-   border-radius: 40px;
-   font-size: 18px;
-   font-weight: 700;
-   text-decoration: none;
-   transition: transform 0.25s ease, box-shadow 0.25s ease;
-   }
-   .register-box a:hover {
-   transform: translateY(-3px);
-   box-shadow: 0 10px 24px rgba(216,59,106,0.45);
-   }
-   .year-box {
-   position: relative;
-   max-width: 1100px;
-   margin: 70px auto;
-   padding: 60px 30px 40px;
-   border: 3px solid #ec5b8c;
-   border-radius: 20px;
-   background: #fff7fa;
-   }
-   /* BOX "NĂM 2025" */
-   .year-title {
-   position: absolute;
-   top: 0;
-   left: 50%;
-   transform: translate(-50%, -50%);
-   padding: 14px 42px;
-   background: #ec5b8c; /* giữ nguyên màu như bạn đang dùng */
-   color: white;
-   font-size: 32px;
-   font-weight: 900;
-   border-radius: 20px;
-   white-space: nowrap;
-   /* che đường viền đi qua chính giữa */
-   z-index: 2;
-   }
-   .contest-title-box {
-   display: block;
-   width: fit-content;
-   margin: 0px auto 32px;   /* hạ box xuống + căn giữa */
-   padding: 14px 38px;
-   background: #d83b6a;
-   color: white;
-   font-size: 26px;
-   font-weight: 700;
-   border-radius: 20px;
-   text-align: center;
-   box-shadow: 0 10px 30px rgba(216, 59, 106, 0.4);
-   }
-   .contest-box {
-   max-width: 900px;
-   margin: 40px auto;
-   padding: 30px 28px;
-   background: #ffe6ef;
-   border-top: 8px solid #d83b6a;
-   border-radius: 0px;
-   font-family: -apple-system, BlinkMacSystemFont,
-   "Segoe UI", Arial,
-   "Helvetica Neue",
-   "Noto Sans",
-   "Liberation Sans",
-   sans-serif;
-   color: #333;
-   line-height: 1.6;
-   }
-   .contest-box h2 {
-   text-align: center;
-   color: #d83b6a;
-   margin-bottom: 25px;
-   font-size: 28px;
-   }
-   .contest-box ol {
-   padding-left: 22px;
-   }
-   .contest-box li {
-   margin-bottom: 18px;
-   }
-   .contest-box ul {
-   margin-top: 8px;
-   padding-left: 20px;
-   }
-   .contest-box a {
-   color: #d83b6a;
-   font-weight: bold;
-   text-decoration: none;
-   }
-   .contest-box a:hover {
-   text-decoration: underline;
-   }
-   .score-formula {
-   background: white;
-   padding: 10px 16px;
-   border-radius: 12px;
-   margin: 10px 0;
-   font-weight: bold;
-   text-align: center;
-   color: #d83b6a;
-   }
-   .reward-block {
-   background: #fff;
-   border-radius: 14px;
-   padding: 16px 20px;
-   margin-top: 10px;
-   }
-   .reward-block p {
-   margin-top: 12px;
-   font-weight: bold;
-   }
-   header.site-header {
-   background: linear-gradient(135deg, #DB3B6D, #E57195) !important;
-   border-bottom: none !important;
-   }
-   header.site-header a.site-title {
-   color: white !important;
-   font-size: 30px !important;
-   font-weight: 900 !important;
-   letter-spacing: 1px;
-   }
-   header.site-header a.site-title:hover {
-   text-decoration: none;
-   color: #fff0f6 !important;
-   }
-   .stage {
-   background: linear-gradient(135deg, #DB3B6D, #E57195);
-   color: white;
-   padding: 32px;
-   border-radius: 20px;
-   text-align: center;
-   margin-bottom: 45px;
-   box-shadow: 0 10px 24px rgba(0,0,0,0.18);
-   }
-   .stage h1 {
-   font-size: 44px;
-   font-weight: 900;
-   margin: 0;
-   }
-   .stage p {
-   font-size: 18px;
-   margin-top: 10px;
-   }
-   .week {
-   background: #F9DFE8;
-   padding: 22px 26px;
-   border-radius: 16px;
-   margin-bottom: 32px;
-   box-shadow: 0 10px 24px rgba(0,0,0,0.18);
-   }
-   .week h2 {
-   color: #d6336c;
-   font-size: 30px;
-   font-weight: 800;
-   margin-top: 0;
-   }
-   .item {
-   background: white;
-   padding: 18px 22px;
-   border-radius: 14px;
-   margin: 16px 0;
-   box-shadow: 0 4px 14px rgba(0,0,0,0.10);
-   font-size: 18px;
-   line-height: 1.7;
-   }
-   .item a {
-   text-decoration: none;
-   color: #ff3366;
-   font-weight: bold;
-   }
-   .item a:hover {
-   text-decoration: underline;
-   }
-
-  .week-clean {
-  position: relative;
-  background: #FAE2E9;
-  box-shadow: 0 4px 14px rgba(0,0,0,0.10);
-  border-radius: 32px;
-  padding: 80px 36px 36px;
-  margin: 40px 0;
-}
-
-    .week-badge {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translate(-50%, -50%);
-
-  display: inline-flex;
+.year-title, .stage-title {
+  display: flex;
   align-items: center;
-  gap: 12px;
-
-  padding: 8px 28px;
-  background: #FAE2E9;
-
-  border: 2px solid #333;
-  border-radius: 10px;
-
-  font-size: 22px;
-  font-weight: 800;
-  letter-spacing: 1px;
-  color: #333;
-}
-
-.week-badge i {
-  font-size: 26px;
-  color: #333;
-}
-  .week-badge {
-  top: 50px;  /* mặc định là 0 */
-}
-.hero-title-link {
-  color: #d83b6a;   /* Màu hồng đậm như cũ */
-  text-decoration: none; /* Bỏ gạch chân */
+  gap: 8px;
+  padding: 10px 12px;
+  border-radius: 8px;
   cursor: pointer;
+  font-weight: 700;
+  transition: background 0.2s;
+  user-select: none;
 }
 
-.hero-title-link:hover {
-  color: #c02f5c;   /* Đổi màu khi hover nếu muốn */
+.year-title {
+  background: #fdf2f5;
+  color: #b82650;
+  font-size: 15px;
 }
 
+.stage-title {
+  background: #f8f9fa;
+  color: #444;
+  font-size: 14px;
+  margin-left: 10px;
+  margin-top: 4px;
+}
 
+.year-title:hover, .stage-title:hover {
+  background: #fae2e9;
+}
 
+.toggle-icon {
+  font-size: 12px;
+  width: 14px;
+  color: #888;
+}
 
+.exam-list {
+  list-style: none;
+  padding-left: 20px;
+  margin: 6px 0;
+}
+
+.exam-item {
+  padding: 9px 12px;
+  font-size: 14px;
+  color: #555;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.exam-item:hover {
+  background: #f3f4f6;
+  color: #d83b6a;
+}
+
+.exam-item.active {
+  background: #d83b6a;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.exam-item.active i {
+  color: #ffffff;
+}
+
+/* CỘT PHẢI: PREVIEW AREA */
+.preview-area {
+  flex-grow: 1;
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+}
+
+.preview-header h1 {
+  font-size: 22px;
+  color: #222;
+  margin-bottom: 8px;
+}
+
+.drive-info-row {
+  display: flex;
+  gap: 20px;
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 16px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 12px;
+}
+
+.drive-info-row i {
+  color: #d83b6a;
+}
+
+.drive-iframe-container {
+  flex-grow: 1;
+  width: 100%;
+  min-height: 75vh;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #e5e7eb;
+}
+
+.drive-iframe-container iframe {
+  width: 100%;
+  height: 100%;
+  min-height: 75vh;
+  border: none;
+}
+
+/* ===============================
+   FOOTER
+================================ */
+.site-footer {
+  margin-top: 60px;
+  padding-bottom: 24px;
+}
+
+.footer-divider {
+  border: none;
+  height: 1px;
+  background: rgba(0, 0, 0, 0.1);
+  margin-bottom: 18px;
+}
+
+.footer-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  color: #555;
+  font-size: 14px;
+}
+
+.footer-logo {
+  height: 24px;
+  width: auto;
+}
+
+/* RESPONSIVE */
+@media (max-width: 992px) {
+  .layout-2col {
+    flex-direction: column;
+  }
+  .sidebar-exams {
+    width: 100%;
+    position: static;
+    max-height: none;
+  }
+}
