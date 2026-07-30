@@ -110,16 +110,6 @@ a {
   background: #c02f5c;
 }
 
-.btn.ghost {
-  background: white;
-  color: #d83b6a;
-  border: 2px solid #d83b6a;
-}
-
-.btn.ghost:hover {
-  background: #fff0f6;
-}
-
 /* ==========================================
    BỐ CỤC 2 CỘT CHO TRANG CHỦ
 ========================================== */
@@ -251,7 +241,6 @@ a {
   margin-bottom: 12px;
 }
 
-/* HÀNG NỘI DUNG: BÊN TRÁI THỜI GIAN UPDATE - BÊN PHẢI 3 NÚT */
 .preview-meta-row {
   display: flex;
   align-items: center;
@@ -279,7 +268,6 @@ a {
   align-items: center;
 }
 
-/* THIẾT KẾ 3 NÚT NHỎ MÀU TRẮNG HIGHLIGHT BẰNG NHAU */
 .week-btn {
   display: inline-flex;
   align-items: center;
