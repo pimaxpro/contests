@@ -22,7 +22,7 @@ a {
 }
 
 /* ===============================
-   HERO HEADER BANNER GỐC
+   HERO HEADER GỐC BANNER
 ================================ */
 .hero {
   max-width: 900px;
@@ -79,35 +79,6 @@ a {
   background-color: var(--accent-color);
   color: #fff;
   border-color: var(--accent-color);
-}
-
-.hero-actions {
-  display: flex;
-  justify-content: center;
-  gap: 16px;
-  flex-wrap: wrap;
-}
-
-.btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  padding: 12px 24px;
-  border-radius: 12px;
-  font-size: 16px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: 0.2s;
-  border: none;
-}
-
-.btn.primary {
-  background: #d83b6a;
-  color: white;
-}
-
-.btn.primary:hover {
-  background: #c02f5c;
 }
 
 /* ==========================================
@@ -250,53 +221,60 @@ a {
   flex-wrap: wrap;
 }
 
+/* Ngày cập nhật nhạt */
 .update-time-info {
-  font-size: 14px;
-  color: #666;
+  font-size: 13px;
+  color: #718096;
   display: flex;
   align-items: center;
   gap: 6px;
 }
 
 .update-time-info i {
-  color: #d83b6a;
+  color: #a0aec0;
+}
+
+.update-time-info strong {
+  font-weight: 500;
+  color: #718096;
 }
 
 .week-buttons {
+  margin-left: auto;
   display: flex;
-  gap: 10px;
+  gap: 8px;
   align-items: center;
 }
 
+/* 3 Nút thiết kế nhỏ gọn, bằng nhau, highlight trắng nhẹ */
 .week-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 6px;
-  width: 105px;
-  height: 36px;
+  width: 95px;
+  height: 32px;
   box-sizing: border-box;
-  border-radius: 8px;
+  border-radius: 6px;
   background: #ffffff;
-  border: 1.5px solid #e2e8f0;
-  color: #333333;
-  font-weight: 600;
-  font-size: 13px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+  border: 1px solid #e2e8f0;
+  color: #4a5568;
+  font-weight: 500;
+  font-size: 12px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.03);
   transition: all 0.2s ease;
 }
 
 .week-btn i {
-  font-size: 13px;
-  color: #d83b6a;
+  font-size: 11px;
+  color: #718096;
 }
 
 .week-btn:hover {
   background: #ffffff;
-  border-color: #d83b6a;
-  color: #d83b6a;
-  box-shadow: 0 4px 12px rgba(216, 59, 106, 0.2);
-  transform: translateY(-1px);
+  border-color: #cbd5e0;
+  color: #1a202c;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.06);
 }
 
 .drive-iframe-container {
@@ -315,122 +293,7 @@ a {
   border: none;
 }
 
-/* ===============================
-   MODAL POPUP THỂ LỆ
-================================ */
-.modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(0, 0, 0, 0.6);
-  display: none;
-  align-items: center;
-  justify-content: center;
-  z-index: 9999;
-  backdrop-filter: blur(4px);
-}
-
-.modal-overlay.open {
-  display: flex;
-}
-
-.modal-content {
-  background: #fff;
-  width: 90%;
-  max-width: 850px;
-  max-height: 85vh;
-  border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-}
-
-.modal-header {
-  padding: 16px 24px;
-  background: #f8f9fa;
-  border-bottom: 1px solid #eee;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.close-modal-btn {
-  background: none;
-  border: none;
-  font-size: 32px;
-  color: #888;
-  cursor: pointer;
-}
-
-.close-modal-btn:hover {
-  color: #000;
-}
-
-.modal-body {
-  padding: 20px;
-  overflow-y: auto;
-}
-
-.contest-title-box {
-  display: block;
-  width: fit-content;
-  padding: 10px 24px;
-  background: #d83b6a;
-  color: white;
-  font-weight: 700;
-  border-radius: 12px;
-}
-
-.contest-box {
-  background: #ffe6ef;
-  border-top: 6px solid #d83b6a;
-  padding: 20px;
-  border-radius: 10px;
-  line-height: 1.6;
-}
-
-.score-formula {
-  background: white;
-  padding: 10px;
-  border-radius: 8px;
-  font-weight: bold;
-  text-align: center;
-  color: #d83b6a;
-  margin: 8px 0;
-}
-
-.reward-block {
-  background: #fff;
-  border-radius: 10px;
-  padding: 12px;
-}
-
-.register-box {
-  padding: 24px;
-  background: linear-gradient(135deg, #ffe6ef, #fff0f6);
-  border-radius: 16px;
-  text-align: center;
-}
-
-.register-box h2 {
-  color: #d83b6a;
-}
-
-.register-box a {
-  display: inline-block;
-  padding: 12px 28px;
-  background: #d83b6a;
-  color: white;
-  border-radius: 30px;
-  font-weight: 700;
-}
-
-/* ===============================
-   FOOTER
-================================ */
+/* FOOTER */
 .site-footer {
   margin-top: 60px;
   padding-bottom: 24px;
