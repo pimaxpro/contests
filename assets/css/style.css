@@ -251,31 +251,64 @@ a {
   margin-bottom: 12px;
 }
 
-.week-buttons {
+/* HÀNG NỘI DUNG: BÊN TRÁI THỜI GIAN UPDATE - BÊN PHẢI 3 NÚT */
+.preview-meta-row {
   display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 16px;
   flex-wrap: wrap;
-  gap: 12px;
 }
 
+.update-time-info {
+  font-size: 14px;
+  color: #666;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.update-time-info i {
+  color: #d83b6a;
+}
+
+.week-buttons {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+/* THIẾT KẾ 3 NÚT NHỎ MÀU TRẮNG HIGHLIGHT BẰNG NHAU */
 .week-btn {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  padding: 8px 16px;
+  justify-content: center;
+  gap: 6px;
+  width: 105px;
+  height: 36px;
+  box-sizing: border-box;
   border-radius: 8px;
   background: #ffffff;
-  border: 2px solid #cfcfcf;
+  border: 1.5px solid #e2e8f0;
   color: #333333;
-  font-weight: 700;
-  font-size: 15px;
-  transition: all 0.25s ease;
+  font-weight: 600;
+  font-size: 13px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+  transition: all 0.2s ease;
+}
+
+.week-btn i {
+  font-size: 13px;
+  color: #d83b6a;
 }
 
 .week-btn:hover {
-  background: #d83b6a;
+  background: #ffffff;
   border-color: #d83b6a;
-  color: #ffffff;
-  transform: translateY(-2px);
+  color: #d83b6a;
+  box-shadow: 0 4px 12px rgba(216, 59, 106, 0.2);
+  transform: translateY(-1px);
 }
 
 .drive-iframe-container {
