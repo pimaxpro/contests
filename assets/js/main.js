@@ -25,7 +25,7 @@ function toggleTree(element) {
   }
 }
 
-// 2. Xử lý tự động so sánh ngày data-update để lấy bài mới nhất & bắt sự kiện click
+// 2. Chuyển đổi bài thi & tự động xử lý Hash URL, Lấy liên kết & Share Facebook
 document.addEventListener('DOMContentLoaded', () => {
   const examItems = document.querySelectorAll('.exam-item');
   const iframe = document.getElementById('drive-preview-iframe');
@@ -36,20 +36,30 @@ document.addEventListener('DOMContentLoaded', () => {
   const btnSolution = document.getElementById('btn-solution');
   const btnRanking = document.getElementById('btn-ranking');
 
-  // Hàm chuyển đổi chuỗi "DD/MM/YYYY" thành đối tượng Date trong JS để so sánh
+  const btnShareFb = document.getElementById('btn-share-fb');
+  const btnCopyLink = document.getElementById('btn-copy-link');
+  const toastEl = document.getElementById('toast-message');
+
+  let currentExamHash = '';
+
+  // Hàm chuẩn hóa tiêu đề thành Hash ID (ví dụ: PMXST25−SPRT21 -> PMXST25-SPRT21)
+  function getExamHash(titleStr) {
+    if (!titleStr) return '';
+    const cleanTitle = titleStr.split('(')[0].trim().replace(/−/g, '-');
+    return cleanTitle;
+  }
+
+  // Hàm chuyển đổi chuỗi ngày "DD/MM/YYYY" để so sánh ngày gần nhất
   function parseDateStr(dateStr) {
     if (!dateStr) return new Date(0);
     const parts = dateStr.trim().split('/');
     if (parts.length === 3) {
-      const day = parseInt(parts[0], 10);
-      const month = parseInt(parts[1], 10) - 1; // Tháng trong JS tính từ 0 - 11
-      const year = parseInt(parts[2], 10);
-      return new Date(year, month, day);
+      return new Date(parseInt(parts[2], 10), parseInt(parts[1], 10) - 1, parseInt(parts[0], 10));
     }
     return new Date(0);
   }
 
-  // Hàm active bài thi & tự động mở nhánh cây danh mục chứa nó
+  // Hàm Kích hoạt Bài Thi và Mở đúng nhánh cây
   function activateExam(item) {
     examItems.forEach(i => i.classList.remove('active'));
     item.classList.add('active');
@@ -72,7 +82,13 @@ document.addEventListener('DOMContentLoaded', () => {
     if (btnSolution) btnSolution.href = solution || '#';
     if (btnRanking) btnRanking.href = ranking || '#';
 
-    // Tự động mở nhánh Chặng chứa bài thi này
+    // Cập nhật Hash URL trên thanh địa chỉ duyệt web mà không load lại trang
+    currentExamHash = getExamHash(title);
+    if (currentExamHash) {
+      history.replaceState(null, '', `#${currentExamHash}`);
+    }
+
+    // Mở nhánh Chặng
     const stageGroup = item.closest('.stage-group');
     if (stageGroup) {
       stageGroup.classList.add('open');
@@ -85,7 +101,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    // Tự động mở nhánh Năm học chứa bài thi này
+    // Mở nhánh Năm học
     const yearGroup = item.closest('.year-group');
     if (yearGroup) {
       yearGroup.classList.add('open');
@@ -99,26 +115,67 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  // TỰ ĐỘNG CHỌN BÀI THI KHI TẢI TRANG
   if (examItems.length > 0) {
-    // Tìm bài thi có ngày "data-update" mới nhất (lớn nhất)
-    let newestItem = examItems[0];
-    let maxDate = parseDateStr(newestItem.getAttribute('data-update'));
+    const urlHash = window.location.hash.replace('#', '').trim();
+    let targetExam = null;
 
-    examItems.forEach(item => {
-      const itemDate = parseDateStr(item.getAttribute('data-update'));
-      if (itemDate > maxDate) {
-        maxDate = itemDate;
-        newestItem = item;
-      }
-    });
+    // 1. Kiểm tra xem URL có đính kèm Hash bài thi hay không
+    if (urlHash) {
+      examItems.forEach(item => {
+        const itemHash = getExamHash(item.getAttribute('data-title'));
+        if (itemHash === urlHash) {
+          targetExam = item;
+        }
+      });
+    }
 
-    // Mặc định tự chọn & mở đúng nhánh cây cho bài mới nhất
-    activateExam(newestItem);
+    // 2. Nếu không có hash trên URL, tự động tìm bài có ngày cập nhật mới nhất
+    if (!targetExam) {
+      targetExam = examItems[0];
+      let maxDate = parseDateStr(targetExam.getAttribute('data-update'));
 
-    // Bắt sự kiện khi người dùng click xem bài khác ở cột trái
+      examItems.forEach(item => {
+        const itemDate = parseDateStr(item.getAttribute('data-update'));
+        if (itemDate > maxDate) {
+          maxDate = itemDate;
+          targetExam = item;
+        }
+      });
+    }
+
+    activateExam(targetExam);
+
+    // Lắng nghe sự kiện bấm vào từng bài thi ở Sidebar
     examItems.forEach(item => {
       item.addEventListener('click', function() {
         activateExam(this);
+      });
+    });
+  }
+
+  // NÚT CHI SẺ FACEBOOK
+  if (btnShareFb) {
+    btnShareFb.addEventListener('click', () => {
+      const shareUrl = encodeURIComponent(window.location.href);
+      const fbShareWindow = `https://www.facebook.com/sharer/sharer.php?u=${shareUrl}`;
+      window.open(fbShareWindow, '_blank', 'width=600,height=500');
+    });
+  }
+
+  // NÚT LẤY LIÊN KẾT (COPY TO CLIPBOARD)
+  if (btnCopyLink) {
+    btnCopyLink.addEventListener('click', () => {
+      const fullLink = window.location.href;
+      navigator.clipboard.writeText(fullLink).then(() => {
+        if (toastEl) {
+          toastEl.classList.add('show');
+          setTimeout(() => {
+            toastEl.classList.remove('show');
+          }, 2500);
+        }
+      }).catch(err => {
+        console.error('Không thể chép liên kết:', err);
       });
     });
   }
