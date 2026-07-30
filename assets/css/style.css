@@ -11,7 +11,7 @@
   --border-color: #e2e8f0;
 }
 
-/* Theme riêng cho Marathon */
+/* Theme riêng cho Marathon (Chỉ cần đổi biến màu) */
 body.theme-marathon {
   --accent-color: #4080D6;       /* Blue (Marathon) */
   --accent-hover: #2b62ab;
@@ -26,21 +26,24 @@ body.theme-marathon {
   padding: 0;
 }
 
-/* Cấu hình Sticky Footer bằng Flexbox */
+html, body {
+  height: 100%;
+}
+
 body {
   font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   background-color: var(--bg-color);
   color: var(--text-main);
   line-height: 1.5;
   
-  /* Đảm bảo body phủ kín chiều cao màn hình */
-  min-height: 100vh;
+  /* Cấu hình Flexbox để Footer luôn dính xuống đáy khi nội dung ngắn */
   display: flex;
   flex-direction: column;
+  min-height: 100vh;
 }
 
 #page-content {
-  flex: 1 0 auto; /* Đẩy Footer xuống đáy khi nội dung ngắn */
+  flex: 1 0 auto; /* Đẩy Footer xuống chân trang */
 }
 
 a {
@@ -49,7 +52,7 @@ a {
 }
 
 /* =========================================================
-   3. SHARED HERO HEADER
+   3. SHARED HERO HEADER (Dùng chung 3 trang)
 ========================================================= */
 .hero {
   max-width: 900px;
@@ -98,6 +101,10 @@ a {
   transition: all 0.2s ease;
 }
 
+.social-card .divider {
+  opacity: 0.6;
+}
+
 .social-card:hover {
   background-color: var(--accent-color);
   color: #ffffff;
@@ -105,7 +112,7 @@ a {
 }
 
 /* =========================================================
-   4. PORTAL GRID (index.html)
+   4. PORTAL GRID (Trang index.html)
 ========================================================= */
 .portal-container {
   max-width: 1000px;
@@ -207,6 +214,7 @@ a {
   min-height: calc(100vh - 200px);
 }
 
+/* Cột trái: Sidebar */
 .sidebar-exams {
   width: 320px;
   flex-shrink: 0;
@@ -236,6 +244,7 @@ a {
   color: var(--accent-color);
 }
 
+/* Cây danh mục bài thi */
 .year-title, .stage-title, .exam-item {
   display: flex;
   align-items: center;
@@ -269,6 +278,7 @@ a {
 .exam-item.active i, .active-contest i { color: #ffffff !important; }
 .toggle-icon { font-size: 12px; width: 14px; color: #718096; }
 
+/* Cột phải: Khung Preview */
 .preview-area {
   flex-grow: 1;
   background: var(--card-bg);
@@ -307,6 +317,7 @@ a {
 .week-btn:hover { border-color: #cbd5e0; color: #1a202c; box-shadow: 0 2px 5px rgba(0,0,0,0.06); }
 .week-btn:active { transform: scale(0.95); background: #fdf2f5; border-color: var(--accent-color); color: var(--accent-color); }
 
+/* Khung Drive Viewer */
 .drive-iframe-container {
   position: relative;
   flex-grow: 1;
@@ -320,6 +331,7 @@ a {
 .drive-iframe-container iframe { width: 100%; height: 100%; min-height: 75vh; border: none; }
 .iframe-overlay-cover { position: absolute; top: 0; right: 0; width: 65px; height: 65px; z-index: 15; }
 
+/* Nút Share Nổi */
 .side-share-actions { position: absolute; top: 15px; right: 15px; display: flex; flex-direction: column; gap: 10px; z-index: 20; }
 .side-share-btn {
   width: 38px;
@@ -340,35 +352,47 @@ a {
 .side-share-btn:hover { background: var(--accent-color); color: #ffffff; border-color: var(--accent-color); transform: scale(1.08); }
 
 /* =========================================================
-   6. SHARED UI: TOAST & FOOTER (STICKY AT BOTTOM)
+   6. TOAST NOTIFICATION (TRÊN ĐỈNH MÀN HÌNH + CĂN GIỮA)
 ========================================================= */
 .toast-notification {
   position: fixed;
-  bottom: 30px;
-  right: 30px;
-  background: #2d3748;
-  color: #ffffff;
-  padding: 12px 20px;
-  border-radius: 8px;
-  font-size: 14px;
-  font-weight: 500;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  top: 25px;
+  left: 50%;
+  transform: translate(-50%, -20px);
+  background: #ffffff;
+  color: var(--text-main);
+  padding: 12px 24px;
+  border-radius: 50px;
+  font-size: 14.5px;
+  font-weight: 600;
+  border: 1.5px solid var(--accent-color);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12), 0 4px 10px rgba(0, 0, 0, 0.05);
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   opacity: 0;
   pointer-events: none;
-  transform: translateY(10px);
-  transition: all 0.3s ease;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   z-index: 999999;
 }
 
-.toast-notification.show { opacity: 1; pointer-events: auto; transform: translateY(0); }
-.toast-notification i { color: #48bb78; }
+.toast-notification.show {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate(-50%, 0);
+}
 
+.toast-notification i {
+  color: var(--accent-color);
+  font-size: 16px;
+}
+
+/* =========================================================
+   7. FOOTER (STICKY AT BOTTOM)
+========================================================= */
 .site-footer {
-  flex-shrink: 0; /* Giúp footer giữ nguyên kích thước ở dưới cùng */
-  margin-top: auto; /* Đẩy footer xuống chân trang */
+  flex-shrink: 0;
+  margin-top: auto;
   padding: 30px 0 24px;
 }
 
