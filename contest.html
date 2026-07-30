@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title id="page-head-title">PIMAX CONTESTS</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="icon" href="logo1.ico">
+</head>
+<body>
+
+  <div id="page-content">
+    <section class="hero">
+      <h1><a href="https://pimaxpro.github.io/contests/" class="hero-title-link" id="hero-title">--</a></h1>
+      <p class="hero-sub" id="hero-sub">--</p>
+      <div class="social-wrapper" id="social-wrapper">
+        </div>
+    </section>
+
+    <div class="layout-2col">
+      <aside class="sidebar-column">
+        
+        <div class="sidebar-exams-box">
+          <div class="sidebar-header"><h2><i class="fa-solid fa-folder-tree"></i> Danh sách Bài thi</h2></div>
+          <div id="tree-menu" class="tree-menu"></div>
+        </div>
+
+        <div class="sidebar-actions-box">
+          <a href="https://pimaxtsa.com/" target="_blank" class="sidebar-action-btn btn-practice">
+            <i class="fa-solid fa-laptop-code"></i>
+            <span>Phòng luyện đề</span>
+            <i class="fa-solid fa-arrow-up-right-from-square btn-arrow"></i>
+          </a>
+
+          <a href="https://www.facebook.com/PimaXPro/posts/pfbid051t7rUvFhrNKNnvoXe6m8bi7FBAiNGbHWiFhPiMA3P7pErcHGiPK8VVpzavSmawnl" target="_blank" class="sidebar-action-btn btn-course">
+            <i class="fa-solid fa-graduation-cap"></i>
+            <span>Đăng ký khóa học</span>
+            <i class="fa-solid fa-arrow-up-right-from-square btn-arrow"></i>
+          </a>
+        </div>
+
+      </aside>
+
+      <main class="preview-area">
+        <div class="preview-header">
+          <div class="preview-title-row">
+            <i class="fa-regular fa-file-lines doc-icon"></i>
+            <h1 id="preview-title">Đang tải...</h1>
+          </div>
+          <div class="preview-meta-row">
+            <div class="meta-item"><i class="fa-regular fa-calendar-days meta-icon"></i><span id="update-time-val">--/--/----</span></div>
+            <div class="meta-item"><i class="fa-solid fa-hashtag meta-icon"></i><span id="subtitle-val">--</span></div>
+            <div class="meta-item"><i class="fa-regular fa-clock meta-icon"></i><span id="exam-time-val">--</span></div>
+
+            <div class="week-buttons">
+              <button id="btn-answers" class="week-btn"><i class="fa-solid fa-key"></i> Đáp án</button>
+              <a id="btn-ranking" class="week-btn" href="#" target="_blank" rel="noopener"><i class="fa-solid fa-chart-column"></i> Ranking</a>
+              <a id="btn-solution" class="week-btn" href="#" target="_blank" rel="noopener"><i class="fa-solid fa-play"></i> Solution</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="drive-iframe-container">
+          <div class="iframe-overlay-cover"></div>
+          <div class="side-share-actions">
+            <button id="btn-share-fb" class="side-share-btn" title="Chia sẻ Facebook"><i class="fa-brands fa-facebook-f"></i></button>
+            <button id="btn-copy-link" class="side-share-btn" title="Chép liên kết"><i class="fa-solid fa-link"></i></button>
+            <a id="btn-drive-link" class="side-share-btn" href="#" target="_blank" rel="noopener" title="Mở Drive"><i class="fa-brands fa-google-drive"></i></a>
+          </div>
+          <iframe id="drive-preview-iframe" src="" allow="autoplay" allowfullscreen></iframe>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script src="assets/js/modules/ui-components.js"></script>
+  <script src="assets/js/modules/menu-tree.js"></script>
+  <script src="assets/js/modules/pdf-viewer.js"></script>
+  <script src="assets/js/modules/answer-modal.js"></script>
+  <script src="assets/js/modules/share-actions.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
