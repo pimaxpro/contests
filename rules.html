@@ -1,280 +1,67 @@
-
 <!DOCTYPE html>
 <html lang="vi">
 <head>
   <meta charset="UTF-8">
-  <title>Thể lệ cuộc thi</title>
+  <title>Thể lệ cuộc thi - PIMAX TSA</title>
 
-  <!-- Font Awesome -->
-  <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-  <!-- CSS -->
   <link rel="stylesheet" href="assets/css/style.css">
-<link rel="icon" href="logo1.ico">
-  <!-- MathJax CONFIG -->
-  <script>
-    window.MathJax = {
-      tex: {
-        inlineMath: [['$', '$'], ['\\(', '\\)']],
-        displayMath: [['$$', '$$'], ['\\[', '\\]']]
-      },
-      svg: { fontCache: 'global' }
-    };
-  </script>
-
-  <!-- MathJax -->
-  <script async
-    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
-  </script>
+  <link rel="icon" href="logo1.ico">
 </head>
 <body>
-
-<style>
-    :root {
-  --accent-color: #D83B6A;
-    }
-    .social-wrapper {
-      display: flex;
-      justify-content: center;   /* căn giữa */
-      gap: 12px;
-    }
-    
-    .social-card {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    
-      padding: 6px 12px;
-      border: 1px solid #666;
-      border-radius: 6px;
-    
-      color: #555;              /* đen xám */
-      background: transparent;
-    
-      font-size: 14px;
-      text-decoration: none;
-      font-weight: 500;
-    
-      transition: 
-        background-color 0.2s ease,
-        color 0.2s ease,
-        border-color 0.2s ease;
-    }
-    
-    .social-card .divider {
-      opacity: 0.6;
-    }
-    
-    /* hover: full hồng – chữ trắng */
-    .social-card:hover {
-      background-color: var(--accent-color);
-      color: #fff;
-      border-color: var(--accent-color);
-    }
-    
-    /* đảm bảo icon + dấu | + chữ đều trắng */
-    .social-card:hover .divider {
-      opacity: 1;
-    }
-  </style>
-  
-<div id="page-content">
   <section class="hero">
     <h1>
-      <a href="https://pimaxpro.github.io/pimaxtsabk/" class="hero-title-link">
-        PimaX TSABK Tournament
-      </a>
-      <p class="hero-sub">
-      Mathematical Thinking • TSA Training • Problem Solving
-      </p>
+      <a href="index.html" class="hero-title-link">PimaX TSABK Tournament</a>
     </h1>
-        <div class="social-wrapper">
-      <a href="https://www.tiktok.com/@pimaxghettoan"
-         target="_blank"
-         rel="noopener"
-         class="social-card"
-         aria-label="TikTok">
-        <i class="fa-brands fa-tiktok"></i>
-        <span class="divider">|</span>
-        <span class="label">TikTok</span>
-      </a>
-    
-      <a href="https://www.facebook.com/PimaXPro"
-         target="_blank"
-         rel="noopener"
-         class="social-card"
-         aria-label="Facebook">
-        <i class="fa-brands fa-facebook-f"></i>
-        <span class="divider">|</span>
-        <span class="label">Facebook</span>
-      </a>
-    </div>
-    <br>
+    <p class="hero-sub">Mathematical Thinking • TSA Training • Problem Solving</p>
   </section>
-  
-<div class="menu-dropdown">
-  <input type="checkbox" id="menu-toggle" />
-  <label for="menu-toggle" class="menu-icon">
-    <i class="fa-solid fa-bars"></i>
-  </label>
-  <nav class="menu">
-    <a href="https://pimaxpro.github.io/pimaxtsabk/">
-      <i class="fa-solid fa-house"></i>
-      Trang chủ
-    </a>
-    <a href="2025-2026.html">
-      <i class="fa-solid fa-calendar-days"></i>
-      2025–2026
-    </a>
-    <a href="blog.html">
-      <i class="fa-solid fa-pen-nib"></i>
-      Bình luận
-    </a>
-    <a href="rules.html">
-    <i class="fa-solid fa-file-contract"></i>
-    Thể lệ
-  </a>
-  </nav>
-</div>
+
+  <div class="menu-dropdown">
+    <input type="checkbox" id="menu-toggle" />
+    <label for="menu-toggle" class="menu-icon"><i class="fa-solid fa-bars"></i></label>
+    <nav class="menu">
+      <a href="index.html"><i class="fa-solid fa-house"></i> Trang chủ</a>
+      <a href="2025-2026.html"><i class="fa-solid fa-calendar-days"></i> 2025–2026</a>
+      <a href="blog.html"><i class="fa-solid fa-pen-nib"></i> Bình luận</a>
+      <a href="rules.html" class="active"><i class="fa-solid fa-file-contract"></i> Thể lệ</a>
+    </nav>
+  </div>
 
   <script>
-  // Khi bấm ra ngoài menu, đóng menu
-  document.addEventListener('click', function(e) {
-    const menuDropdown = document.querySelector('.menu-dropdown');
-    const checkbox = document.getElementById('menu-toggle');
-    
-    if (checkbox.checked && !menuDropdown.contains(e.target)) {
-      checkbox.checked = false;
-    }
-  });
-</script>
+    document.addEventListener('click', function(e) {
+      const menuDropdown = document.querySelector('.menu-dropdown');
+      const checkbox = document.getElementById('menu-toggle');
+      if (checkbox && checkbox.checked && !menuDropdown.contains(e.target)) {
+        checkbox.checked = false;
+      }
+    });
+  </script>
 
-<div class="contest-box">
-   <div class="contest-title-box">
-      <i class="fa-solid fa-bullhorn"></i>
-      THỂ LỆ CUỘC THI
-   </div>
-   <ol>
+  <div style="max-width: 900px; margin: 30px auto; background: white; padding: 30px; border-radius: 16px;">
+    <h2 style="color: #d83b6a;"><i class="fa-solid fa-bullhorn"></i> THỂ LỆ CUỘC THI</h2>
+    <ol style="line-height: 1.8;">
       <li>
-         <strong>Cấu trúc cuộc thi:</strong><br>
-         Cuộc thi bao gồm <strong>3 chặng</strong> tương ứng với 3 đợt thi chính:
-         <ul>
-            <li>Chặng 1 – <strong>Winter 2025</strong></li>
-            <li>Chặng 2 – <strong>Spring 2026</strong></li>
-            <li>Chặng 3 – <strong>Summer 2026</strong></li>
-         </ul>
+        <strong>Cấu trúc cuộc thi:</strong> Bao gồm 3 chặng (Winter 2025, Spring 2026, Summer 2026).
       </li>
       <li>
-         <strong>Lịch thi hàng tuần:</strong><br>
-         Mỗi tuần thí sinh làm <strong>2 bài test</strong>:
-         <ul>
-            <li>
-               <strong>Bài thi 1:</strong> 40 câu / 60 phút (40 điểm), cấu trúc TSA, 
-               diễn ra vào <strong>thứ 2 hàng tuần</strong>.
-            </li>
-            <li>
-               <strong>Bài thi 2:</strong> 10 câu / 30 phút (10 điểm), chủ yếu là bài toán khó,
-               diễn ra vào <strong>thứ 6 hàng tuần</strong>.
-            </li>
-         </ul>
-         <i class="fa-solid fa-hand-point-right"></i>
-          Lưu ý: Thí sinh cần đăng kí tài khoản trước tại
-         <a href="https://pimaxtsa.com" target="_blank" rel="noopener">pimaxtsa.com</a>.
+        <strong>Lịch thi hàng tuần:</strong>
+        <ul>
+          <li><strong>Bài thi 1:</strong> 40 câu / 60 phút (diễn ra Thứ 2 hàng tuần).</li>
+          <li><strong>Bài thi 2:</strong> 10 câu / 30 phút (diễn ra Thứ 6 hàng tuần).</li>
+        </ul>
       </li>
-      <li>
-         <strong>Cách tính điểm:</strong><br>
-         Điểm mỗi tuần được tính theo công thức:
-         <div class="score-formula">
-            Điểm tuần = Điểm bài 1 + 1.5 × Điểm bài 2
-         </div>
-         Điểm của mỗi chặng là <strong>trung bình cộng điểm các tuần</strong> trong chặng đó.
-      </li>
-      <li>
-         <strong>Phần thưởng:</strong>
-         <div class="reward-block">
-            <p><strong>a) Phần thưởng sau mỗi chặng (Top 3):</strong></p>
-            <ul>
-               <li><i class="fa-solid fa-trophy"></i> <strong>Nhà vô địch:</strong> 1.000.000 VNĐ + Khóa học toàn diện PimaX</li>
-               <li><i class="fa-solid fa-medal silver"></i> <strong>Hai á quân:</strong> mỗi người 500.000 VNĐ + Khóa học toàn diện PimaX</li>
-            </ul>
-            <p><strong>b) Phần thưởng hàng tuần (Top 10):</strong></p>
-            <ul>
-               <li>
-                  <i class="fa-solid fa-star"></i> <strong>Top 2:</strong> 100.000 VNĐ + 10 đề TSA kèm video chữa + giảm 40% học phí
-               </li>
-               <li>
-                  <i class="fa-solid fa-bullseye"></i> <strong>Top 8 còn lại:</strong> 5 đề TSA kèm video chữa + giảm 30% học phí
-               </li>
-            </ul>
-         </div>
-      </li>
-   </ol>
-</div>
-<div class="register-box">
-   <h2><i class="fa-solid fa-pen-to-square"></i> ĐĂNG KÝ THAM GIA CUỘC THI</h2>
-   <p>
-      Thí sinh vui lòng đăng ký tài khoản và điền form trước khi tham gia
-      các bài thi chính thức của PimaX TSABK Tournament. Thời gian đăng kí: Hết ngày 28/12/2025
-   </p>
-   <a href="https://docs.google.com/forms/d/1BGeWoQaCTOCkviJb8fbQ1kxnebybMEDUlZjp3HUO9ks/edit"
-      target="_blank"
-      rel="noopener">
-   <i class="fa-solid fa-hand-point-right"></i> ĐI TỚI FORM ĐĂNG KÝ
-   </a>
-</div>
-
-<!-- SCRIPT CUỐI TRANG -->
-<script src="assets/js/layout.js"></script>
-<script src="assets/js/main.js"></script>
-
-</body>
-    <style>
-    .site-footer {
-  margin-top: 60px;
-  padding-bottom: 24px;
-}
-
-/* dòng kẻ mờ */
-.footer-divider {
-  border: none;
-  height: 2px;
-  background: rgba(0, 0, 0, 0.15);
-  margin-bottom: 18px;
-}
-
-/* nội dung footer */
-.footer-content {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-
-  color: #555;
-  font-size: 16px;
-}
-
-/* logo svg */
-.footer-logo {
-  height: 26px;     /* gọn, học thuật */
-  width: auto;
-}
-
-.footer-text {
-  white-space: nowrap;
-}
-
-  </style>
-  <footer class="site-footer">
-  <hr class="footer-divider">
-
-  <div class="footer-content">
-    <img src="assets/logo1.svg" alt="PimaX Logo" class="footer-logo">
-    <span class="footer-text">BẢN QUYỀN THUỘC VỀ PIMAX</span>
+    </ol>
   </div>
-</footer>
 
+  <footer class="site-footer">
+    <hr class="footer-divider">
+    <div class="footer-content">
+      <img src="assets/logo1.svg" alt="PimaX Logo" class="footer-logo">
+      <span class="footer-text">BẢN QUYỀN THUỘC VỀ PIMAX</span>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
 </html>
-
-
-
