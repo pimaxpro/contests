@@ -7,149 +7,40 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="icon" href="logo1.ico">
-  <style>
-    .portal-container {
-      max-width: 1000px;
-      margin: 40px auto;
-      padding: 0 20px;
-    }
-    .portal-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 30px;
-      margin-top: 40px;
-    }
-    .portal-card {
-      background: #ffffff;
-      border-radius: 20px;
-      padding: 35px 25px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.06);
-      border: 1px solid #e2e8f0;
-      text-align: center;
-      transition: all 0.3s ease;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    .portal-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 15px 35px rgba(216, 59, 106, 0.15);
-      border-color: #d83b6a;
-    }
-    .portal-icon {
-      width: 70px;
-      height: 70px;
-      border-radius: 50%;
-      background: #fdf2f5;
-      color: #d83b6a;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 30px;
-      margin-bottom: 20px;
-    }
-    .portal-card h2 {
-      font-size: 22px;
-      font-weight: 800;
-      color: #1a202c;
-      margin-bottom: 12px;
-    }
-    .portal-card p {
-      font-size: 14px;
-      color: #718096;
-      line-height: 1.6;
-      margin-bottom: 24px;
-      flex-grow: 1;
-    }
-    .portal-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 12px 28px;
-      border-radius: 10px;
-      background: #d83b6a;
-      color: #ffffff;
-      font-weight: 600;
-      font-size: 15px;
-      transition: all 0.2s ease;
-    }
-    .portal-btn:hover {
-      background: #b82650;
-      transform: scale(1.03);
-    }
-  </style>
 </head>
 <body>
 
   <div id="page-content">
-
     <section class="hero">
-      <h1>
-        <a href="https://pimaxpro.github.io/contests" class="hero-title-link">
-          PimaX Contests Community
-        </a>
-      </h1>
-      <p class="hero-sub">
-        Cộng đồng học thuật PimaX
-      </p>
+      <h1><a href="https://pimaxpro.github.io/contests" class="hero-title-link">PimaX Contests Community</a></h1>
+      <p class="hero-sub">Cộng đồng học thuật PimaX</p>
 
       <div class="social-wrapper">
-        <a href="https://www.tiktok.com/@pimaxghettoan" target="_blank" rel="noopener" class="social-card" aria-label="TikTok">
-          <i class="fa-brands fa-tiktok"></i>
-          <span class="divider">|</span>
-          <span class="label">TikTok</span>
-        </a>
-
-        <a href="https://www.facebook.com/PimaXPro" target="_blank" rel="noopener" class="social-card" aria-label="Facebook">
-          <i class="fa-brands fa-facebook-f"></i>
-          <span class="divider">|</span>
-          <span class="label">Facebook</span>
-        </a>
+        <a href="https://www.tiktok.com/@pimaxghettoan" target="_blank" rel="noopener" class="social-card"><i class="fa-brands fa-tiktok"></i> <span class="divider">|</span> TikTok</a>
+        <a href="https://www.facebook.com/PimaXPro" target="_blank" rel="noopener" class="social-card"><i class="fa-brands fa-facebook-f"></i> <span class="divider">|</span> Facebook</a>
       </div>
     </section>
 
-    <!-- CỔNG CHỌN KÌ THI -->
     <main class="portal-container">
       <div class="portal-grid">
-        
-        <!-- CARD 1: TSABK TOURNAMENT -->
         <div class="portal-card">
-          <div class="portal-icon">
-            <i class="fa-solid fa-trophy"></i>
-          </div>
+          <div class="portal-icon"><i class="fa-solid fa-trophy"></i></div>
           <h2>PimaX TSABK Tournament</h2>
           <p>Hệ thống bài thi chuẩn cấu trúc với kì thi TSA, hướng tới tuyển sinh Đại học Bách Khoa Hà Nội</p>
-          <a href="Tournament.html" class="portal-btn">
-            <span>Vào kì thi</span>
-            <i class="fa-solid fa-arrow-right"></i>
-          </a>
+          <a href="Tournament.html" class="portal-btn"><span>Vào kì thi</span> <i class="fa-solid fa-arrow-right"></i></a>
         </div>
 
-        <!-- CARD 2: INFINITY MARATHON -->
-        <div class="portal-card">
-          <div class="portal-icon">
-            <i class="fa-solid fa-person-running"></i>
-          </div>
+        <div class="portal-card card-marathon">
+          <div class="portal-icon"><i class="fa-solid fa-person-running"></i></div>
           <h2>PimaX Infinity Marathon</h2>
-          <p>Cuộc đua toán học hàng tuần cho các em học sinh có niềm đam mê với môn toán, hướng tới kì thi chuyên biệt như HSG cấp tỉnh, HSA, TSA, THPT Quốc Gia,...</p>
-          <a href="Marathon.html" class="portal-btn">
-            <span>Vào kì thi</span>
-            <i class="fa-solid fa-arrow-right"></i>
-          </a>
+          <p>Cuộc đua toán học hàng tuần cho học sinh đam mê môn toán, hướng tới kì thi HSG, HSA, TSA, THPT Quốc Gia...</p>
+          <a href="Marathon.html" class="portal-btn"><span>Vào kì thi</span> <i class="fa-solid fa-arrow-right"></i></a>
         </div>
-
       </div>
     </main>
-
   </div>
 
-  <footer class="site-footer">
-    <hr class="footer-divider">
-    <div class="footer-content">
-      <img src="assets/logo1.svg" alt="PimaX Logo" class="footer-logo">
-      <span class="footer-text">BẢN QUYỀN THUỘC VỀ PIMAX</span>
-    </div>
-  </footer>
-
+  <script src="assets/js/modules/ui-components.js"></script>
+  <script>document.addEventListener('DOMContentLoaded', () => window.UIComponentsModule.init());</script>
 </body>
 </html>
