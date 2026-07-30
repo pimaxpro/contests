@@ -3,7 +3,6 @@
 ========================================================= */
 
 window.UIComponentsModule = {
-  // Tự động nhúng Footer vào cuối body
   renderFooter() {
     const footerHTML = `
       <footer class="site-footer">
@@ -17,7 +16,6 @@ window.UIComponentsModule = {
     document.body.insertAdjacentHTML('beforeend', footerHTML);
   },
 
-  // Tự động nhúng Toast Notification
   renderToast() {
     const toastHTML = `
       <div id="toast-message" class="toast-notification">
@@ -25,6 +23,18 @@ window.UIComponentsModule = {
       </div>
     `;
     document.body.insertAdjacentHTML('beforeend', toastHTML);
+  },
+
+  showToast(msg) {
+    const toastEl = document.getElementById('toast-message');
+    const toastText = document.getElementById('toast-text');
+    if (toastEl && toastText) {
+      toastText.textContent = msg;
+      toastEl.classList.add('show');
+      setTimeout(() => {
+        toastEl.classList.remove('show');
+      }, 2500);
+    }
   },
 
   init() {
