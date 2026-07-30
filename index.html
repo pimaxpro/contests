@@ -2,452 +2,134 @@
 <html lang="vi">
 <head>
   <meta charset="UTF-8">
-  <title>PIMAX TSABK TOURNAMENT</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PIMAX TSABK TOURNAMENT - Trang chủ</title>
 
-  <!-- Font Awesome -->
-  <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-  <!-- CSS -->
-  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="style.css">
   <link rel="icon" href="logo1.ico">
 </head>
 <body>
-  <!-- Hamburger Menu -->
-<div class="menu-dropdown">
-  <input type="checkbox" id="menu-toggle" />
-  <label for="menu-toggle" class="menu-icon">
-    <i class="fa-solid fa-bars"></i>
-  </label>
-  <nav class="menu">
-    <a href="https://pimaxpro.github.io/pimaxtsabk/">
-      <i class="fa-solid fa-house"></i>
-      Trang chủ
-    </a>
-    <a href="2025-2026.html">
-      <i class="fa-solid fa-calendar-days"></i>
-      2025–2026
-    </a>
-    <a href="blog.html">
-      <i class="fa-solid fa-pen-nib"></i>
-      Bình luận
-    </a>
-    <a href="rules.html">
-    <i class="fa-solid fa-file-contract"></i>
-    Thể lệ
-  </a>
-  </nav>
-</div>
 
-<script>
-  // Khi bấm ra ngoài menu, đóng menu
-  document.addEventListener('click', function(e) {
-    const menuDropdown = document.querySelector('.menu-dropdown');
-    const checkbox = document.getElementById('menu-toggle');
-    
-    if (checkbox.checked && !menuDropdown.contains(e.target)) {
-      checkbox.checked = false;
-    }
-  });
-</script>
-<style>
-    :root {
-  --accent-color: #D83B6A;
-    }
-    .social-wrapper {
-      display: flex;
-      justify-content: center;   /* căn giữa */
-      gap: 12px;
-    }
-    
-    .social-card {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    
-      padding: 6px 12px;
-      border: 1px solid #666;
-      border-radius: 6px;
-    
-      color: #555;              /* đen xám */
-      background: transparent;
-    
-      font-size: 14px;
-      text-decoration: none;
-      font-weight: 500;
-    
-      transition: 
-        background-color 0.2s ease,
-        color 0.2s ease,
-        border-color 0.2s ease;
-    }
-    
-    .social-card .divider {
-      opacity: 0.6;
-    }
-    
-    /* hover: full hồng – chữ trắng */
-    .social-card:hover {
-      background-color: var(--accent-color);
-      color: #fff;
-      border-color: var(--accent-color);
-    }
-    
-    /* đảm bảo icon + dấu | + chữ đều trắng */
-    .social-card:hover .divider {
-      opacity: 1;
-    }
-  :root {
-  --accent-color: #D83B6A; /* màu hồng bạn đang dùng */
-}
-
-.quote-wrapper {
-  display: flex;
-  justify-content: center;
-  margin: 40px 0;
-}
-
-.quote-box {
-  position: relative;
-  max-width: 720px;
-  padding: 34px 38px 28px 68px;
-
-  border: 1.5px solid #D83B6A;
-  border-radius: 10px;
-
-  background: #fafafa;
-  color: #444;
-
-  font-size: 20px;
-  line-height: 1.7;
-}
-
-.quote-mark {
-  position: absolute;
-  top: 14px;
-  left: 22px;
-
-  font-size: 72px;
-  line-height: 1;
-  font-weight: bold;
-
-  color: var(--accent-color);
-}
-
-.quote-text {
-  font-style: italic;     /* in nghiêng nội dung */
-}
-
-.quote-author {
-  margin-top: 22px;
-  padding-top: 14px;
-
-  text-align: right;
-  font-size: 16px;
-  color: #666;
-  font-style: italic;
-
-  position: relative;
-}
-
-.quote-author::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  right: 0;
-
-  width: 60%;
-  height: 1px;
-
-  background: rgba(0, 0, 0, 0.15);
-}
-
-
-  </style>
-
-  <section class="hero">
-    <h1>
-      <a href="https://pimaxpro.github.io/pimaxtsabk/" class="hero-title-link">
-        PimaX TSABK Tournament
-      </a>
-      <p class="hero-sub">
-      Mathematical Thinking • TSA Training • Problem Solving
-    </p>
-    </h1>
-    <div class="social-wrapper">
-      <a href="https://www.tiktok.com/@pimaxghettoan"
-         target="_blank"
-         rel="noopener"
-         class="social-card"
-         aria-label="TikTok">
-        <i class="fa-brands fa-tiktok"></i>
-        <span class="divider">|</span>
-        <span class="label">TikTok</span>
-      </a>
-    
-      <a href="https://www.facebook.com/PimaXPro"
-         target="_blank"
-         rel="noopener"
-         class="social-card"
-         aria-label="Facebook">
-        <i class="fa-brands fa-facebook-f"></i>
-        <span class="divider">|</span>
-        <span class="label">Facebook</span>
-      </a>
-    </div>
-  </section>
-  <div class="quote-wrapper">
-  <div class="quote-box">
-    <span class="quote-mark">“</span>
-    <div class="quote-text">
-      PIMAX TSABK TOURNAMENT là một cuộc thi phi lợi nhuận được PimaX ấp ủ từ lâu hướng tới kì thi TSA (Thinking Skills Assessment) do Đại học Bách Khoa Hà Nội tổ chức. Nhằm tạo ra một môi trường học thuật lành mạnh để các
-      học sinh có thể kiểm tra kiến thức của mình trước kì thi đồng thời trau dồi thêm cho bản thân mỗi em nhiều tư duy và góc nhìn hoàn toàn mới mẻ với môn toán, 
-      PimaX luôn hướng tới sự chuyên nghiệp từ khâu trình bày, lên ý tưởng, tổ chức phòng thi thử sao cho các em có trải nghiệm tốt nhất với kì thi này. 
-      Mặc dù đã cố gắng làm hết sức để tổ chức kì thi một cách nghiêm túc, tuy nhiên cũng sẽ không thể tránh khỏi những sai sót, rất mong nhận được những ý kiến đóng góp từ phía các em học sinh và quý thầy cô. Cảm ơn tất cả mọi người!
-    </div>
-    <div class="quote-author">
-      — Dương Minh Đức —
-    </div>
-  </div>
+  <div class="menu-dropdown">
+    <input type="checkbox" id="menu-toggle" />
+    <label for="menu-toggle" class="menu-icon">
+      <i class="fa-solid fa-bars"></i>
+    </label>
+    <nav class="menu">
+      <a href="index.html" class="active"><i class="fa-solid fa-house"></i> Trang chủ</a>
+      <a href="2025-2026.html"><i class="fa-solid fa-calendar-days"></i> 2025–2026</a>
+      <a href="blog.html"><i class="fa-solid fa-pen-nib"></i> Bình luận</a>
+      <a href="rules.html"><i class="fa-solid fa-book"></i> Thể lệ</a>
+    </nav>
   </div>
 
-  
-  <!-- INTRO -->
-  <section class="intro">
+  <div class="layout-2col">
+    
+    <aside class="sidebar-exams">
+      <div class="sidebar-header">
+        <h2><i class="fa-solid fa-folder-tree"></i> Danh sách Bài thi</h2>
+      </div>
 
-    <div class="intro-card">
-      <i class="fa-solid fa-drafting-compass"></i>
-      <h3>Bài toán chọn lọc</h3>
-      <p>
-        Tập trung vào logic, bài toán tìm quy luật, hạn chế biến đổi
-      </p>
-    </div>
+      <div class="tree-menu">
+        <div class="year-group open">
+          <div class="year-title" onclick="toggleTree(this)">
+            <i class="fa-solid fa-chevron-down toggle-icon"></i>
+            <i class="fa-solid fa-graduation-cap"></i>
+            <span>Năm học 2025 – 2026</span>
+          </div>
 
-    <div class="intro-card">
-      <i class="fa-solid fa-lightbulb"></i>
-      <h3>Lời giải chuẩn kì thi TSA</h3>
-      <p>
-        Ngắn gọn – chặt chẽ – định hướng phát triển tư duy.
-      </p>
-    </div>
+          <div class="stage-list">
+            <div class="stage-group open">
+              <div class="stage-title" onclick="toggleTree(this)">
+                <i class="fa-solid fa-chevron-down toggle-icon"></i>
+                <i class="fa-solid fa-flag-checkered"></i>
+                <span>Chặng 1: Khởi động</span>
+              </div>
+              <ul class="exam-list">
+                <li class="exam-item active" 
+                    data-drive-id="1xlKTbN8I0sc748O-FlVKj8Qb7nDHo9mt" 
+                    data-title="Bài thi Tuần 1 - Đánh giá tư duy Toán học"
+                    data-date="10/10/2025" 
+                    data-time="60 phút">
+                  <i class="fa-regular fa-file-lines"></i> Bài thi Tuần 1
+                </li>
+                <li class="exam-item" 
+                    data-drive-id="1BGeWoQaCTOCkviJb8fbQ1kxnebybMEDUlZjp3HUO9ks" 
+                    data-title="Bài thi Tuần 2 - Tư duy Đọc hiểu"
+                    data-date="17/10/2025" 
+                    data-time="60 phút">
+                  <i class="fa-regular fa-file-lines"></i> Bài thi Tuần 2
+                </li>
+              </ul>
+            </div>
 
-    <div class="intro-card">
-      <i class="fa-solid fa-rocket"></i>
-      <h3>Training hàng tuần</h3>
-      <p>
-        Hệ thống thi thử và chữa bài hàng tuần nhằm sửa lỗi sai và giúp học sinh làm quen với môi trường thi thật
-      </p>
-    </div>
-  </section>
-      <div class="hero-actions">
-      <a href="2025-2026.html" class="btn primary">
-        <i class="fa-solid fa-calendar-check"></i>
-        Chặng đua 2025-2026
-      </a>
+            <div class="stage-group">
+              <div class="stage-title" onclick="toggleTree(this)">
+                <i class="fa-solid fa-chevron-right toggle-icon"></i>
+                <i class="fa-solid fa-flag-checkered"></i>
+                <span>Chặng 2: Vượt rào</span>
+              </div>
+              <ul class="exam-list" style="display: none;">
+                <li class="exam-item" 
+                    data-drive-id="1xlKTbN8I0sc748O-FlVKj8Qb7nDHo9mt" 
+                    data-title="Đề thi Đột phá Chặng 2"
+                    data-date="15/11/2025" 
+                    data-time="90 phút">
+                  <i class="fa-regular fa-file-lines"></i> Đề thi Chặng 2
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
 
-      <a href="https://pimaxtsa.com/" class="btn ghost" target="_blank" rel="noopener">
-      <i class="fa-solid fa-book-open"></i>
-      Phòng luyện đề
-    </a>
+        <div class="year-group">
+          <div class="year-title" onclick="toggleTree(this)">
+            <i class="fa-solid fa-chevron-right toggle-icon"></i>
+            <i class="fa-solid fa-graduation-cap"></i>
+            <span>Năm học 2024 – 2025</span>
+          </div>
+          <div class="stage-list" style="display: none;">
+            <div class="stage-group">
+              <div class="stage-title" onclick="toggleTree(this)">
+                <i class="fa-solid fa-chevron-right toggle-icon"></i>
+                <i class="fa-solid fa-flag-checkered"></i>
+                <span>Chung kết</span>
+              </div>
+              <ul class="exam-list" style="display: none;">
+                <li class="exam-item" 
+                    data-drive-id="1xlKTbN8I0sc748O-FlVKj8Qb7nDHo9mt" 
+                    data-title="Đề thi Chung kết 2024"
+                    data-date="20/05/2025" 
+                    data-time="120 phút">
+                  <i class="fa-regular fa-file-lines"></i> Đề thi Chung kết
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </aside>
 
-    </div>
+    <main class="preview-area">
+      <div class="preview-header">
+        <h1 id="preview-title">Bài thi Tuần 1 - Đánh giá tư duy Toán học</h1>
+        <div class="drive-info-row">
+          <span><i class="fa-solid fa-calendar"></i> Ngày phát hành: <strong id="preview-date">10/10/2025</strong></span>
+          <span><i class="fa-solid fa-clock"></i> Thời gian: <strong id="preview-time">60 phút</strong></span>
+        </div>
+      </div>
 
-  <p class="hero">
-      Dưới đây là đề thi mẫu các em học sinh có thể tham khảo để đưa ra chiến lược tham gia thi phù hợp.
-  </p>
+      <div class="drive-iframe-container">
+        <iframe id="drive-preview-iframe" 
+                src="https://drive.google.com/file/d/1xlKTbN8I0sc748O-FlVKj8Qb7nDHo9mt/preview" 
+                allow="autoplay"></iframe>
+      </div>
+    </main>
 
-  <div class="drive-embed-box">
-  <div class="drive-header">
-    <i class="fa-regular fa-file-lines"></i>
-    <h3>TSABK Tournament/PMXST25−WTT11</h3>
   </div>
 
-  <div class="drive-info-row">
-    <span><i class="fa-regular fa-calendar"></i> 31/12/2025</span>
-    <span><i class="fa-solid fa-hashtag"></i> Bài Test 1</span>
-    <span><i class="fa-regular fa-clock"></i> 60 phút</span>
-  </div>
-  
-  <!-- Iframe nhúng trực tiếp Google Drive -->
-  <div class="drive-iframe">
-    <iframe src="https://drive.google.com/file/d/1YYJmNPRncCEiXGx31lsOFcATeE_KYcY_/preview" 
-            allow="autoplay" 
-            allowfullscreen>
-    </iframe>
-  </div>
-</div>
-
-<style>
-.drive-embed-box {
-  max-width: 800px;
-  background: #fff;
-  padding: 20px 24px;
-  border-radius: 18px;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
-  margin: 30px auto;
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.drive-embed-box:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 36px rgba(0,0,0,0.15);
-}
-
-.drive-header {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  margin-bottom: 8px;
-}
-
-.drive-header i {
-  font-size: 28px;
-  color: #d83b6a; /* màu chủ đề web */
-}
-
-.drive-header h3 {
-  font-size: 20px;
-  margin: 0;
-  color: #222;
-}
-
-/* Row chứa thông tin chi tiết */
-.drive-info-row {
-  display: flex;
-  gap: 20px;
-  font-size: 14px;
-  color: #888;
-  margin-bottom: 16px;
-}
-
-.drive-info-row i {
-  margin-right: 4px;
-  color: #d83b6a; /* icon cùng màu chủ đề */
-}
-
-.drive-iframe iframe {
-  width: 100%;
-  height: 90vh; /* chiều cao gần bằng màn hình */
-  border: none;
-  border-radius: 12px;
-}
-</style>
-
-
-  
-</div>
-
-<!-- SCRIPT PHẢI ĐẶT CUỐI -->
-<script src="assets/js/layout.js"></script>
-<script src="assets/js/main.js"></script>
-
+  <script src="main.js"></script>
 </body>
-
-      <style>
-    .site-footer {
-  margin-top: 60px;
-  padding-bottom: 24px;
-}
-
-/* dòng kẻ mờ */
-.footer-divider {
-  border: none;
-  height: 2px;
-  background: rgba(0, 0, 0, 0.15);
-  margin-bottom: 18px;
-}
-
-/* nội dung footer */
-.footer-content {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-
-  color: #555;
-  font-size: 16px;
-}
-
-/* logo svg */
-.footer-logo {
-  height: 26px;     /* gọn, học thuật */
-  width: auto;
-}
-
-.footer-text {
-  white-space: nowrap;
-}
-
-  </style>
-  <footer class="site-footer">
-  <hr class="footer-divider">
-
-  <div class="footer-content">
-    <img src="assets/logo1.svg" alt="PimaX Logo" class="footer-logo">
-    <span class="footer-text">BẢN QUYỀN THUỘC VỀ PIMAX</span>
-  </div>
-</footer>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
