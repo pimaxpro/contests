@@ -4,14 +4,11 @@
   <meta charset="UTF-8">
   <title>Blog giải toán – PIMAX TSA</title>
 
-  <!-- Font Awesome -->
-  <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-  <!-- CSS -->
   <link rel="stylesheet" href="assets/css/style.css">
-<link rel="icon" href="logo1.ico">
-  <!-- MathJax CONFIG (PHẢI ĐẶT TRONG HEAD) -->
+  <link rel="icon" href="logo1.ico">
+
   <script>
     window.MathJax = {
       tex: {
@@ -21,208 +18,60 @@
       svg: { fontCache: 'global' }
     };
   </script>
-
-  <!-- MathJax -->
-  <script async
-    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
-  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
 </head>
 
 <body>
-<style>
-    :root {
-  --accent-color: #D83B6A;
-    }
-    .social-wrapper {
-      display: flex;
-      justify-content: center;   /* căn giữa */
-      gap: 12px;
-    }
-    
-    .social-card {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    
-      padding: 6px 12px;
-      border: 1px solid #666;
-      border-radius: 6px;
-    
-      color: #555;              /* đen xám */
-      background: transparent;
-    
-      font-size: 14px;
-      text-decoration: none;
-      font-weight: 500;
-    
-      transition: 
-        background-color 0.2s ease,
-        color 0.2s ease,
-        border-color 0.2s ease;
-    }
-    
-    .social-card .divider {
-      opacity: 0.6;
-    }
-    
-    /* hover: full hồng – chữ trắng */
-    .social-card:hover {
-      background-color: var(--accent-color);
-      color: #fff;
-      border-color: var(--accent-color);
-    }
-    
-    /* đảm bảo icon + dấu | + chữ đều trắng */
-    .social-card:hover .divider {
-      opacity: 1;
-    }
-  </style>
-<div id="page-content">
-
   <section class="hero">
     <h1>
-      <a href="https://pimaxpro.github.io/pimaxtsabk/" class="hero-title-link">
-        PimaX TSABK Tournament
-      </a>
-      <p class="hero-sub">
-      Mathematical Thinking • TSA Training • Problem Solving
-    </p>
+      <a href="index.html" class="hero-title-link">PimaX TSABK Tournament</a>
     </h1>
-     <div class="social-wrapper">
-      <a href="https://www.tiktok.com/@pimaxghettoan"
-         target="_blank"
-         rel="noopener"
-         class="social-card"
-         aria-label="TikTok">
-        <i class="fa-brands fa-tiktok"></i>
-        <span class="divider">|</span>
-        <span class="label">TikTok</span>
-      </a>
-    
-      <a href="https://www.facebook.com/PimaXPro"
-         target="_blank"
-         rel="noopener"
-         class="social-card"
-         aria-label="Facebook">
-        <i class="fa-brands fa-facebook-f"></i>
-        <span class="divider">|</span>
-        <span class="label">Facebook</span>
-      </a>
-    </div>
-    <br>
+    <p class="hero-sub">Mathematical Thinking • TSA Training • Problem Solving</p>
   </section>
 
-    <!-- Hamburger Menu -->
-<div class="menu-dropdown">
-  <input type="checkbox" id="menu-toggle" />
-  <label for="menu-toggle" class="menu-icon">
-    <i class="fa-solid fa-bars"></i>
-  </label>
-  <nav class="menu">
-    <a href="https://pimaxpro.github.io/pimaxtsabk/">
-      <i class="fa-solid fa-house"></i>
-      Trang chủ
-    </a>
-    <a href="2025-2026.html">
-      <i class="fa-solid fa-calendar-days"></i>
-      2025–2026
-    </a>
-    <a href="blog.html">
-      <i class="fa-solid fa-pen-nib"></i>
-      Bình luận
-    </a>
-    <a href="rules.html">
-    <i class="fa-solid fa-file-contract"></i>
-    Thể lệ
-  </a>
-  </nav>
-</div>
-
-<script>
-  // Khi bấm ra ngoài menu, đóng menu
-  document.addEventListener('click', function(e) {
-    const menuDropdown = document.querySelector('.menu-dropdown');
-    const checkbox = document.getElementById('menu-toggle');
-    
-    if (checkbox.checked && !menuDropdown.contains(e.target)) {
-      checkbox.checked = false;
-    }
-  });
-</script>
-
-  <div class="post" data-tags="to-hop">
-  <div class="post-meta">
-    <span class="post-date"><i class="fa-regular fa-calendar"></i> 31/12/2025</span>
-    <span class="post-tags">
-      <i class="fa-solid fa-tag"></i>
-      <a href="#" class="tag" data-tag="to-hop">Tổ hợp</a>
-    </span>
-    <span class="post-difficulty"><i class="fa-solid fa-signal"></i> Hard</span>
+  <div class="menu-dropdown">
+    <input type="checkbox" id="menu-toggle" />
+    <label for="menu-toggle" class="menu-icon"><i class="fa-solid fa-bars"></i></label>
+    <nav class="menu">
+      <a href="index.html"><i class="fa-solid fa-house"></i> Trang chủ</a>
+      <a href="2025-2026.html"><i class="fa-solid fa-calendar-days"></i> 2025–2026</a>
+      <a href="blog.html" class="active"><i class="fa-solid fa-pen-nib"></i> Bình luận</a>
+      <a href="rules.html"><i class="fa-solid fa-file-contract"></i> Thể lệ</a>
+    </nav>
   </div>
 
-  <h2>Bài toán tổ hợp</h2>
+  <script>
+    document.addEventListener('click', function(e) {
+      const menuDropdown = document.querySelector('.menu-dropdown');
+      const checkbox = document.getElementById('menu-toggle');
+      if (checkbox && checkbox.checked && !menuDropdown.contains(e.target)) {
+        checkbox.checked = false;
+      }
+    });
+  </script>
 
-  <p>Thầy Đức có 12 đồng xu cân đối và đồng chất đang được xếp thành một hàng ngang. Bây giờ thầy tiến hành xung từng đồng xu một và vẫn để các đồng xu xếp thành hàng ngang, 
-    sau đó thầy loại bỏ tất cả các đồng xu mà mặt hiện ra giống với một hoặc cả hai đồng xu kề nó. 
-    Xác suất sao cho chỉ còn tối đa một đồng xu có thể viết được dưới dạng \(\frac{a}{b}\), với \(a\) và \(b\) là các số nguyên dương nguyên tố cùng nhau. Giá trị của \(a+b\) bằng</p>
+  <div class="post" data-tags="to-hop" style="max-width: 800px; margin: 20px auto; background: white; padding: 20px; border-radius: 12px;">
+    <h2>Bài toán tổ hợp</h2>
+    <p>Thầy Đức có 12 đồng xu cân đối và đồng chất đang được xếp thành một hàng ngang. Bây giờ thầy tiến hành tung từng đồng xu một và vẫn để các đồng xu xếp thành hàng ngang, sau đó thầy loại bỏ tất cả các đồng xu mà mặt hiện ra giống với một hoặc cả hai đồng xu kề nó. Xác suất sao cho chỉ còn tối đa một đồng xu có thể viết được dưới dạng $\frac{a}{b}$, với $a$ và $b$ là các số nguyên dương nguyên tố cùng nhau. Giá trị của $a+b$ bằng:</p>
 
-  <div class="solution">
-    <button onclick="toggleSolution(this)">Solution</button>
-    <div class="solution-content">
-      Cách 1. Dùng bài toán chia kẹo Euler ta được kết quả là 
-      $$\sum_{k=1}^6\binom{11-k}{k-1}+ \sum_{k=2}^6 k\binom{11-k}{k-2}=329.$$
-      Cách 2. Không mất tính tổng quát, giả sử lần tung đầu tiên là ngửa. Khi đó, ký hiệu mỗi lần tung tiếp theo là $S$ nếu kết quả giống lần trước, và $D$ nếu khác lần trước. 
-      Gắn thêm một ký hiệu $S$ vào mỗi đầu của dãy thu được, khi đó sẽ còn nhiều nhất một đồng xu nếu trong dãy có nhiều nhất một lần xuất hiện của hai chữ $D$ liên tiếp.
-      Với một tập gồm $n$ đồng xu, ký hiệu $a_n$ là số dãy (độ dài $n+1$) chứa đúng một lần xuất hiện của hai chữ $D$ liên tiếp, và $b_n$ là số dãy (độ dài $n+1$) không chứa hai chữ $D$ liên tiếp. 
-      Ta có $a_2=0$ và $b_2=1$. Với $n>2$, suy ra
-      $$
-      b_n=b_{n-2}+b_{n-3}+\cdots+b_2+1
-      $$
-      vì một dãy độ dài $n$ có thể được tạo từ một dãy độ dài $n-k(k \geq 2)$, theo sau bởi $k-1$ chữ $D$ và một chữ $S$; hoặc từ dãy dạng $S D D \ldots D S$.
-      Tương tự,
-      $$
-      a_n=b_{n-1}+a_{n-2}+a_{n-3}+\cdots+a_2+1
-      $$
-      vì một dãy có hai chữ $D$ liên tiếp có thể được tạo theo cách như trên, hoặc bằng cách nối thêm một chữ $D$ vào một dãy không có hai chữ $D$ liên tiếp. 
-      Sử dụng các công thức truy hồi này để tính $a_n$ và $b_n$ với $n=3,4, \ldots, 12$, ta thu được $a_{12}=240$ và $b_{12}=89$. Tổng số dãy có thể là $2^{11}$, do đó xác suất là
-      $$
-      \frac{329}{2048} .
-      $$
-      Chú ý ở đây ta có $b_n=b_{n-1}+b_{n-2}$ và $a_n=a_{n-1}+a_{n-2}+b_{n-3}$. Gọi $F_n$ là số Fibonacci thứ $n$, ta thu được $b_n  =F_{n-1}$ và $a_n =F_{n+1}-n$.
+    <div class="solution">
+      <button onclick="toggleSolution(this)">Xem Lời giải</button>
+      <div class="solution-content" style="display:none; margin-top: 10px;">
+        <p>Cách 1. Dùng bài toán chia kẹo Euler ta được kết quả là:</p>
+        $$\sum_{k=1}^6\binom{11-k}{k-1}+ \sum_{k=2}^6 k\binom{11-k}{k-2}=329.$$
+        <p>Xác suất tương ứng là $\frac{329}{2048}$. Đáp số $a+b = 329 + 2048 = 2377$.</p>
+      </div>
     </div>
   </div>
-</div>
 
+  <footer class="site-footer">
+    <hr class="footer-divider">
+    <div class="footer-content">
+      <img src="assets/logo1.svg" alt="PimaX Logo" class="footer-logo">
+      <span class="footer-text">BẢN QUYỀN THUỘC VỀ PIMAX</span>
+    </div>
+  </footer>
 
-
-</div>
-
-<!-- SCRIPT CUỐI TRANG -->
-<script src="assets/js/layout.js"></script>
-<script src="assets/js/main.js"></script>
-
+  <script src="assets/js/main.js"></script>
 </body>
-
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
