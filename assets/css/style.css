@@ -150,12 +150,12 @@ a {
   font-weight: 700;
 }
 
-/* CHỮ CỦA CÁC CHẶNG: BỎ IN ĐẬM (FONT-WEIGHT NORMAL) */
+/* TÊN CHẶNG: BỎ IN ĐẬM */
 .stage-title {
   font-size: 14px;
   margin-left: 10px;
   margin-top: 4px;
-  font-weight: normal; /* Không in đậm nữa */
+  font-weight: normal;
 }
 
 .exam-item {
@@ -324,6 +324,7 @@ a {
   border: none;
 }
 
+/* LỚP PHỦ CHE GÓC TRÊN BÊN PHẢI ĐỂ VÔ HIỆU HÓA NÚT "POP-OUT" MẶC ĐỊNH CỦA IFRAME DRIVE */
 .iframe-overlay-cover {
   position: absolute;
   top: 0;
@@ -335,7 +336,7 @@ a {
   cursor: default;
 }
 
-/* NÚT CHIA SẺ VÀ COPY LINK BÊN BẢNG CONTROL (DỌC) */
+/* BỘ 3 NÚT TƯƠNG TÁC (COPY LINK / FB SHARE / DRIVE LINK) */
 .side-share-actions {
   position: absolute;
   top: 15px;
@@ -361,11 +362,6 @@ a {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
   transition: all 0.15s ease;
   text-decoration: none;
-}
-
-/* TẮT / ẨN HẲN NÚT DRIVE MỞ CỬA SỔ MỚI (#btn-drive-link) */
-#btn-drive-link {
-  display: none !important;
 }
 
 .side-share-btn:hover {
