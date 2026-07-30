@@ -108,9 +108,10 @@ a {
   overflow-y: auto;
 }
 
+/* Tiêu đề Danh sách Bài thi dùng màu đen nhạt đồng bộ */
 .sidebar-header h2 {
   font-size: 18px;
-  color: #d83b6a;
+  color: #2d3748;
   border-bottom: 2px solid #f0f0f0;
   padding-bottom: 12px;
   margin-bottom: 16px;
@@ -119,13 +120,17 @@ a {
   gap: 8px;
 }
 
+.sidebar-header h2 i {
+  color: #d83b6a;
+}
+
 .tree-menu {
   display: flex;
   flex-direction: column;
   gap: 8px;
 }
 
-/* MÀU CHỮ CỘT TRÁI CHUYỂN HẾT THÀNH ĐEN NHẠT (#2d3748) KHI KHÔNG HOVER */
+/* Tất cả các box Năm học, Chặng, Bài thi dùng NỀN XÁM NHẠT (#f8f9fa) và CHỮ ĐEN NHẠT (#2d3748) */
 .year-title, 
 .stage-title, 
 .exam-item {
@@ -136,19 +141,18 @@ a {
   border-radius: 8px;
   cursor: pointer;
   font-weight: 600;
-  color: #2d3748; /* Đen nhạt đồng bộ */
+  color: #2d3748;
+  background: #f8f9fa; /* Màu xám nhạt đồng bộ */
   transition: all 0.2s ease;
   user-select: none;
 }
 
 .year-title {
-  background: #fdf2f5;
   font-size: 15px;
   font-weight: 700;
 }
 
 .stage-title {
-  background: #f8f9fa;
   font-size: 14px;
   margin-left: 10px;
   margin-top: 4px;
@@ -156,6 +160,7 @@ a {
 }
 
 .exam-item {
+  background: transparent;
   padding: 9px 12px;
   font-size: 14px;
   margin-bottom: 4px;
@@ -163,7 +168,7 @@ a {
 
 .year-title:hover, 
 .stage-title:hover {
-  background: #fae2e9;
+  background: #edf2f7;
   color: #d83b6a;
 }
 
@@ -178,7 +183,7 @@ a {
   color: #d83b6a;
 }
 
-/* Khi active */
+/* Khi active bài thi */
 .exam-item.active {
   background: #d83b6a;
   color: #ffffff;
@@ -192,7 +197,7 @@ a {
 .toggle-icon {
   font-size: 12px;
   width: 14px;
-  color: #888;
+  color: #718096;
 }
 
 /* CỘT PHẢI: XEM TRƯỚC FILE DRIVE */
@@ -206,36 +211,48 @@ a {
   flex-direction: column;
 }
 
-.preview-header h1 {
-  font-size: 22px;
-  color: #222;
-  margin-bottom: 12px;
+/* THIẾT KẾ MỚI CHO FORM TIÊU ĐỀ KHU VỰC XEM TRƯỚC (GIỐNG ẢNH MẪU) */
+.preview-header {
+  margin-bottom: 16px;
+}
+
+.preview-title-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.preview-title-row .doc-icon {
+  font-size: 26px;
+  color: #d83b6a;
+}
+
+.preview-title-row h1 {
+  font-size: 24px;
+  font-weight: 800;
+  color: #1a202c;
+  margin: 0;
 }
 
 .preview-meta-row {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  margin-bottom: 16px;
+  gap: 20px;
   flex-wrap: wrap;
 }
 
-.update-time-info {
-  font-size: 13px;
-  color: #718096;
+.meta-item {
   display: flex;
   align-items: center;
   gap: 6px;
-}
-
-.update-time-info i {
-  color: #a0aec0;
-}
-
-.update-time-info strong {
-  font-weight: 500;
+  font-size: 15px;
   color: #718096;
+}
+
+.meta-icon {
+  color: #d83b6a;
+  font-size: 14px;
 }
 
 .week-buttons {
@@ -275,7 +292,6 @@ a {
   box-shadow: 0 2px 5px rgba(0,0,0,0.06);
 }
 
-/* HIỆU ỨNG BẤM CỦA NÚT WEEK-BTN (BVT, RANKING, SOLUTION) */
 .week-btn:active {
   transform: scale(0.95);
   background: #fdf2f5;
@@ -333,7 +349,7 @@ a {
   border-radius: 50%;
   border: 1px solid #e2e8f0;
   background: #ffffff;
-  color: #d83b6a; /* Cùng 1 màu icon ban đầu */
+  color: #d83b6a;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -352,7 +368,6 @@ a {
   box-shadow: 0 6px 16px rgba(216, 59, 106, 0.3);
 }
 
-/* HIỆU ỨNG BẤM VÀO (ACTIVE) CỦA BỘ 3 NÚT SHARE */
 .side-share-btn:active {
   transform: scale(0.92);
   background: #b82650;
