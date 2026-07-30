@@ -155,7 +155,7 @@ a {
   font-size: 14px;
   margin-left: 10px;
   margin-top: 4px;
-  font-weight: normal;
+  font-weight: normal !important;
 }
 
 .exam-item {
@@ -329,8 +329,8 @@ a {
   position: absolute;
   top: 0;
   right: 0;
-  width: 60px;
-  height: 60px;
+  width: 65px;
+  height: 65px;
   z-index: 15;
   background: transparent;
   cursor: default;
@@ -354,7 +354,7 @@ a {
   border: 1px solid #e2e8f0;
   background: #ffffff;
   color: #d83b6a;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
   font-size: 15px;
