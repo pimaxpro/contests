@@ -11,11 +11,9 @@
 <body>
 
   <div id="page-content">
-
     <section class="hero">
       <h1><a href="https://pimaxpro.github.io/contests/" class="hero-title-link" id="hero-title">--</a></h1>
       <p class="hero-sub" id="hero-sub">--</p>
-
       <div class="social-wrapper">
         <a href="https://www.tiktok.com/@pimaxghettoan" target="_blank" rel="noopener" class="social-card"><i class="fa-brands fa-tiktok"></i> <span class="divider">|</span> TikTok</a>
         <a href="https://www.facebook.com/PimaXPro" target="_blank" rel="noopener" class="social-card"><i class="fa-brands fa-facebook-f"></i> <span class="divider">|</span> Facebook</a>
@@ -23,27 +21,21 @@
     </section>
 
     <div class="layout-2col">
-      <!-- CỘT 1: SIDEBAR TỰ ĐỘNG RENDER TỪ DATA -->
       <aside class="sidebar-exams">
-        <div class="sidebar-header">
-          <h2><i class="fa-solid fa-folder-tree"></i> Danh sách Bài thi</h2>
-        </div>
+        <div class="sidebar-header"><h2><i class="fa-solid fa-folder-tree"></i> Danh sách Bài thi</h2></div>
         <div id="tree-menu" class="tree-menu"></div>
       </aside>
 
-      <!-- CỘT 2: KHUNG PREVIEW XEM BÀI THI -->
       <main class="preview-area">
         <div class="preview-header">
           <div class="preview-title-row">
             <i class="fa-regular fa-file-lines doc-icon"></i>
             <h1 id="preview-title">Đang tải...</h1>
           </div>
-
           <div class="preview-meta-row">
             <div class="meta-item"><i class="fa-regular fa-calendar-days meta-icon"></i><span id="update-time-val">--/--/----</span></div>
             <div class="meta-item"><i class="fa-solid fa-hashtag meta-icon"></i><span id="subtitle-val">--</span></div>
             <div class="meta-item"><i class="fa-regular fa-clock meta-icon"></i><span id="exam-time-val">--</span></div>
-
             <div class="week-buttons">
               <a id="btn-ranking" class="week-btn" href="#" target="_blank" rel="noopener"><i class="fa-solid fa-chart-column"></i> Ranking</a>
               <a id="btn-solution" class="week-btn" href="#" target="_blank" rel="noopener"><i class="fa-solid fa-play"></i> Solution</a>
@@ -62,23 +54,10 @@
         </div>
       </main>
     </div>
-
   </div>
 
-  <div id="toast-message" class="toast-notification"><i class="fa-solid fa-circle-check"></i> <span id="toast-text">Đã chép liên kết!</span></div>
-
-  <footer class="site-footer">
-    <hr class="footer-divider">
-    <div class="footer-content">
-      <img src="assets/logo1.svg" alt="PimaX Logo" class="footer-logo">
-      <span class="footer-text">BẢN QUYỀN THUỘC VỀ PIMAX</span>
-    </div>
-  </footer>
-
-  <!-- NHÚNG FILE DATA DÀNH RIÊNG CHO TOURNAMENT -->
   <script src="assets/js/data/data-tournament.js"></script>
-  
-  <!-- CÁC MÔ-ĐỤN XỬ LÝ CHUNG -->
+  <script src="assets/js/modules/ui-components.js"></script>
   <script src="assets/js/modules/menu-tree.js"></script>
   <script src="assets/js/modules/pdf-viewer.js"></script>
   <script src="assets/js/modules/share-actions.js"></script>
