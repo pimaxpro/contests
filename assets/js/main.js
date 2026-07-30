@@ -25,7 +25,7 @@ function toggleTree(element) {
   }
 }
 
-// 2. Chuyển đổi bài thi & cập nhật thời gian update, các đường link BVT / Solution / Ranking
+// 2. Chuyển đổi bài thi & cập nhật ngày cập nhật, các đường link BVT / Solution / Ranking
 document.addEventListener('DOMContentLoaded', () => {
   const examItems = document.querySelectorAll('.exam-item');
   const iframe = document.getElementById('drive-preview-iframe');
