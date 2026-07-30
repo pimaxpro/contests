@@ -129,7 +129,7 @@ a {
   gap: 8px;
 }
 
-/* ÉP TẤT CẢ BOX CỘT TRÁI (NĂM HỌC + CHẶNG) VỀ DẠNG NỀN XÁM NHẠT (#f8f9fa) KHÔNG CÒN MÀU HỒNG */
+/* BOX CỘT TRÁI (NĂM HỌC + CHẶNG) */
 .year-title, 
 .stage-title, 
 .exam-item {
@@ -139,9 +139,8 @@ a {
   padding: 10px 12px;
   border-radius: 8px;
   cursor: pointer;
-  font-weight: 600;
   color: #2d3748;
-  background: #f8f9fa !important; /* Xám nhạt tuyệt đối */
+  background: #f8f9fa !important;
   transition: all 0.2s ease;
   user-select: none;
 }
@@ -151,11 +150,12 @@ a {
   font-weight: 700;
 }
 
+/* CHỮ CỦA CÁC CHẶNG: BỎ IN ĐẬM (FONT-WEIGHT NORMAL) */
 .stage-title {
   font-size: 14px;
   margin-left: 10px;
   margin-top: 4px;
-  font-weight: 700;
+  font-weight: normal; /* Không in đậm nữa */
 }
 
 .exam-item {
@@ -163,6 +163,7 @@ a {
   padding: 9px 12px;
   font-size: 14px;
   margin-bottom: 4px;
+  font-weight: 500;
 }
 
 .year-title:hover, 
@@ -214,7 +215,7 @@ a {
   margin-bottom: 16px;
 }
 
-/* TIÊU ĐỀ NẰM TRÊN CÙNG HÀNG VỚI ICON & TĂNG KÍCH THƯỚC ICON */
+/* TIÊU ĐỀ NẰM TRÊN CÙNG HÀNG VỚI ICON */
 .preview-title-row {
   display: flex;
   align-items: center;
@@ -223,7 +224,7 @@ a {
 }
 
 .preview-title-row .doc-icon {
-  font-size: 34px; /* Icon tờ giấy lớn hơn rõ ràng */
+  font-size: 34px;
   color: #d83b6a;
   flex-shrink: 0;
   line-height: 1;
@@ -305,7 +306,7 @@ a {
   color: #d83b6a;
 }
 
-/* DRIVE IFRAME CONTAINER & BỘ 3 NÚT TƯƠNG TÁC DỌC CÙNG MÀU */
+/* DRIVE IFRAME CONTAINER */
 .drive-iframe-container {
   position: relative;
   flex-grow: 1;
@@ -334,7 +335,7 @@ a {
   cursor: default;
 }
 
-/* ĐẶT BỘ 3 NÚT CHIA SẺ NỔI DỌC Ở GÓC TRÊN BÊN PHẢI */
+/* NÚT CHIA SẺ VÀ COPY LINK BÊN BẢNG CONTROL (DỌC) */
 .side-share-actions {
   position: absolute;
   top: 15px;
@@ -360,6 +361,11 @@ a {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
   transition: all 0.15s ease;
   text-decoration: none;
+}
+
+/* TẮT / ẨN HẲN NÚT DRIVE MỞ CỬA SỔ MỚI (#btn-drive-link) */
+#btn-drive-link {
+  display: none !important;
 }
 
 .side-share-btn:hover {
