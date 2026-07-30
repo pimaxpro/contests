@@ -1,4 +1,4 @@
-// 1. Bật/tắt Cây danh mục (Năm học -> Chặng)
+// 1. Hàm bật/tắt Cây danh mục (Năm học -> Chặng)
 function toggleTree(element) {
   const parent = element.parentElement;
   const targetList = parent.querySelector('.stage-list, .exam-list');
@@ -25,7 +25,7 @@ function toggleTree(element) {
   }
 }
 
-// 2. Chuyển đổi bài thi & cập nhật ngày cập nhật, các đường link BVT / Solution / Ranking
+// 2. Chuyển đổi bài thi & nạp dữ liệu vào Cột 2
 document.addEventListener('DOMContentLoaded', () => {
   const examItems = document.querySelectorAll('.exam-item');
   const iframe = document.getElementById('drive-preview-iframe');
@@ -61,28 +61,5 @@ document.addEventListener('DOMContentLoaded', () => {
         if (btnRanking) btnRanking.href = ranking || '#';
       });
     });
-  }
-});
-
-// 3. Hàm mở và đóng Modal Popup Thể lệ cuộc thi
-function openRulesModal() {
-  const modal = document.getElementById('rules-modal');
-  if (modal) {
-    modal.classList.add('open');
-  }
-}
-
-function closeRulesModal() {
-  const modal = document.getElementById('rules-modal');
-  if (modal) {
-    modal.classList.remove('open');
-  }
-}
-
-// Đóng modal khi bấm ra ngoài phần phông nền tối
-window.addEventListener('click', function(e) {
-  const modal = document.getElementById('rules-modal');
-  if (e.target === modal) {
-    closeRulesModal();
   }
 });
