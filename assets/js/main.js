@@ -25,11 +25,12 @@ function toggleTree(element) {
   }
 }
 
-// 2. Chuyển đổi bài thi & cập nhật các đường link BVT / Solution / Ranking
+// 2. Chuyển đổi bài thi & cập nhật thời gian update, các đường link BVT / Solution / Ranking
 document.addEventListener('DOMContentLoaded', () => {
   const examItems = document.querySelectorAll('.exam-item');
   const iframe = document.getElementById('drive-preview-iframe');
   const titleEl = document.getElementById('preview-title');
+  const updateTimeVal = document.getElementById('update-time-val');
   
   const btnBvt = document.getElementById('btn-bvt');
   const btnSolution = document.getElementById('btn-solution');
@@ -43,11 +44,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const driveId = this.getAttribute('data-drive-id');
         const title = this.getAttribute('data-title');
+        const updateTime = this.getAttribute('data-update');
         const bvt = this.getAttribute('data-bvt');
         const solution = this.getAttribute('data-solution');
         const ranking = this.getAttribute('data-ranking');
 
         if (titleEl) titleEl.textContent = title || 'Xem trước bài thi';
+        if (updateTimeVal) updateTimeVal.textContent = updateTime || 'N/A';
 
         if (iframe && driveId) {
           iframe.src = `https://drive.google.com/file/d/${driveId}/preview`;
