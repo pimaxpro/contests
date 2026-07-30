@@ -2,7 +2,34 @@
    CORE MAIN INITIALIZER (DISPATCHER)
 ========================================================= */
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
+  // 0. BỔ SUNG: Tự động nạp file dữ liệu tương ứng (data-tournament.js hoặc data-marathon.js) dựa vào URL ?type=...
+  const urlParams = new URLSearchParams(window.location.search);
+  let contestType = urlParams.get('type');
+
+  if (!contestType) {
+    if (window.location.pathname.includes('Marathon')) contestType = 'marathon';
+    else contestType = 'tournament';
+  }
+
+  // Nạp dữ liệu động trước khi chạy các phần bên dưới
+  await new Promise((resolve) => {
+    const isMarathon = contestType === 'marathon';
+    const scriptId = 'data-contest-script';
+    let dataScript = document.getElementById(scriptId);
+    if (dataScript) dataScript.remove();
+
+    dataScript = document.createElement('script');
+    dataScript.id = scriptId;
+    dataScript.src = isMarathon ? 'assets/js/data/data-marathon.js' : 'assets/js/data/data-tournament.js';
+    dataScript.onload = () => resolve();
+    document.head.appendChild(dataScript);
+  });
+
+  // =========================================================
+  // GIỮ NGUYÊN 100% TOÀN BỘ LOGIC GỐC CỦA THẦY Ở DƯỚI NÀY
+  // =========================================================
+
   // 1. Tự động Render Footer & Toast Notification chung
   if (window.UIComponentsModule) {
     window.UIComponentsModule.init();
