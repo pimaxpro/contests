@@ -25,7 +25,7 @@ function toggleTree(element) {
   }
 }
 
-// 2. Chuyển đổi bài thi & cập nhật form tiêu đề, Hash URL, Link Drive Cửa sổ mới & Share Facebook
+// 2. Chuyển đổi bài thi & cập nhật form tiêu đề linh hoạt theo kỳ thi
 document.addEventListener('DOMContentLoaded', () => {
   const examItems = document.querySelectorAll('.exam-item');
   const iframe = document.getElementById('drive-preview-iframe');
@@ -48,6 +48,10 @@ document.addEventListener('DOMContentLoaded', () => {
   let currentExamHash = '';
   let currentDriveId = '';
 
+  // Nhận diện tự động trang hiện tại để gắn tiền tố tiêu đề chính xác
+  const isMarathonPage = document.body.classList.contains('theme-marathon') || window.location.pathname.includes('Marathon.html');
+  const contestPrefix = isMarathonPage ? 'Infinity/' : 'TSABK Tournament/';
+
   // Hàm hiển thị Toast Notification
   function showToast(msg) {
     if (toastEl && toastText) {
@@ -59,13 +63,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // Hàm chuẩn hóa tiêu đề thành Hash ID (vd: PMXST25−SPRT21 -> PMXST25-SPRT21)
+  // Hàm chuẩn hóa tiêu đề thành Hash ID
   function getExamHash(titleStr) {
     if (!titleStr) return '';
     return titleStr.split('(')[0].trim().replace(/−/g, '-');
   }
 
-  // Hàm chuyển đổi chuỗi ngày "DD/MM/YYYY" để so sánh ngày gần nhất
+  // Hàm chuyển đổi chuỗi ngày "DD/MM/YYYY"
   function parseDateStr(dateStr) {
     if (!dateStr) return new Date(0);
     const parts = dateStr.trim().split('/');
@@ -90,8 +94,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const solution = item.getAttribute('data-solution');
     const ranking = item.getAttribute('data-ranking');
 
-    // Cập nhật phông tiêu đề mới: TSABK Tournament/{TÊN BÀI THI}
-    if (titleEl) titleEl.textContent = `TSABK Tournament/${title || ''}`;
+    // Cập nhật tiêu đề hiển thị đúng tiền tố tương ứng (Infinity/ hoặc TSABK Tournament/)
+    if (titleEl) titleEl.textContent = `${contestPrefix}${title || ''}`;
     if (updateTimeVal) updateTimeVal.textContent = updateTime || '--/--/----';
     if (subtitleVal) subtitleVal.textContent = subtitle || 'Bài Test';
     if (examTimeVal) examTimeVal.textContent = timeLimit;
@@ -104,12 +108,10 @@ document.addEventListener('DOMContentLoaded', () => {
     if (btnSolution) btnSolution.href = solution || '#';
     if (btnRanking) btnRanking.href = ranking || '#';
 
-    // Đặt link mở TRỰC TIẾP tệp preview trên Google Drive ở cửa sổ mới cho nút Drive thứ 3
     if (btnDriveLink && currentDriveId) {
-      btnDriveLink.href = `https://drive.google.com/file/d/${currentDriveId}/preview`;
+      btnDriveLink.href = `https://drive.google.com/file/d/${currentDriveId}/view?usp=sharing`;
     }
 
-    // Cập nhật Hash URL trên thanh địa chỉ
     currentExamHash = getExamHash(title);
     if (currentExamHash) {
       history.replaceState(null, '', `#${currentExamHash}`);
@@ -147,7 +149,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const urlHash = window.location.hash.replace('#', '').trim();
     let targetExam = null;
 
-    // 1. Kiểm tra URL có Hash bài thi hay không
     if (urlHash) {
       examItems.forEach(item => {
         const itemHash = getExamHash(item.getAttribute('data-title'));
@@ -157,7 +158,6 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
 
-    // 2. Nếu không có hash, tự động tìm bài mới nhất
     if (!targetExam) {
       targetExam = examItems[0];
       let maxDate = parseDateStr(targetExam.getAttribute('data-update'));
@@ -173,7 +173,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     activateExam(targetExam);
 
-    // Lắng nghe sự kiện chọn bài thi ở Sidebar
     examItems.forEach(item => {
       item.addEventListener('click', function() {
         activateExam(this);
@@ -190,7 +189,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // NÚT LẤY LIÊN KẾT WEBSITE (COPY CLIPBOARD)
+  // NÚT LẤY LIÊN KẾT WEBSITE
   if (btnCopyLink) {
     btnCopyLink.addEventListener('click', () => {
       const fullLink = window.location.href;
