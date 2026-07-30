@@ -41,6 +41,10 @@
   </div>
 
   <script src="assets/js/modules/ui-components.js"></script>
-  <script>document.addEventListener('DOMContentLoaded', () => window.UIComponentsModule.init());</script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.UIComponentsModule) window.UIComponentsModule.init();
+    });
+  </script>
 </body>
 </html>
