@@ -92,7 +92,7 @@ a {
   gap: 6px;
   padding: 6px 14px;
   border: 1px solid #666;
-  border-radius: 6px;
+  border-radius: 4px; /* Bo góc nút social nhỏ */
   color: #555;
   font-size: 14px;
   font-weight: 500;
@@ -126,7 +126,7 @@ a {
 
 .portal-card {
   background: var(--card-bg);
-  border-radius: 20px;
+  border-radius: 10px; /* GIẢM ĐỘ BO GÓC TỪ 20px XUỐNG 10px */
   padding: 35px 25px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.05);
   border: 1px solid var(--border-color);
@@ -180,7 +180,7 @@ a {
   align-items: center;
   gap: 8px;
   padding: 12px 28px;
-  border-radius: 10px;
+  border-radius: 6px; /* GIẢM ĐỘ BO GÓC TỪ 10px XUỐNG 6px */
   background: var(--accent-color);
   color: #ffffff;
   font-weight: 600;
@@ -228,7 +228,7 @@ a {
 /* Box 1: Cây bài thi */
 .sidebar-exams-box {
   background: var(--card-bg);
-  border-radius: 16px;
+  border-radius: 8px; /* GIẢM ĐỘ BO GÓC TỪ 16px XUỐNG 8px */
   padding: 20px;
   box-shadow: 0 4px 18px rgba(0, 0, 0, 0.06);
   border: 1px solid var(--border-color);
@@ -257,7 +257,7 @@ a {
   align-items: center;
   gap: 8px;
   padding: 10px 12px;
-  border-radius: 8px;
+  border-radius: 5px; /* GIẢM ĐỘ BO GÓC TỪ 8px XUỐNG 5px */
   cursor: pointer;
   color: #2d3748;
   background: #f8f9fa !important;
@@ -288,7 +288,7 @@ a {
 /* Box 2: Box riêng biệt chứa 2 nút hành động dưới Sidebar */
 .sidebar-actions-box {
   background: var(--card-bg);
-  border-radius: 16px;
+  border-radius: 8px; /* GIẢM ĐỘ BO GÓC TỪ 16px XUỐNG 8px */
   padding: 16px;
   box-shadow: 0 4px 18px rgba(0, 0, 0, 0.06);
   border: 1px solid var(--border-color);
@@ -305,7 +305,7 @@ a {
   background-color: #f8f9fa;
   color: var(--text-main);
   border: 1.5px solid #e9ecef;
-  border-radius: 12px;
+  border-radius: 6px; /* GIẢM ĐỘ BO GÓC TỪ 12px XUỐNG 6px */
   font-size: 14.5px;
   font-weight: 600;
   text-decoration: none;
@@ -370,7 +370,7 @@ a {
 .preview-area {
   flex-grow: 1;
   background: var(--card-bg);
-  border-radius: 16px;
+  border-radius: 8px; /* GIẢM ĐỘ BO GÓC TỪ 16px XUỐNG 8px */
   padding: 24px;
   box-shadow: 0 4px 18px rgba(0, 0, 0, 0.06);
   border: 1px solid var(--border-color);
@@ -394,7 +394,7 @@ a {
   gap: 6px;
   width: 95px;
   height: 32px;
-  border-radius: 6px;
+  border-radius: 4px; /* GIẢM ĐỘ BO GÓC TỪ 6px XUỐNG 4px */
   background: #ffffff;
   border: 1px solid var(--border-color);
   color: #4a5568;
@@ -412,7 +412,7 @@ a {
   flex-grow: 1;
   width: 100%;
   min-height: 75vh;
-  border-radius: 12px;
+  border-radius: 6px; /* GIẢM ĐỘ BO GÓC TỪ 12px XUỐNG 6px */
   overflow: hidden;
   border: 1px solid var(--border-color);
 }
@@ -451,7 +451,7 @@ a {
   background: #ffffff;
   color: var(--text-main);
   padding: 12px 24px;
-  border-radius: 50px;
+  border-radius: 25px; /* GIẢM ĐỘ BO GÓC DẠNG PILL */
   font-size: 14.5px;
   font-weight: 600;
   border: 1.5px solid var(--accent-color);
