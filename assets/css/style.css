@@ -11,7 +11,7 @@
   --border-color: #e2e8f0;
 }
 
-/* Theme riêng cho Marathon (Chỉ cần đổi biến màu) */
+/* Theme riêng cho Marathon (Blue) */
 body.theme-marathon {
   --accent-color: #4080D6;       /* Blue (Marathon) */
   --accent-hover: #2b62ab;
@@ -35,15 +35,13 @@ body {
   background-color: var(--bg-color);
   color: var(--text-main);
   line-height: 1.5;
-  
-  /* Cấu hình Flexbox để Footer luôn dính xuống đáy khi nội dung ngắn */
   display: flex;
   flex-direction: column;
   min-height: 100vh;
 }
 
 #page-content {
-  flex: 1 0 auto; /* Đẩy Footer xuống chân trang */
+  flex: 1 0 auto;
 }
 
 a {
@@ -52,7 +50,7 @@ a {
 }
 
 /* =========================================================
-   3. SHARED HERO HEADER (Dùng chung 3 trang)
+   3. SHARED HERO HEADER
 ========================================================= */
 .hero {
   max-width: 900px;
@@ -277,6 +275,85 @@ a {
 
 .exam-item.active i, .active-contest i { color: #ffffff !important; }
 .toggle-icon { font-size: 12px; width: 14px; color: #718096; }
+
+/* Cụm 2 nút bấm nổi bật dưới Sidebar */
+.sidebar-actions {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px dashed var(--border-color);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.sidebar-action-btn {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  background-color: #f8f9fa;
+  color: var(--text-main);
+  border: 1.5px solid #e9ecef;
+  border-radius: 12px;
+  font-size: 14.5px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.02);
+  position: relative;
+  overflow: hidden;
+}
+
+.sidebar-action-btn > i:first-child {
+  font-size: 17px;
+  color: var(--accent-color);
+  transition: transform 0.25s ease, color 0.25s ease;
+}
+
+.sidebar-action-btn span {
+  flex-grow: 1;
+}
+
+.sidebar-action-btn .btn-arrow {
+  font-size: 11px;
+  color: #a0aec0;
+  transition: all 0.25s ease;
+}
+
+.sidebar-action-btn.btn-practice:hover {
+  background-color: #ffffff;
+  border-color: var(--accent-color);
+  color: var(--accent-color);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+}
+
+.sidebar-action-btn.btn-practice:hover .btn-arrow {
+  color: var(--accent-color);
+  transform: translate(2px, -2px);
+}
+
+.sidebar-action-btn.btn-course {
+  background-color: var(--accent-color);
+  color: #ffffff;
+  border-color: var(--accent-color);
+}
+
+.sidebar-action-btn.btn-course > i:first-child,
+.sidebar-action-btn.btn-course .btn-arrow {
+  color: #ffffff;
+}
+
+.sidebar-action-btn.btn-course:hover {
+  background-color: var(--accent-hover);
+  border-color: var(--accent-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.sidebar-action-btn.btn-course:hover .btn-arrow {
+  transform: translate(2px, -2px);
+}
 
 /* Cột phải: Khung Preview */
 .preview-area {
