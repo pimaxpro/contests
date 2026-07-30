@@ -1,4 +1,4 @@
-// 1. Hàm bật/tắt Cây danh mục (Năm học -> Chặng)
+// 1. Bật/tắt Cây danh mục (Năm học -> Chặng)
 function toggleTree(element) {
   const parent = element.parentElement;
   const targetList = parent.querySelector('.stage-list, .exam-list');
@@ -25,13 +25,15 @@ function toggleTree(element) {
   }
 }
 
-// 2. Chuyển đổi bài thi và tải Iframe xem trước ở Cột 2
+// 2. Chuyển đổi bài thi & cập nhật các đường link BVT / Solution / Ranking
 document.addEventListener('DOMContentLoaded', () => {
   const examItems = document.querySelectorAll('.exam-item');
   const iframe = document.getElementById('drive-preview-iframe');
   const titleEl = document.getElementById('preview-title');
-  const dateEl = document.getElementById('preview-date');
-  const timeEl = document.getElementById('preview-time');
+  
+  const btnBvt = document.getElementById('btn-bvt');
+  const btnSolution = document.getElementById('btn-solution');
+  const btnRanking = document.getElementById('btn-ranking');
 
   if (examItems.length > 0) {
     examItems.forEach(item => {
@@ -41,43 +43,40 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const driveId = this.getAttribute('data-drive-id');
         const title = this.getAttribute('data-title');
-        const date = this.getAttribute('data-date');
-        const time = this.getAttribute('data-time');
+        const bvt = this.getAttribute('data-bvt');
+        const solution = this.getAttribute('data-solution');
+        const ranking = this.getAttribute('data-ranking');
 
         if (titleEl) titleEl.textContent = title || 'Xem trước bài thi';
-        if (dateEl) dateEl.textContent = date || 'N/A';
-        if (timeEl) timeEl.textContent = time || 'N/A';
 
         if (iframe && driveId) {
           iframe.src = `https://drive.google.com/file/d/${driveId}/preview`;
         }
+
+        if (btnBvt) btnBvt.href = bvt || '#';
+        if (btnSolution) btnSolution.href = solution || '#';
+        if (btnRanking) btnRanking.href = ranking || '#';
       });
     });
   }
 });
 
-// 3. Hàm ẩn/hiện Lời giải (cho blog.html)
-function toggleSolution(btn) {
-  const content = btn.nextElementSibling;
-  if (content) {
-    content.classList.toggle("open");
-    if (content.classList.contains("open") && window.MathJax) {
-      MathJax.typesetPromise([content]);
-    }
-  }
-}
-// Xử lý đóng/mở Modal Thể lệ cuộc thi
+// 3. Hàm mở và đóng Modal Popup Thể lệ cuộc thi
 function openRulesModal() {
   const modal = document.getElementById('rules-modal');
-  if (modal) modal.classList.add('open');
+  if (modal) {
+    modal.classList.add('open');
+  }
 }
 
 function closeRulesModal() {
   const modal = document.getElementById('rules-modal');
-  if (modal) modal.classList.remove('open');
+  if (modal) {
+    modal.classList.remove('open');
+  }
 }
 
-// Bấm ra ngoài vùng trắng của modal để đóng
+// Đóng modal khi bấm ra ngoài phần phông nền tối
 window.addEventListener('click', function(e) {
   const modal = document.getElementById('rules-modal');
   if (e.target === modal) {
