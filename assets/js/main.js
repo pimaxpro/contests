@@ -25,7 +25,7 @@ function toggleTree(element) {
   }
 }
 
-// 2. Chuyển đổi bài thi & tự động xử lý Hash URL, Lấy liên kết Web & Link Drive & Share Facebook
+// 2. Chuyển đổi bài thi & tự động xử lý Hash URL, Lấy liên kết Web, Link Drive Cửa sổ mới & Share Facebook
 document.addEventListener('DOMContentLoaded', () => {
   const examItems = document.querySelectorAll('.exam-item');
   const iframe = document.getElementById('drive-preview-iframe');
@@ -94,6 +94,11 @@ document.addEventListener('DOMContentLoaded', () => {
     if (btnBvt) btnBvt.href = bvt || '#';
     if (btnSolution) btnSolution.href = solution || '#';
     if (btnRanking) btnRanking.href = ranking || '#';
+
+    // Cập nhật đường link xem trực tiếp trên Google Drive cho nút Drive thứ 3
+    if (btnDriveLink && currentDriveId) {
+      btnDriveLink.href = `https://drive.google.com/file/d/${currentDriveId}/view?usp=sharing`;
+    }
 
     // Cập nhật Hash URL trên thanh địa chỉ
     currentExamHash = getExamHash(title);
@@ -185,20 +190,6 @@ document.addEventListener('DOMContentLoaded', () => {
       }).catch(err => {
         console.error('Lỗi khi chép liên kết:', err);
       });
-    });
-  }
-
-  // NÚT LẤY LINK GOOGLE DRIVE (COPY CLIPBOARD)
-  if (btnDriveLink) {
-    btnDriveLink.addEventListener('click', () => {
-      if (currentDriveId) {
-        const driveUrl = `https://drive.google.com/file/d/${currentDriveId}/view?usp=sharing`;
-        navigator.clipboard.writeText(driveUrl).then(() => {
-          showToast('Đã chép link Google Drive vào bộ nhớ tạm!');
-        }).catch(err => {
-          console.error('Lỗi khi chép link Drive:', err);
-        });
-      }
     });
   }
 });
