@@ -1,4 +1,4 @@
-// Cấu hình thư viện PDF.js Worker
+// Cấu hình Worker PDF.js
 if (window.pdfjsLib) {
   pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
 }
@@ -51,7 +51,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const btnCloseModal = document.getElementById('btn-close-modal');
   const btnRenderPages = document.getElementById('btn-render-pages');
   const btnDownloadZip = document.getElementById('btn-download-all-zip');
+  
   const pageRangeInput = document.getElementById('page-range-input');
+  const imgFormatSelect = document.getElementById('img-format-select');
+  const imgDpiSelect = document.getElementById('img-dpi-select');
+  const progressBarBox = document.getElementById('progress-bar-box');
+  const progressBarFill = document.getElementById('progress-bar-fill');
   const renderStatus = document.getElementById('pdf-render-status');
   const imagesPreviewGrid = document.getElementById('pdf-images-preview-grid');
 
@@ -62,7 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let currentDriveId = '';
   let currentExamTitle = '';
   let currentPdfDocument = null;
-  let renderedCanvases = [];
+  let renderedImagesData = [];
 
   const isMarathonPage = document.body.classList.contains('theme-marathon') || window.location.pathname.includes('Marathon.html');
   const contestPrefix = isMarathonPage ? 'Infinity/' : 'TSABK Tournament/';
@@ -152,7 +157,41 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // KHỦNG XỬ LÝ CHUYỂN PDF THÀNH ẢNH DÙNG PDF.JS
+  // TẢI FILE PDF TRỰC TIẾP TỪ DRIVE SỬ DỤNG LINK GOOGLE CONTENT HỢP LỆ (KHÔNG BỊ CHẶN CORS)
+  async function loadPdfDocument(driveId) {
+    currentPdfDocument = null;
+    renderStatus.textContent = 'Đang kết nối và tải bài thi từ Google Drive...';
+    progressBarBox.style.display = 'block';
+    progressBarFill.style.width = '20%';
+
+    const directDriveUrl = `https://lh3.googleusercontent.com/d/${driveId}`;
+    const corsProxyUrl = `https://corsproxy.io/?${encodeURIComponent(`https://drive.google.com/uc?export=download&id=${driveId}`)}`;
+
+    try {
+      // Cách 1: Thử lấy trực tiếp
+      const loadingTask = pdfjsLib.getDocument(directDriveUrl);
+      currentPdfDocument = await loadingTask.promise;
+    } catch (err1) {
+      try {
+        // Cách 2: Qua CORS Proxy dự phòng
+        const loadingTask2 = pdfjsLib.getDocument(corsProxyUrl);
+        currentPdfDocument = await loadingTask2.promise;
+      } catch (err2) {
+        console.error('Drive Load Error:', err2);
+      }
+    }
+
+    progressBarFill.style.width = '100%';
+    setTimeout(() => { progressBarBox.style.display = 'none'; }, 300);
+
+    if (currentPdfDocument) {
+      renderStatus.textContent = `Tải file thành công! Tổng số: ${currentPdfDocument.numPages} trang. Bấm "Chuyển Đổi & Xem Trước" để xuất ảnh.`;
+    } else {
+      renderStatus.textContent = 'Không thể tải trực tiếp file PDF này do quyền truy cập riêng tư của Google Drive. Vui lòng mở nút Google Drive để tải về thủ công.';
+    }
+  }
+
+  // SỰ KIỆN BẤM NÚT PDF TO IMG
   if (btnPdfToImg) {
     btnPdfToImg.addEventListener('click', () => {
       if (!currentDriveId) {
@@ -163,19 +202,8 @@ document.addEventListener('DOMContentLoaded', () => {
       modalContainer.classList.add('show');
       imagesPreviewGrid.innerHTML = '';
       btnDownloadZip.style.display = 'none';
-      renderStatus.textContent = 'Đang tải tệp PDF từ Google Drive...';
-
-      // Tạo URL tải file PDF trực tiếp thông qua Google Drive Export
-      const pdfDirectUrl = `https://lh3.googleusercontent.com/u/0/d/${currentDriveId}`;
-      const proxyUrl = `https://api.allorigins.win/raw?url=${encodeURIComponent(`https://drive.google.com/uc?export=download&id=${currentDriveId}`)}`;
-
-      pdfjsLib.getDocument(proxyUrl).promise.then(pdf => {
-        currentPdfDocument = pdf;
-        renderStatus.textContent = `Tải thành công! Tệp gồm ${pdf.numPages} trang. Bấm "Xem trước & Tạo ảnh" để bắt đầu.`;
-      }).catch(err => {
-        console.error(err);
-        renderStatus.textContent = 'Không thể tải trực tiếp file PDF này do chính sách bảo mật Google Drive. Bạn có thể mở file trực tiếp trên Drive để tải về.';
-      });
+      
+      loadPdfDocument(currentDriveId);
     });
   }
 
@@ -185,7 +213,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // TÁCH CHUỖI TRANG CẦN XUẤT (vd: 1, 3, 5-7 hoặc all)
   function parsePageRanges(inputStr, totalPages) {
     const pages = new Set();
     const str = inputStr.trim().toLowerCase();
@@ -216,11 +243,11 @@ document.addEventListener('DOMContentLoaded', () => {
     return Array.from(pages).sort((a, b) => a - b);
   }
 
-  // RENDER CÁC TRANG LÊN CANVAS
+  // THỰC HIỆN XUẤT ÁNH
   if (btnRenderPages) {
     btnRenderPages.addEventListener('click', async () => {
       if (!currentPdfDocument) {
-        alert('File PDF chưa được tải xong!');
+        alert('File PDF chưa tải xong hoặc không thể truy cập! Vui lòng thử lại sau.');
         return;
       }
 
@@ -232,66 +259,86 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
 
+      const format = imgFormatSelect.value; // png / jpeg
+      const scale = parseFloat(imgDpiSelect.value); // 1.5, 2.0, 3.0
+
       imagesPreviewGrid.innerHTML = '';
-      renderedCanvases = [];
+      renderedImagesData = [];
       btnDownloadZip.style.display = 'none';
+      progressBarBox.style.display = 'block';
 
       for (let i = 0; i < targetPages.length; i++) {
         const pageNum = targetPages[i];
-        renderStatus.textContent = `Đang chuyển đổi trang ${pageNum} / ${totalPages}...`;
+        const percent = Math.round(((i + 1) / targetPages.length) * 100);
+        
+        progressBarFill.style.width = `${percent}%`;
+        renderStatus.textContent = `Đang xử lý xuất ảnh trang ${pageNum} / ${totalPages} (${percent}%)...`;
 
         const page = await currentPdfDocument.getPage(pageNum);
-        const viewport = page.getViewport({ scale: 2.0 }); // Tỷ lệ x2 cho ảnh nét
+        const viewport = page.getViewport({ scale: scale });
 
         const canvas = document.createElement('canvas');
         const ctx = canvas.getContext('2d');
         canvas.height = viewport.height;
         canvas.width = viewport.width;
 
+        // Vẽ phông trắng cho JPG để tránh bị đen
+        if (format === 'jpeg') {
+          ctx.fillStyle = '#ffffff';
+          ctx.fillRect(0, 0, canvas.width, canvas.height);
+        }
+
         await page.render({ canvasContext: ctx, viewport: viewport }).promise;
+
+        const mimeType = format === 'jpeg' ? 'image/jpeg' : 'image/png';
+        const imgDataUrl = canvas.toDataURL(mimeType, 0.92);
 
         const card = document.createElement('div');
         card.className = 'pdf-page-card';
 
+        const img = document.createElement('img');
+        img.src = imgDataUrl;
+        img.alt = `Trang ${pageNum}`;
+
         const label = document.createElement('span');
         label.className = 'page-label';
-        label.textContent = `Trang ${pageNum}`;
+        label.textContent = `Trang ${pageNum} (${format.toUpperCase()})`;
 
         const downloadBtn = document.createElement('button');
         downloadBtn.className = 'btn-download-single';
-        downloadBtn.innerHTML = `<i class="fa-solid fa-download"></i> Tải ảnh trang ${pageNum}`;
+        downloadBtn.innerHTML = `<i class="fa-solid fa-download"></i> Tải Ảnh Trang ${pageNum}`;
         downloadBtn.addEventListener('click', () => {
           const a = document.createElement('a');
-          a.href = canvas.toDataURL('image/png');
-          a.download = `${currentExamTitle}_Trang_${pageNum}.png`;
+          a.href = imgDataUrl;
+          a.download = `${currentExamTitle}_Trang_${pageNum}.${format}`;
           a.click();
         });
 
-        card.appendChild(canvas);
+        card.appendChild(img);
         card.appendChild(label);
         card.appendChild(downloadBtn);
         imagesPreviewGrid.appendChild(card);
 
-        renderedCanvases.push({ pageNum, canvas });
+        renderedImagesData.push({ pageNum, dataUrl: imgDataUrl, format });
       }
 
-      renderStatus.textContent = `Đã tạo xong ảnh cho ${targetPages.length} trang được chọn!`;
-      if (renderedCanvases.length > 0) {
+      progressBarBox.style.display = 'none';
+      renderStatus.textContent = `Hoàn thành! Đã chuyển đổi thành công ${targetPages.length} trang dạng ${format.toUpperCase()}.`;
+      if (renderedImagesData.length > 0) {
         btnDownloadZip.style.display = 'inline-flex';
       }
     });
   }
 
-  // TẢI FILE ZIP TOÀN BỘ CÁC TRANG ĐÃ TẠO
+  // TẢI FILE ZIP
   if (btnDownloadZip) {
     btnDownloadZip.addEventListener('click', () => {
-      if (renderedCanvases.length === 0) return;
+      if (renderedImagesData.length === 0) return;
 
       const zip = new JSZip();
-      renderedCanvases.forEach(item => {
-        const dataUrl = item.canvas.toDataURL('image/png');
-        const base64Data = dataUrl.replace(/^data:image\/(png|jpg);base64,/, "");
-        zip.file(`${currentExamTitle}_Trang_${item.pageNum}.png`, base64Data, { base64: true });
+      renderedImagesData.forEach(item => {
+        const base64Data = item.dataUrl.replace(/^data:image\/(png|jpeg|jpg);base64,/, "");
+        zip.file(`${currentExamTitle}_Trang_${item.pageNum}.${item.format}`, base64Data, { base64: true });
       });
 
       zip.generateAsync({ type: 'blob' }).then(content => {
@@ -303,7 +350,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // TỰ ĐỘNG CHỌN BÀI THI KHI TẢI TRANG
+  // AUTO SELECT EXAM
   if (examItems.length > 0) {
     const urlHash = window.location.hash.replace('#', '').trim();
     let targetExam = null;
@@ -339,7 +386,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // NÚT CHIA SẺ FACEBOOK
+  // FACEBOOK SHARE
   if (btnShareFb) {
     btnShareFb.addEventListener('click', () => {
       const shareUrl = encodeURIComponent(window.location.href);
@@ -348,7 +395,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // NÚT LẤY LIÊN KẾT WEBSITE
+  // COPY LINK
   if (btnCopyLink) {
     btnCopyLink.addEventListener('click', () => {
       const fullLink = window.location.href;
