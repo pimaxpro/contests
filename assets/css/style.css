@@ -449,3 +449,71 @@ a {
     max-height: none;
   }
 }
+/* ==========================================
+   THEME RIÊNG CHO PIMAX INFINITY MARATHON (#4080D6)
+========================================== */
+body.theme-marathon {
+  --accent-color: #4080D6;
+}
+
+/* Đổi màu tiêu đề Hero, icon danh mục, icon tiêu đề xem trước */
+body.theme-marathon .hero-title-link,
+body.theme-marathon .sidebar-header h2 i,
+body.theme-marathon .preview-title-row .doc-icon,
+body.theme-marathon .meta-icon {
+  color: #4080D6 !important;
+}
+
+/* Đổi màu hover các nút Social */
+body.theme-marathon .social-card:hover {
+  background-color: #4080D6 !important;
+  border-color: #4080D6 !important;
+  color: #ffffff !important;
+}
+
+/* Đổi màu hover menu danh mục cột trái */
+body.theme-marathon .year-title:hover, 
+body.theme-marathon .stage-title:hover,
+body.theme-marathon .exam-item:hover {
+  color: #4080D6 !important;
+}
+
+/* Đổi màu Active của Item bài thi & Nút chọn kì thi Marathon */
+body.theme-marathon .exam-item.active,
+body.theme-marathon .active-contest {
+  background: #4080D6 !important;
+  color: #ffffff !important;
+}
+
+body.theme-marathon .exam-item.active i {
+  color: #ffffff !important;
+}
+
+/* Đổi màu active & hover của bộ 3 nút tuần (BVT, Ranking, Solution) */
+body.theme-marathon .week-btn:active {
+  background: #eff6ff !important;
+  border-color: #4080D6 !important;
+  color: #4080D6 !important;
+}
+body.theme-marathon .week-btn:active i {
+  color: #4080D6 !important;
+}
+
+/* Đổi màu bộ 3 nút tương tác nổi (Facebook, Copy Link, Drive) */
+body.theme-marathon .side-share-btn {
+  color: #4080D6 !important;
+}
+
+body.theme-marathon .side-share-btn:hover {
+  background: #4080D6 !important;
+  border-color: #4080D6 !important;
+  color: #ffffff !important;
+  box-shadow: 0 6px 16px rgba(64, 128, 214, 0.35) !important;
+}
+
+body.theme-marathon .side-share-btn:active {
+  background: #2b62ab !important;
+  border-color: #2b62ab !important;
+  color: #ffffff !important;
+  box-shadow: 0 2px 6px rgba(43, 98, 171, 0.4) !important;
+}
