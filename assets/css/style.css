@@ -129,7 +129,7 @@ a {
   gap: 8px;
 }
 
-/* TẤT CẢ BOX CỘT TRÁI (NĂM HỌC + CHẶNG): NỀN XÁM NHẠT (#f8f9fa), CHỮ ĐEN NHẠT (#2d3748) */
+/* ÉP TẤT CẢ BOX CỘT TRÁI (NĂM HỌC + CHẶNG) VỀ DẠNG NỀN XÁM NHẠT (#f8f9fa) KHÔNG CÒN MÀU HỒNG */
 .year-title, 
 .stage-title, 
 .exam-item {
@@ -141,7 +141,7 @@ a {
   cursor: pointer;
   font-weight: 600;
   color: #2d3748;
-  background: #f8f9fa !important;
+  background: #f8f9fa !important; /* Xám nhạt tuyệt đối */
   transition: all 0.2s ease;
   user-select: none;
 }
@@ -214,16 +214,16 @@ a {
   margin-bottom: 16px;
 }
 
-/* TIÊU ĐỀ NẰM TRÊN CÙNG HÀNG VỚI ICON */
+/* TIÊU ĐỀ NẰM TRÊN CÙNG HÀNG VỚI ICON & TĂNG KÍCH THƯỚC ICON */
 .preview-title-row {
   display: flex;
   align-items: center;
   gap: 12px;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
 }
 
 .preview-title-row .doc-icon {
-  font-size: 34px;
+  font-size: 34px; /* Icon tờ giấy lớn hơn rõ ràng */
   color: #d83b6a;
   flex-shrink: 0;
   line-height: 1;
@@ -237,26 +237,24 @@ a {
   line-height: 1.2;
 }
 
-/* DÒNG THÔNG TIN PHỤ: BÉ HẰN LẠI VÀ MÀU XÁM NHẠT HẰN ĐỂ KHÔNG BỊ NỔI BẬT */
 .preview-meta-row {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 20px;
   flex-wrap: wrap;
 }
 
 .meta-item {
   display: flex;
   align-items: center;
-  gap: 5px;
-  font-size: 12.5px;
-  color: #8c9ba5;
-  font-weight: 400;
+  gap: 6px;
+  font-size: 15px;
+  color: #718096;
 }
 
 .meta-icon {
-  color: #a0aec0;
-  font-size: 12px;
+  color: #d83b6a;
+  font-size: 14px;
 }
 
 .week-buttons {
@@ -307,7 +305,7 @@ a {
   color: #d83b6a;
 }
 
-/* DRIVE IFRAME CONTAINER & BỘ 3 NÚT TƯƠNG TÁC DỌC */
+/* DRIVE IFRAME CONTAINER & BỘ 3 NÚT TƯƠNG TÁC DỌC CÙNG MÀU */
 .drive-iframe-container {
   position: relative;
   flex-grow: 1;
@@ -336,7 +334,7 @@ a {
   cursor: default;
 }
 
-/* BỘ 3 NÚT CHIA SẺ NỔI DỌC Ở GÓC TRÊN BÊN PHẢI */
+/* ĐẶT BỘ 3 NÚT CHIA SẺ NỔI DỌC Ở GÓC TRÊN BÊN PHẢI */
 .side-share-actions {
   position: absolute;
   top: 15px;
