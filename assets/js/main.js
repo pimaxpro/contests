@@ -25,13 +25,16 @@ function toggleTree(element) {
   }
 }
 
-// 2. Chuyển đổi bài thi & tự động xử lý Hash URL, Lấy liên kết Web, Link Drive Cửa sổ mới & Share Facebook
+// 2. Chuyển đổi bài thi & cập nhật form tiêu đề, Hash URL, Link Drive Cửa sổ mới & Share Facebook
 document.addEventListener('DOMContentLoaded', () => {
   const examItems = document.querySelectorAll('.exam-item');
   const iframe = document.getElementById('drive-preview-iframe');
+  
   const titleEl = document.getElementById('preview-title');
   const updateTimeVal = document.getElementById('update-time-val');
-  
+  const subtitleVal = document.getElementById('subtitle-val');
+  const examTimeVal = document.getElementById('exam-time-val');
+
   const btnBvt = document.getElementById('btn-bvt');
   const btnSolution = document.getElementById('btn-solution');
   const btnRanking = document.getElementById('btn-ranking');
@@ -79,13 +82,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
     currentDriveId = item.getAttribute('data-drive-id');
     const title = item.getAttribute('data-title');
+    const subtitle = item.getAttribute('data-subtitle');
     const updateTime = item.getAttribute('data-update');
+    const timeLimit = item.getAttribute('data-time') || '60 phút';
+
     const bvt = item.getAttribute('data-bvt');
     const solution = item.getAttribute('data-solution');
     const ranking = item.getAttribute('data-ranking');
 
-    if (titleEl) titleEl.textContent = title || 'Xem trước bài thi';
-    if (updateTimeVal) updateTimeVal.textContent = updateTime || 'N/A';
+    // Cập nhật phông tiêu đề mới: TSABK Tournament/{TÊN BÀI THI}
+    if (titleEl) titleEl.textContent = `TSABK Tournament/${title || ''}`;
+    if (updateTimeVal) updateTimeVal.textContent = updateTime || '--/--/----';
+    if (subtitleVal) subtitleVal.textContent = subtitle || 'Bài Test';
+    if (examTimeVal) examTimeVal.textContent = timeLimit;
 
     if (iframe && currentDriveId) {
       iframe.src = `https://drive.google.com/file/d/${currentDriveId}/preview`;
@@ -95,9 +104,9 @@ document.addEventListener('DOMContentLoaded', () => {
     if (btnSolution) btnSolution.href = solution || '#';
     if (btnRanking) btnRanking.href = ranking || '#';
 
-    // Cập nhật đường link xem trực tiếp trên Google Drive cho nút Drive thứ 3
+    // Đặt link mở TRỰC TIẾP tệp preview trên Google Drive ở cửa sổ mới cho nút Drive thứ 3
     if (btnDriveLink && currentDriveId) {
-      btnDriveLink.href = `https://drive.google.com/file/d/${currentDriveId}/view?usp=sharing`;
+      btnDriveLink.href = `https://drive.google.com/file/d/${currentDriveId}/preview`;
     }
 
     // Cập nhật Hash URL trên thanh địa chỉ
@@ -148,7 +157,7 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
 
-    // 2. Nếu không có hash, tự động tìm bài có ngày cập nhật mới nhất
+    // 2. Nếu không có hash, tự động tìm bài mới nhất
     if (!targetExam) {
       targetExam = examItems[0];
       let maxDate = parseDateStr(targetExam.getAttribute('data-update'));
