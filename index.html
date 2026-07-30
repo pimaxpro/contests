@@ -271,12 +271,12 @@
 
       <main class="preview-area">
         <div class="preview-header">
-          <h1 id="preview-title">PMXST26−FALLT1 (Tuần 1)</h1>
+          <h1 id="preview-title">Xem trước bài thi</h1>
           
           <div class="preview-meta-row">
             <div class="update-time-info">
               <i class="fa-regular fa-clock"></i>
-              <span>Cập nhật: <strong id="update-time-val">07/09/2026</strong></span>
+              <span>Cập nhật: <strong id="update-time-val">--/--/----</strong></span>
             </div>
 
             <div class="week-buttons">
@@ -294,19 +294,22 @@
         </div>
 
         <div class="drive-iframe-container">
-          <div class="iframe-overlay-cover" title="Bấm Lấy liên kết bên phải để chia sẻ"></div>
+          <div class="iframe-overlay-cover" title="Bấm các nút bên phải để lấy liên kết bài thi"></div>
 
           <div class="side-share-actions">
-            <button id="btn-share-fb" class="side-share-btn fb-btn" title="Chia sẻ bài thi này lên Facebook">
+            <button id="btn-share-fb" class="side-share-btn" title="Chia sẻ bài thi này lên Facebook">
               <i class="fa-brands fa-facebook-f"></i>
             </button>
-            <button id="btn-copy-link" class="side-share-btn link-btn" title="Lấy liên kết bài thi này">
+            <button id="btn-copy-link" class="side-share-btn" title="Lấy liên kết bài thi này">
               <i class="fa-solid fa-link"></i>
+            </button>
+            <button id="btn-drive-link" class="side-share-btn" title="Lấy link Google Drive">
+              <i class="fa-brands fa-google-drive"></i>
             </button>
           </div>
 
           <iframe id="drive-preview-iframe" 
-                  src="https://drive.google.com/file/d/1-Q2DqPzFNgCnvMi-lVF1w2kY0SsjT6P8/preview" 
+                  src="" 
                   allow="autoplay" allowfullscreen></iframe>
         </div>
       </main>
@@ -316,7 +319,7 @@
   </div>
 
   <div id="toast-message" class="toast-notification">
-    <i class="fa-solid fa-circle-check"></i> Đã chép liên kết vào bộ nhớ tạm!
+    <i class="fa-solid fa-circle-check"></i> <span id="toast-text">Đã chép liên kết vào bộ nhớ tạm!</span>
   </div>
 
   <footer class="site-footer">
