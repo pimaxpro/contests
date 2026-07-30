@@ -92,7 +92,7 @@ a {
   gap: 6px;
   padding: 6px 14px;
   border: 1px solid #666;
-  border-radius: 4px; /* Bo góc nút social nhỏ */
+  border-radius: 4px;
   color: #555;
   font-size: 14px;
   font-weight: 500;
@@ -126,7 +126,7 @@ a {
 
 .portal-card {
   background: var(--card-bg);
-  border-radius: 10px; /* GIẢM ĐỘ BO GÓC TỪ 20px XUỐNG 10px */
+  border-radius: 10px;
   padding: 35px 25px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.05);
   border: 1px solid var(--border-color);
@@ -180,7 +180,7 @@ a {
   align-items: center;
   gap: 8px;
   padding: 12px 28px;
-  border-radius: 6px; /* GIẢM ĐỘ BO GÓC TỪ 10px XUỐNG 6px */
+  border-radius: 6px;
   background: var(--accent-color);
   color: #ffffff;
   font-weight: 600;
@@ -228,7 +228,7 @@ a {
 /* Box 1: Cây bài thi */
 .sidebar-exams-box {
   background: var(--card-bg);
-  border-radius: 8px; /* GIẢM ĐỘ BO GÓC TỪ 16px XUỐNG 8px */
+  border-radius: 8px;
   padding: 20px;
   box-shadow: 0 4px 18px rgba(0, 0, 0, 0.06);
   border: 1px solid var(--border-color);
@@ -257,7 +257,7 @@ a {
   align-items: center;
   gap: 8px;
   padding: 10px 12px;
-  border-radius: 5px; /* GIẢM ĐỘ BO GÓC TỪ 8px XUỐNG 5px */
+  border-radius: 5px;
   cursor: pointer;
   color: #2d3748;
   background: #f8f9fa !important;
@@ -288,7 +288,7 @@ a {
 /* Box 2: Box riêng biệt chứa 2 nút hành động dưới Sidebar */
 .sidebar-actions-box {
   background: var(--card-bg);
-  border-radius: 8px; /* GIẢM ĐỘ BO GÓC TỪ 16px XUỐNG 8px */
+  border-radius: 8px;
   padding: 16px;
   box-shadow: 0 4px 18px rgba(0, 0, 0, 0.06);
   border: 1px solid var(--border-color);
@@ -305,7 +305,7 @@ a {
   background-color: #f8f9fa;
   color: var(--text-main);
   border: 1.5px solid #e9ecef;
-  border-radius: 6px; /* GIẢM ĐỘ BO GÓC TỪ 12px XUỐNG 6px */
+  border-radius: 6px;
   font-size: 14.5px;
   font-weight: 600;
   text-decoration: none;
@@ -370,7 +370,7 @@ a {
 .preview-area {
   flex-grow: 1;
   background: var(--card-bg);
-  border-radius: 8px; /* GIẢM ĐỘ BO GÓC TỪ 16px XUỐNG 8px */
+  border-radius: 8px;
   padding: 24px;
   box-shadow: 0 4px 18px rgba(0, 0, 0, 0.06);
   border: 1px solid var(--border-color);
@@ -392,15 +392,16 @@ a {
   align-items: center;
   justify-content: center;
   gap: 6px;
-  width: 95px;
+  padding: 0 12px;
   height: 32px;
-  border-radius: 4px; /* GIẢM ĐỘ BO GÓC TỪ 6px XUỐNG 4px */
+  border-radius: 4px;
   background: #ffffff;
   border: 1px solid var(--border-color);
   color: #4a5568;
   font-size: 12px;
-  font-weight: 500;
+  font-weight: 600;
   transition: all 0.15s ease;
+  cursor: pointer;
 }
 
 .week-btn:hover { border-color: #cbd5e0; color: #1a202c; box-shadow: 0 2px 5px rgba(0,0,0,0.06); }
@@ -412,7 +413,7 @@ a {
   flex-grow: 1;
   width: 100%;
   min-height: 75vh;
-  border-radius: 6px; /* GIẢM ĐỘ BO GÓC TỪ 12px XUỐNG 6px */
+  border-radius: 6px;
   overflow: hidden;
   border: 1px solid var(--border-color);
 }
@@ -441,7 +442,127 @@ a {
 .side-share-btn:hover { background: var(--accent-color); color: #ffffff; border-color: var(--accent-color); transform: scale(1.08); }
 
 /* =========================================================
-   6. TOAST NOTIFICATION (TRÊN ĐỈNH MÀN HÌNH + CĂN GIỮA)
+   6. MODAL BẢNG ĐÁP ÁN (ANSWER SHEET MODAL)
+========================================================= */
+.answer-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(4px);
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+
+.answer-modal-overlay.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.answer-modal-card {
+  background: #ffffff;
+  width: 90%;
+  max-width: 650px;
+  max-height: 85vh;
+  border-radius: 10px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  animation: modalSlideUp 0.3s ease;
+}
+
+@keyframes modalSlideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.answer-modal-header {
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #f8f9fa;
+}
+
+.answer-modal-header h3 {
+  margin: 0;
+  font-size: 17px;
+  color: var(--accent-color);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 800;
+}
+
+.answer-modal-close {
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: #718096;
+  cursor: pointer;
+  padding: 0 6px;
+  line-height: 1;
+}
+
+.answer-modal-close:hover {
+  color: #1a202c;
+}
+
+.answer-modal-body {
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.answer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(105px, 1fr));
+  gap: 12px;
+}
+
+.answer-item {
+  background: #f8f9fa;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  padding: 8px;
+  text-align: center;
+}
+
+.answer-item .q-num {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-sub);
+  margin-bottom: 4px;
+  display: block;
+}
+
+.answer-item .q-val {
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--accent-color);
+}
+
+.answer-item .tf-sub {
+  font-size: 12px;
+  font-weight: 600;
+  color: #2d3748;
+  display: flex;
+  justify-content: space-between;
+  padding: 2px 4px;
+  border-bottom: 1px dashed #e2e8f0;
+}
+.answer-item .tf-sub:last-child { border-bottom: none; }
+
+/* =========================================================
+   7. TOAST NOTIFICATION (TRÊN ĐỈNH MÀN HÌNH + CĂN GIỮA)
 ========================================================= */
 .toast-notification {
   position: fixed;
@@ -451,7 +572,7 @@ a {
   background: #ffffff;
   color: var(--text-main);
   padding: 12px 24px;
-  border-radius: 25px; /* GIẢM ĐỘ BO GÓC DẠNG PILL */
+  border-radius: 25px;
   font-size: 14.5px;
   font-weight: 600;
   border: 1.5px solid var(--accent-color);
@@ -477,7 +598,7 @@ a {
 }
 
 /* =========================================================
-   7. FOOTER (STICKY AT BOTTOM)
+   8. FOOTER (STICKY AT BOTTOM)
 ========================================================= */
 .site-footer {
   flex-shrink: 0;
