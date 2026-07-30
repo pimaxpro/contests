@@ -212,19 +212,28 @@ a {
   min-height: calc(100vh - 200px);
 }
 
-/* Cột trái: Sidebar */
-.sidebar-exams {
+/* Cột trái: Khung chứa Sidebar (Sticky) */
+.sidebar-column {
   width: 320px;
   flex-shrink: 0;
-  background: var(--card-bg);
-  border-radius: 16px;
-  padding: 20px;
-  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.06);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
   position: sticky;
   top: 20px;
   height: fit-content;
   max-height: calc(100vh - 40px);
+}
+
+/* Box 1: Cây bài thi */
+.sidebar-exams-box {
+  background: var(--card-bg);
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.06);
+  border: 1px solid var(--border-color);
   overflow-y: auto;
+  max-height: calc(100vh - 180px);
 }
 
 .sidebar-header h2 {
@@ -276,11 +285,13 @@ a {
 .exam-item.active i, .active-contest i { color: #ffffff !important; }
 .toggle-icon { font-size: 12px; width: 14px; color: #718096; }
 
-/* Cụm 2 nút bấm nổi bật dưới Sidebar */
-.sidebar-actions {
-  margin-top: 20px;
-  padding-top: 16px;
-  border-top: 1px dashed var(--border-color);
+/* Box 2: Box riêng biệt chứa 2 nút hành động dưới Sidebar */
+.sidebar-actions-box {
+  background: var(--card-bg);
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.06);
+  border: 1px solid var(--border-color);
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -362,6 +373,7 @@ a {
   border-radius: 16px;
   padding: 24px;
   box-shadow: 0 4px 18px rgba(0, 0, 0, 0.06);
+  border: 1px solid var(--border-color);
   display: flex;
   flex-direction: column;
 }
@@ -479,5 +491,6 @@ a {
 
 @media (max-width: 992px) {
   .layout-2col { flex-direction: column; }
-  .sidebar-exams { width: 100%; position: static; max-height: none; }
+  .sidebar-column { width: 100%; position: static; max-height: none; }
+  .sidebar-exams-box { max-height: 400px; }
 }
