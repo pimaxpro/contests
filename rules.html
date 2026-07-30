@@ -3,55 +3,27 @@
 <head>
   <meta charset="UTF-8">
   <title>Thể lệ cuộc thi - PIMAX TSA</title>
-
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="icon" href="logo1.ico">
 </head>
 <body>
-  <section class="hero">
-    <h1>
-      <a href="index.html" class="hero-title-link">PimaX TSABK Tournament</a>
-    </h1>
-    <p class="hero-sub">Mathematical Thinking • TSA Training • Problem Solving</p>
-  </section>
+  <div id="page-content">
+    <section class="hero">
+      <h1>
+        <a href="index.html" class="hero-title-link">PimaX TSABK Tournament</a>
+      </h1>
+      <p class="hero-sub">Mathematical Thinking • TSA Training • Problem Solving</p>
 
-  <div class="menu-dropdown">
-    <input type="checkbox" id="menu-toggle" />
-    <label for="menu-toggle" class="menu-icon"><i class="fa-solid fa-bars"></i></label>
-    <nav class="menu">
-      <a href="index.html"><i class="fa-solid fa-house"></i> Trang chủ</a>
-      <a href="2025-2026.html"><i class="fa-solid fa-calendar-days"></i> 2025–2026</a>
-      <a href="blog.html"><i class="fa-solid fa-pen-nib"></i> Bình luận</a>
-      <a href="rules.html" class="active"><i class="fa-solid fa-file-contract"></i> Thể lệ</a>
-    </nav>
-  </div>
+      <div class="hero-actions" style="margin-top: 20px;">
+        <a href="index.html" class="btn primary"><i class="fa-solid fa-house"></i> Quay lại Trang chủ</a>
+      </div>
+    </section>
 
-  <script>
-    document.addEventListener('click', function(e) {
-      const menuDropdown = document.querySelector('.menu-dropdown');
-      const checkbox = document.getElementById('menu-toggle');
-      if (checkbox && checkbox.checked && !menuDropdown.contains(e.target)) {
-        checkbox.checked = false;
-      }
-    });
-  </script>
-
-  <div style="max-width: 900px; margin: 30px auto; background: white; padding: 30px; border-radius: 16px;">
-    <h2 style="color: #d83b6a;"><i class="fa-solid fa-bullhorn"></i> THỂ LỆ CUỘC THI</h2>
-    <ol style="line-height: 1.8;">
-      <li>
-        <strong>Cấu trúc cuộc thi:</strong> Bao gồm 3 chặng (Winter 2025, Spring 2026, Summer 2026).
-      </li>
-      <li>
-        <strong>Lịch thi hàng tuần:</strong>
-        <ul>
-          <li><strong>Bài thi 1:</strong> 40 câu / 60 phút (diễn ra Thứ 2 hàng tuần).</li>
-          <li><strong>Bài thi 2:</strong> 10 câu / 30 phút (diễn ra Thứ 6 hàng tuần).</li>
-        </ul>
-      </li>
-    </ol>
+    <div class="contest-box" style="max-width: 900px; margin: 20px auto;">
+      <div class="contest-title-box"><i class="fa-solid fa-bullhorn"></i> THỂ LỆ CUỘC THI</div>
+      <p>Chi tiết thể lệ cuộc thi đã được tích hợp xem trực tiếp tại nút <strong>"Thể lệ cuộc thi"</strong> ở Trang chủ.</p>
+    </div>
   </div>
 
   <footer class="site-footer">
@@ -61,7 +33,5 @@
       <span class="footer-text">BẢN QUYỀN THUỘC VỀ PIMAX</span>
     </div>
   </footer>
-
-  <script src="assets/js/main.js"></script>
 </body>
 </html>
