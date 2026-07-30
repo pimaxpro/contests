@@ -125,40 +125,46 @@ a {
   gap: 8px;
 }
 
-.year-title, .stage-title {
+/* TẤT CẢ MÀU CHỮ CỘT TRÁI KHI CHƯA HOVER/ACTIVE ĐỀU GIỐNG HỆT NHAU (#4a5568) */
+.year-title, 
+.stage-title, 
+.exam-item {
   display: flex;
   align-items: center;
   gap: 8px;
   padding: 10px 12px;
   border-radius: 8px;
   cursor: pointer;
-  font-weight: 700;
-  transition: background 0.2s;
+  font-weight: 600;
+  color: #4a5568; /* Màu chữ thống nhất */
+  transition: all 0.2s ease;
   user-select: none;
 }
 
 .year-title {
   background: #fdf2f5;
-  color: #b82650;
   font-size: 15px;
+  font-weight: 700;
 }
 
 .stage-title {
   background: #f8f9fa;
-  color: #444;
   font-size: 14px;
   margin-left: 10px;
   margin-top: 4px;
+  font-weight: 700;
 }
 
-.year-title:hover, .stage-title:hover {
+.exam-item {
+  padding: 9px 12px;
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+
+.year-title:hover, 
+.stage-title:hover {
   background: #fae2e9;
-}
-
-.toggle-icon {
-  font-size: 12px;
-  width: 14px;
-  color: #888;
+  color: #d83b6a;
 }
 
 .exam-list {
@@ -167,24 +173,12 @@ a {
   margin: 6px 0;
 }
 
-.exam-item {
-  padding: 9px 12px;
-  font-size: 14px;
-  color: #555;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: all 0.2s;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 4px;
-}
-
 .exam-item:hover {
   background: #f3f4f6;
   color: #d83b6a;
 }
 
+/* Khi active */
 .exam-item.active {
   background: #d83b6a;
   color: #ffffff;
@@ -193,6 +187,12 @@ a {
 
 .exam-item.active i {
   color: #ffffff;
+}
+
+.toggle-icon {
+  font-size: 12px;
+  width: 14px;
+  color: #888;
 }
 
 /* CỘT PHẢI: XEM TRƯỚC FILE DRIVE */
@@ -275,7 +275,7 @@ a {
   box-shadow: 0 2px 5px rgba(0,0,0,0.06);
 }
 
-/* KHUNG KHUNG XEM DRIVE & CÁC NÚT DỌC NỔI TẠI GÓC PHẢI */
+/* DRIVE IFRAME CONTAINER & BỘ 3 NÚT TƯƠNG TÁC DỌC CÙNG MÀU */
 .drive-iframe-container {
   position: relative;
   flex-grow: 1;
@@ -293,7 +293,7 @@ a {
   border: none;
 }
 
-/* Lớp phủ chặn nút Mở rộng mặc định của Drive */
+/* Lớp phủ chặn nút Pop-out mặc định của Drive */
 .iframe-overlay-cover {
   position: absolute;
   top: 0;
@@ -305,7 +305,7 @@ a {
   cursor: default;
 }
 
-/* ĐẶT 2 NÚT CHIA SẺ NỔI DỌC Ở GÓC TRÊN BÊN PHẢI (HIỂN THỊ NỔI NỔI TRÊN KHUNG DRIVE) */
+/* ĐẶT BỘ 3 NÚT CHIA SẺ NỔI DỌC Ở GÓC TRÊN BÊN PHẢI */
 .side-share-actions {
   position: absolute;
   top: 15px;
@@ -316,42 +316,30 @@ a {
   z-index: 20;
 }
 
+/* TẤT CẢ 3 NÚT DÙNG CHUNG 1 TÔNG MÀU BAN ĐẦU VÀ CÙNG 1 MÀU HIỆU ỨNG (#d83b6a) KHÓA LẠI */
 .side-share-btn {
   width: 38px;
   height: 38px;
   border-radius: 50%;
   border: 1px solid #e2e8f0;
   background: #ffffff;
-  color: #4a5568;
+  color: #d83b6a; /* Cùng 1 màu icon ban đầu */
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 15px;
   cursor: pointer;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
   transition: all 0.2s ease;
 }
 
-.side-share-btn.fb-btn {
-  color: #1877f2;
-}
-
-.side-share-btn.fb-btn:hover {
-  background: #1877f2;
-  color: #ffffff;
-  border-color: #1877f2;
-  transform: scale(1.08);
-}
-
-.side-share-btn.link-btn {
-  color: #d83b6a;
-}
-
-.side-share-btn.link-btn:hover {
-  background: #d83b6a;
-  color: #ffffff;
+.side-share-btn:hover,
+.side-share-btn:active {
+  background: #d83b6a; /* Cùng 1 màu nền khi di chuột/bấm vào */
+  color: #ffffff;     /* Cùng màu icon trắng khi hover */
   border-color: #d83b6a;
   transform: scale(1.08);
+  box-shadow: 0 6px 16px rgba(216, 59, 106, 0.3);
 }
 
 /* THÔNG BÁO TOAST */
