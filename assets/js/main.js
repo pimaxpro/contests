@@ -25,7 +25,7 @@ function toggleTree(element) {
   }
 }
 
-// 2. Chuyển đổi bài thi & tự động xử lý Hash URL, Lấy liên kết & Share Facebook
+// 2. Chuyển đổi bài thi & tự động xử lý Hash URL, Lấy liên kết Web & Link Drive & Share Facebook
 document.addEventListener('DOMContentLoaded', () => {
   const examItems = document.querySelectorAll('.exam-item');
   const iframe = document.getElementById('drive-preview-iframe');
@@ -38,15 +38,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const btnShareFb = document.getElementById('btn-share-fb');
   const btnCopyLink = document.getElementById('btn-copy-link');
+  const btnDriveLink = document.getElementById('btn-drive-link');
   const toastEl = document.getElementById('toast-message');
+  const toastText = document.getElementById('toast-text');
 
   let currentExamHash = '';
+  let currentDriveId = '';
+
+  // Hàm hiển thị Toast Notification
+  function showToast(msg) {
+    if (toastEl && toastText) {
+      toastText.textContent = msg;
+      toastEl.classList.add('show');
+      setTimeout(() => {
+        toastEl.classList.remove('show');
+      }, 2500);
+    }
+  }
 
   // Hàm chuẩn hóa tiêu đề thành Hash ID (vd: PMXST25−SPRT21 -> PMXST25-SPRT21)
   function getExamHash(titleStr) {
     if (!titleStr) return '';
-    const cleanTitle = titleStr.split('(')[0].trim().replace(/−/g, '-');
-    return cleanTitle;
+    return titleStr.split('(')[0].trim().replace(/−/g, '-');
   }
 
   // Hàm chuyển đổi chuỗi ngày "DD/MM/YYYY" để so sánh ngày gần nhất
@@ -64,7 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
     examItems.forEach(i => i.classList.remove('active'));
     item.classList.add('active');
 
-    const driveId = item.getAttribute('data-drive-id');
+    currentDriveId = item.getAttribute('data-drive-id');
     const title = item.getAttribute('data-title');
     const updateTime = item.getAttribute('data-update');
     const bvt = item.getAttribute('data-bvt');
@@ -74,8 +87,8 @@ document.addEventListener('DOMContentLoaded', () => {
     if (titleEl) titleEl.textContent = title || 'Xem trước bài thi';
     if (updateTimeVal) updateTimeVal.textContent = updateTime || 'N/A';
 
-    if (iframe && driveId) {
-      iframe.src = `https://drive.google.com/file/d/${driveId}/preview`;
+    if (iframe && currentDriveId) {
+      iframe.src = `https://drive.google.com/file/d/${currentDriveId}/preview`;
     }
 
     if (btnBvt) btnBvt.href = bvt || '#';
@@ -130,7 +143,7 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
 
-    // 2. Nếu không có hash, tự động tìm bài mới nhất
+    // 2. Nếu không có hash, tự động tìm bài có ngày cập nhật mới nhất
     if (!targetExam) {
       targetExam = examItems[0];
       let maxDate = parseDateStr(targetExam.getAttribute('data-update'));
@@ -163,20 +176,29 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // NÚT LẤY LIÊN KẾT (COPY CLIPBOARD)
+  // NÚT LẤY LIÊN KẾT WEBSITE (COPY CLIPBOARD)
   if (btnCopyLink) {
     btnCopyLink.addEventListener('click', () => {
       const fullLink = window.location.href;
       navigator.clipboard.writeText(fullLink).then(() => {
-        if (toastEl) {
-          toastEl.classList.add('show');
-          setTimeout(() => {
-            toastEl.classList.remove('show');
-          }, 2500);
-        }
+        showToast('Đã chép liên kết bài thi vào bộ nhớ tạm!');
       }).catch(err => {
         console.error('Lỗi khi chép liên kết:', err);
       });
+    });
+  }
+
+  // NÚT LẤY LINK GOOGLE DRIVE (COPY CLIPBOARD)
+  if (btnDriveLink) {
+    btnDriveLink.addEventListener('click', () => {
+      if (currentDriveId) {
+        const driveUrl = `https://drive.google.com/file/d/${currentDriveId}/view?usp=sharing`;
+        navigator.clipboard.writeText(driveUrl).then(() => {
+          showToast('Đã chép link Google Drive vào bộ nhớ tạm!');
+        }).catch(err => {
+          console.error('Lỗi khi chép link Drive:', err);
+        });
+      }
     });
   }
 });
