@@ -1,5 +1,5 @@
 /* =========================================================
-   MODULE: ANSWER SHEET MODAL POPUP (DYNAMIC LOADER)
+   MODULE: ANSWER SHEET MODAL POPUP (RESET SỐ CÂU THEO PHẦN)
 ========================================================= */
 
 window.AnswerModalModule = {
@@ -14,7 +14,7 @@ window.AnswerModalModule = {
             <button id="btn-close-answer-modal" class="answer-modal-close" title="Đóng">&times;</button>
           </div>
           <div class="answer-modal-body">
-            <div id="answer-grid-container" class="answer-grid"></div>
+            <div id="answer-grid-container"></div>
           </div>
         </div>
       </div>
@@ -27,27 +27,58 @@ window.AnswerModalModule = {
     });
   },
 
-  // Hàm hỗ trợ tự động tải file JS đáp án động khi người dùng bấm
+  // Hàm tự động nạp file .js đáp án khi bấm nút
   loadAnswerScript(contestType, cleanCode) {
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
       const scriptId = `script-answer-${cleanCode}`;
-      
-      // Nếu file đáp án này đã được nạp trước đó rồi thì bỏ qua
       if (document.getElementById(scriptId)) {
         resolve(true);
         return;
       }
 
-      // Tự động tạo thẻ script nạp file đáp án đúng thư mục
       const script = document.createElement('script');
       script.id = scriptId;
       script.src = `assets/js/data/answers/${contestType}/${cleanCode}.js`;
 
       script.onload = () => resolve(true);
-      script.onerror = () => resolve(false); // Nếu không tìm thấy file đáp án
+      script.onerror = () => resolve(false);
 
       document.head.appendChild(script);
     });
+  },
+
+  // Hàm Render danh sách đáp án (Hỗ trợ tham số autoResetIndex để đánh lại từ Câu 1)
+  renderAnswerGrid(answersObj, autoResetIndex = false) {
+    let gridHTML = `<div class="answer-grid">`;
+    let index = 1;
+
+    Object.keys(answersObj).forEach(qKey => {
+      const val = answersObj[qKey];
+      
+      // Nếu autoResetIndex = true -> Đánh lại số câu 1, 2, 3...
+      // Nếu autoResetIndex = false -> Lấy theo Key gốc của dữ liệu
+      const displayNum = autoResetIndex ? index : qKey;
+
+      gridHTML += `<div class="answer-item"><span class="q-num">Câu ${displayNum}</span>`;
+
+      if (typeof val === 'object') {
+        // Dạng Đúng / Sai (True / False)
+        gridHTML += `<div class="tf-box">`;
+        Object.keys(val).forEach(sub => {
+          gridHTML += `<div class="tf-sub"><span>${sub.toUpperCase()}:</span> <span>${val[sub]}</span></div>`;
+        });
+        gridHTML += `</div>`;
+      } else {
+        // Dạng Trắc nghiệm chọn 1 / Điền số / Trả lời ngắn
+        gridHTML += `<span class="q-val">${val}</span>`;
+      }
+
+      gridHTML += `</div>`;
+      index++;
+    });
+
+    gridHTML += `</div>`;
+    return gridHTML;
   },
 
   async show(examCode) {
@@ -59,15 +90,15 @@ window.AnswerModalModule = {
 
     window.EXAM_ANSWERS_BANK = window.EXAM_ANSWERS_BANK || {};
 
-    // 1. Tự động nạp tệp đáp án nếu chưa có sẵn trong bộ nhớ
+    // Nạp file đáp án nếu chưa có [cite: 171]
     if (!window.EXAM_ANSWERS_BANK[cleanCode] && !window.EXAM_ANSWERS_BANK[examCode]) {
       await this.loadAnswerScript(contestType, cleanCode);
     }
 
     const data = window.EXAM_ANSWERS_BANK[cleanCode] || window.EXAM_ANSWERS_BANK[examCode];
 
-    // 2. Nếu file không tồn tại hoặc đề chưa được nhập đáp án
-    if (!data || !data.answers) {
+    // Xử lý khi chưa cập nhật đáp án [cite: 172]
+    if (!data || (!data.answers && !data.sections)) {
       const msg = `Bài thi này chưa được cập nhật Bảng đáp án!`;
       if (window.UIComponentsModule && window.UIComponentsModule.showToast) {
         window.UIComponentsModule.showToast(msg, 'fa-solid fa-circle-exclamation');
@@ -77,32 +108,27 @@ window.AnswerModalModule = {
       return;
     }
 
-    // 3. Hiển thị Bảng đáp án
     const overlay = document.getElementById('answer-modal-overlay');
     const titleEl = document.getElementById('answer-modal-title');
     const container = document.getElementById('answer-grid-container');
 
     titleEl.textContent = `Bảng Đáp Án - ${data.examTitle || examCode}`;
-    let gridHTML = '';
+    let bodyHTML = '';
 
-    Object.keys(data.answers).forEach(qNum => {
-      const val = data.answers[qNum];
-      gridHTML += `<div class="answer-item"><span class="q-num">Câu ${qNum}</span>`;
+    // DẠNG 1: ĐÁP ÁN CHIA THÀNH TỪNG PHẦN (SECTIONS) -> ĐÁNH LẠI TỪ CÂU 1 Ở MỖI PHẦN [cite: 183]
+    if (data.sections && Array.isArray(data.sections)) {
+      data.sections.forEach(sec => {
+        bodyHTML += `<h4 class="section-header-title">${sec.sectionName}</h4>`;
+        // Truyền autoResetIndex = true để tự động đánh lại số câu từ 1 cho từng Phần
+        bodyHTML += this.renderAnswerGrid(sec.answers, true);
+      });
+    } 
+    // DẠNG 2: ĐÁP ÁN DANH SÁCH THẲNG (ANSWERS) -> GIỮ NGUYÊN SỐ CÂU GỐC [cite: 183]
+    else if (data.answers) {
+      bodyHTML = this.renderAnswerGrid(data.answers, false);
+    }
 
-      if (typeof val === 'object') {
-        gridHTML += `<div class="tf-box">`;
-        Object.keys(val).forEach(sub => {
-          gridHTML += `<div class="tf-sub"><span>${sub.toUpperCase()}:</span> <span>${val[sub]}</span></div>`;
-        });
-        gridHTML += `</div>`;
-      } else {
-        gridHTML += `<span class="q-val">${val}</span>`;
-      }
-
-      gridHTML += `</div>`;
-    });
-
-    container.innerHTML = gridHTML;
+    container.innerHTML = bodyHTML;
     overlay.classList.add('show');
   },
 
