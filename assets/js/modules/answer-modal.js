@@ -1,5 +1,5 @@
 /* =========================================================
-   MODULE: ANSWER SHEET MODAL POPUP (CỬA SỔ XEM BẢNG ĐÁP ÁN)
+   MODULE: ANSWER SHEET MODAL POPUP (DYNAMIC LOADER)
 ========================================================= */
 
 window.AnswerModalModule = {
@@ -21,26 +21,52 @@ window.AnswerModalModule = {
     `;
     document.body.insertAdjacentHTML('beforeend', modalHTML);
 
-    // Gắn sự kiện đóng Modal
     document.getElementById('btn-close-answer-modal').addEventListener('click', () => this.close());
     document.getElementById('answer-modal-overlay').addEventListener('click', (e) => {
       if (e.target.id === 'answer-modal-overlay') this.close();
     });
   },
 
-  show(examCode) {
+  // Hàm hỗ trợ tự động tải file JS đáp án động khi người dùng bấm
+  loadAnswerScript(contestType, cleanCode) {
+    return new Promise((resolve, reject) => {
+      const scriptId = `script-answer-${cleanCode}`;
+      
+      // Nếu file đáp án này đã được nạp trước đó rồi thì bỏ qua
+      if (document.getElementById(scriptId)) {
+        resolve(true);
+        return;
+      }
+
+      // Tự động tạo thẻ script nạp file đáp án đúng thư mục
+      const script = document.createElement('script');
+      script.id = scriptId;
+      script.src = `assets/js/data/answers/${contestType}/${cleanCode}.js`;
+
+      script.onload = () => resolve(true);
+      script.onerror = () => resolve(false); // Nếu không tìm thấy file đáp án
+
+      document.head.appendChild(script);
+    });
+  },
+
+  async show(examCode) {
     this.renderModalHTML();
 
-    const overlay = document.getElementById('answer-modal-overlay');
-    const titleEl = document.getElementById('answer-modal-title');
-    const container = document.getElementById('answer-grid-container');
-
-    // Làm sạch mã đề thi (loại bỏ khoảng trắng, đổi dấu gạch ngang)
     const cleanCode = examCode ? examCode.split('(')[0].trim().replace(/−/g, '-') : '';
-    const bank = window.EXAM_ANSWERS_BANK || {};
-    const data = bank[cleanCode] || bank[examCode];
+    const isMarathonPage = document.body.classList.contains('theme-marathon') || window.location.pathname.includes('Marathon.html');
+    const contestType = isMarathonPage ? 'marathon' : 'tournament';
 
-    // Nếu đề thi chưa có đáp án trong Ngân hàng -> Hiện thông báo Toast
+    window.EXAM_ANSWERS_BANK = window.EXAM_ANSWERS_BANK || {};
+
+    // 1. Tự động nạp tệp đáp án nếu chưa có sẵn trong bộ nhớ
+    if (!window.EXAM_ANSWERS_BANK[cleanCode] && !window.EXAM_ANSWERS_BANK[examCode]) {
+      await this.loadAnswerScript(contestType, cleanCode);
+    }
+
+    const data = window.EXAM_ANSWERS_BANK[cleanCode] || window.EXAM_ANSWERS_BANK[examCode];
+
+    // 2. Nếu file không tồn tại hoặc đề chưa được nhập đáp án
     if (!data || !data.answers) {
       const msg = `Bài thi này chưa được cập nhật Bảng đáp án!`;
       if (window.UIComponentsModule && window.UIComponentsModule.showToast) {
@@ -51,7 +77,11 @@ window.AnswerModalModule = {
       return;
     }
 
-    // Render dữ liệu bảng đáp án
+    // 3. Hiển thị Bảng đáp án
+    const overlay = document.getElementById('answer-modal-overlay');
+    const titleEl = document.getElementById('answer-modal-title');
+    const container = document.getElementById('answer-grid-container');
+
     titleEl.textContent = `Bảng Đáp Án - ${data.examTitle || examCode}`;
     let gridHTML = '';
 
@@ -60,14 +90,12 @@ window.AnswerModalModule = {
       gridHTML += `<div class="answer-item"><span class="q-num">Câu ${qNum}</span>`;
 
       if (typeof val === 'object') {
-        // Render dạng Đúng/Sai
         gridHTML += `<div class="tf-box">`;
         Object.keys(val).forEach(sub => {
           gridHTML += `<div class="tf-sub"><span>${sub.toUpperCase()}:</span> <span>${val[sub]}</span></div>`;
         });
         gridHTML += `</div>`;
       } else {
-        // Render dạng Chọn 1 đáp án hoặc Điền số
         gridHTML += `<span class="q-val">${val}</span>`;
       }
 
