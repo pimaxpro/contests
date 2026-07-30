@@ -184,7 +184,7 @@ a {
   color: var(--accent-color);
 }
 
-/* Khi active bài thi */
+/* Khi active bài thi hoặc active thẻ chọn kì thi */
 .exam-item.active,
 .active-contest {
   background: var(--accent-color) !important;
@@ -195,6 +195,13 @@ a {
 .exam-item.active i,
 .active-contest i {
   color: #ffffff !important;
+}
+
+/* TẮT HIỆU ỨNG HOVER KHI ĐANG Ở TRANG KÌ THI HIỆN TẠI */
+.active-contest:hover {
+  background: var(--accent-color) !important;
+  color: #ffffff !important;
+  cursor: default;
 }
 
 .toggle-icon {
@@ -327,6 +334,7 @@ a {
   border: none;
 }
 
+/* LỚP PHỦ CHE GÓC TRÊN BÊN PHẢI ĐỂ VÔ HIỆU HÓA NÚT "POP-OUT" MẶC ĐỊNH CỦA IFRAME DRIVE */
 .iframe-overlay-cover {
   position: absolute;
   top: 0;
@@ -473,8 +481,16 @@ body.theme-marathon .active-contest {
   color: #ffffff !important;
 }
 
-body.theme-marathon .exam-item.active i {
+body.theme-marathon .exam-item.active i,
+body.theme-marathon .active-contest i {
   color: #ffffff !important;
+}
+
+/* TẮT HOVER KHI ĐANG Ở MARATHON */
+body.theme-marathon .active-contest:hover {
+  background: #4080D6 !important;
+  color: #ffffff !important;
+  cursor: default;
 }
 
 body.theme-marathon .week-btn:active {
