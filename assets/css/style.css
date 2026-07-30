@@ -11,14 +11,14 @@
   --border-color: #e2e8f0;
 }
 
-/* Theme riêng cho Marathon (Chỉ cần đổi biến màu) */
+/* Theme riêng cho Marathon */
 body.theme-marathon {
   --accent-color: #4080D6;       /* Blue (Marathon) */
   --accent-hover: #2b62ab;
 }
 
 /* =========================================================
-   2. BASE RESET & TYPOGRAPHY
+   2. BASE RESET & STICKY FOOTER SETUP
 ========================================================= */
 * {
   box-sizing: border-box;
@@ -26,11 +26,21 @@ body.theme-marathon {
   padding: 0;
 }
 
+/* Cấu hình Sticky Footer bằng Flexbox */
 body {
   font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   background-color: var(--bg-color);
   color: var(--text-main);
   line-height: 1.5;
+  
+  /* Đảm bảo body phủ kín chiều cao màn hình */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+#page-content {
+  flex: 1 0 auto; /* Đẩy Footer xuống đáy khi nội dung ngắn */
 }
 
 a {
@@ -39,7 +49,7 @@ a {
 }
 
 /* =========================================================
-   3. SHARED HERO HEADER (Dùng chung 3 trang)
+   3. SHARED HERO HEADER
 ========================================================= */
 .hero {
   max-width: 900px;
@@ -95,7 +105,7 @@ a {
 }
 
 /* =========================================================
-   4. PORTAL GRID (Trang index.html)
+   4. PORTAL GRID (index.html)
 ========================================================= */
 .portal-container {
   max-width: 1000px;
@@ -194,7 +204,7 @@ a {
   max-width: 1400px;
   margin: 30px auto;
   padding: 0 20px;
-  min-height: calc(100vh - 120px);
+  min-height: calc(100vh - 200px);
 }
 
 .sidebar-exams {
@@ -226,7 +236,6 @@ a {
   color: var(--accent-color);
 }
 
-/* Cây danh mục bài thi */
 .year-title, .stage-title, .exam-item {
   display: flex;
   align-items: center;
@@ -260,7 +269,6 @@ a {
 .exam-item.active i, .active-contest i { color: #ffffff !important; }
 .toggle-icon { font-size: 12px; width: 14px; color: #718096; }
 
-/* Khu vực Preview */
 .preview-area {
   flex-grow: 1;
   background: var(--card-bg);
@@ -299,7 +307,6 @@ a {
 .week-btn:hover { border-color: #cbd5e0; color: #1a202c; box-shadow: 0 2px 5px rgba(0,0,0,0.06); }
 .week-btn:active { transform: scale(0.95); background: #fdf2f5; border-color: var(--accent-color); color: var(--accent-color); }
 
-/* Khung Drive Viewer */
 .drive-iframe-container {
   position: relative;
   flex-grow: 1;
@@ -313,7 +320,6 @@ a {
 .drive-iframe-container iframe { width: 100%; height: 100%; min-height: 75vh; border: none; }
 .iframe-overlay-cover { position: absolute; top: 0; right: 0; width: 65px; height: 65px; z-index: 15; }
 
-/* Nút Share Nổi */
 .side-share-actions { position: absolute; top: 15px; right: 15px; display: flex; flex-direction: column; gap: 10px; z-index: 20; }
 .side-share-btn {
   width: 38px;
@@ -334,7 +340,7 @@ a {
 .side-share-btn:hover { background: var(--accent-color); color: #ffffff; border-color: var(--accent-color); transform: scale(1.08); }
 
 /* =========================================================
-   6. SHARED UI: TOAST & FOOTER (Dùng chung 3 trang)
+   6. SHARED UI: TOAST & FOOTER (STICKY AT BOTTOM)
 ========================================================= */
 .toast-notification {
   position: fixed;
@@ -360,8 +366,13 @@ a {
 .toast-notification.show { opacity: 1; pointer-events: auto; transform: translateY(0); }
 .toast-notification i { color: #48bb78; }
 
-.site-footer { margin-top: 60px; padding-bottom: 24px; }
-.footer-divider { border: none; height: 2px; background: rgba(0, 0, 0, 0.12); margin-bottom: 18px; }
+.site-footer {
+  flex-shrink: 0; /* Giúp footer giữ nguyên kích thước ở dưới cùng */
+  margin-top: auto; /* Đẩy footer xuống chân trang */
+  padding: 30px 0 24px;
+}
+
+.footer-divider { border: none; height: 1px; background: rgba(0, 0, 0, 0.1); margin-bottom: 18px; }
 .footer-content { display: flex; align-items: center; justify-content: center; gap: 10px; color: #555; font-size: 15px; }
 .footer-logo { height: 26px; width: auto; }
 
